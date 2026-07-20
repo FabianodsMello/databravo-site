@@ -129,9 +129,9 @@
   .hero-canvas{ position:absolute; inset:0; z-index:0; opacity:.6; }
   .hero-grid{
     display:grid;
-    grid-template-columns: 1fr 0.92fr;
-    gap:36px;
-    align-items:center;
+    grid-template-columns: 0.86fr 1.14fr;
+    gap:34px;
+    align-items:start;
     position:relative; z-index:1;
   }
   .hero-copy{ display:flex; flex-direction:column; gap:24px; }
@@ -227,6 +227,79 @@
     opacity:0; transform:translateY(12px); animation:haToast 8s cubic-bezier(.34,1.56,.64,1) 2s infinite; }
   .ha-toast::before{ content:"✓"; font-size:9px; width:14px; height:14px; border-radius:50%; background:var(--whats); color:#06130b; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
   @keyframes haToast{ 0%,8%{ opacity:0; transform:translateY(12px); } 13%,55%{ opacity:1; transform:translateY(0); } 62%,100%{ opacity:0; transform:translateY(12px); } }
+  /* Navigable views: sidebar icons switch screens inside the mock app */
+  .ha-body{ height:446px; }
+  .ha-nav{ background:none; border:none; cursor:pointer; font-family:inherit; transition:background .2s ease, color .2s ease; }
+  .ha-nav:hover{ color:var(--ink-muted); background:rgba(255,255,255,.05); }
+  .ha-nav.on{ background:rgba(124,58,237,.2); color:var(--violet-bright); }
+  .ha-nav:focus-visible{ outline:2px solid var(--violet-bright); outline-offset:2px; }
+  .ha-view{ display:none; flex-direction:column; gap:11px; flex:1; min-height:0; }
+  .ha-view.on{ display:flex; animation:haViewIn .45s cubic-bezier(.16,1,.3,1); }
+  @keyframes haViewIn{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+  .ha-kpi.still{ animation:none; opacity:1; transform:none; }
+
+  /* view: automações */
+  .ha-autos{ display:flex; flex-direction:column; gap:8px; }
+  .ha-auto{ display:flex; align-items:center; gap:10px; padding:10px 12px; background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:10px; }
+  .ha-auto .ha-ico{ width:26px; height:26px; }
+  .ha-auto .ha-ico svg{ width:12px; height:12px; }
+  .ha-auto > div{ flex:1; min-width:0; }
+  .ha-auto b{ display:block; font-size:11.5px; font-weight:700; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ha-auto span{ font-size:9px; color:var(--ink-faint); display:block; }
+  .ha-switch{ width:30px; height:17px; border-radius:10px; background:rgba(255,255,255,.1); position:relative; flex-shrink:0; }
+  .ha-switch i{ position:absolute; top:2px; left:2px; width:13px; height:13px; border-radius:50%; background:#fff; }
+  .ha-switch.on{ background:var(--violet); }
+  .ha-switch.on i{ left:15px; }
+  .ha-switch.auto{ animation:haSwBg 5s ease-in-out infinite; }
+  .ha-switch.auto i{ animation:haSwKnob 5s ease-in-out infinite; }
+  @keyframes haSwBg{ 0%,32%{ background:rgba(255,255,255,.1); } 42%,100%{ background:var(--violet); } }
+  @keyframes haSwKnob{ 0%,32%{ left:2px; } 42%,100%{ left:15px; } }
+
+  /* view: kanban */
+  .ha-kan{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; flex:1; min-height:0; align-content:start; }
+  .ha-kcol{ background:rgba(255,255,255,.02); border:1px solid var(--line); border-radius:10px; padding:8px; min-width:0; }
+  .ha-kcol h6{ margin:0 0 8px; font-size:8.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); display:flex; justify-content:space-between; }
+  .ha-kcol h6 i{ font-style:normal; color:var(--violet-bright); }
+  .ha-kcol.win h6 i{ color:var(--whats); }
+  .ha-kcard{ background:rgba(167,139,250,.07); border:1px solid var(--line-strong); border-radius:8px; padding:7px 8px; margin-bottom:7px; }
+  .ha-kcard .l{ height:5px; border-radius:3px; background:rgba(255,255,255,.14); margin-bottom:5px; }
+  .ha-kcard .l.s{ width:55%; background:rgba(255,255,255,.08); margin-bottom:6px; }
+  .ha-kcard .meta{ display:flex; align-items:center; justify-content:space-between; }
+  .ha-kcard .av{ width:13px; height:13px; border-radius:50%; background:linear-gradient(135deg,var(--violet),var(--violet-bright)); }
+  .ha-kcard .val{ font-size:8.5px; font-weight:700; color:var(--ink-muted); font-variant-numeric:tabular-nums; }
+  .ha-kcard.hot{ background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(167,139,250,.15)); animation:haKHot 3s ease-in-out infinite; }
+  @keyframes haKHot{ 0%,100%{ transform:none; box-shadow:none; } 50%{ transform:translateY(-2px); box-shadow:0 8px 18px -8px rgba(124,58,237,.8); } }
+  .ha-kcol.win .ha-kcard{ border-color:rgba(53,194,107,.45); }
+
+  /* view: relatórios */
+  .ha-repgrid{ display:grid; grid-template-columns:1.15fr 1fr; gap:9px; flex:1; min-height:0; }
+  .ha-repchart{ background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:11px; padding:14px 12px 12px; display:flex; align-items:flex-end; gap:7px; }
+  .ha-repchart b{ flex:1; height:var(--h); border-radius:4px 4px 2px 2px; background:linear-gradient(180deg,var(--violet-bright),var(--violet-deep)); transform-origin:bottom; animation:erpbar 2.8s ease-in-out infinite; }
+  .ha-repchart b:nth-child(2n){ animation-delay:.3s; }
+  .ha-repchart b:nth-child(3n){ animation-delay:.6s; }
+  .ha-replist{ display:flex; flex-direction:column; gap:7px; }
+  .ha-rep{ display:flex; align-items:center; gap:9px; padding:8px 10px; background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:10px; }
+  .ha-rep > div{ flex:1; min-width:0; }
+  .ha-rep b{ display:block; font-size:10.5px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ha-rep span{ font-size:8.5px; color:var(--ink-faint); display:block; }
+  .ha-rep em{ font-style:normal; font-size:8px; font-weight:800; color:var(--violet-dot); border:1px solid var(--line-strong); border-radius:5px; padding:2px 6px; flex-shrink:0; }
+  .ha-repprog{ height:4px; border-radius:2px; background:rgba(255,255,255,.08); overflow:hidden; margin-top:5px; }
+  .ha-repprog i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--violet-bright)); animation:haRepFill 3.5s ease-in-out infinite; }
+  @keyframes haRepFill{ 0%{ width:0; } 78%,100%{ width:100%; } }
+
+  /* Floating widgets: scroll progress ring + WhatsApp button */
+  .float-stack{ position:fixed; right:22px; bottom:22px; z-index:60; display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .scroll-progress{ position:relative; width:52px; height:52px; border-radius:50%; background:rgba(11,8,19,.88); border:1px solid var(--line); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; }
+  .scroll-progress svg{ position:absolute; inset:3px; transform:rotate(-90deg); overflow:visible; }
+  .scroll-progress .bg{ fill:none; stroke:rgba(255,255,255,.08); stroke-width:3; }
+  .scroll-progress .val{ fill:none; stroke:var(--violet-bright); stroke-width:3; stroke-linecap:round; transition:stroke-dashoffset .12s linear; }
+  .scroll-progress span{ font-size:11px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); }
+  .wa-fab{ width:56px; height:56px; border-radius:50%; background:#25d366; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 12px 28px -10px rgba(37,211,102,.75); transition:transform .25s cubic-bezier(.34,1.56,.64,1); position:relative; }
+  .wa-fab:hover{ transform:scale(1.09); }
+  .wa-fab::before{ content:""; position:absolute; inset:0; border-radius:50%; border:2px solid rgba(37,211,102,.55); animation:waPulse 2.6s ease-out infinite; }
+  @keyframes waPulse{ 0%{ transform:scale(1); opacity:.8; } 70%,100%{ transform:scale(1.55); opacity:0; } }
+  .wa-fab svg{ width:29px; height:29px; }
+
   @media (prefers-reduced-motion: reduce){
     .ha-kpi,.ha-row{ opacity:1; transform:none; animation:none; }
     .ha-area .stroke,.ha-spark polyline{ stroke-dashoffset:0; animation:none; }
@@ -235,6 +308,12 @@
     .ha-donut .val{ stroke-dashoffset:33.2; animation:none; }
     .ha-toast,.ha-live::before{ animation:none; }
     .ha-toast{ opacity:1; transform:none; }
+    .ha-view.on{ animation:none; }
+    .ha-switch.auto{ animation:none; background:var(--violet); }
+    .ha-switch.auto i{ animation:none; left:15px; }
+    .ha-kcard.hot,.ha-repchart b{ animation:none; }
+    .ha-repprog i{ animation:none; width:100%; }
+    .wa-fab::before{ animation:none; display:none; }
   }
 
   /* Reveal: visible by default (progressive enhancement). JS arms off-screen
@@ -750,10 +829,15 @@
     .hero{ padding:132px 0 48px; }
     .hero-visual{ max-width:100%; }
     /* Desktop window compacts: sidebar goes, KPIs 2x2, columns stack */
-    .ha-side{ display:none; }
+    .ha-side{ display:flex; flex-direction:row; width:auto; border-right:none; border-bottom:1px solid var(--line); padding:8px 12px; gap:8px; }
+    .ha-side .ha-mark{ margin-bottom:0; margin-right:4px; }
+    .ha-body{ height:auto; flex-direction:column; }
     .ha-kpis{ grid-template-columns:repeat(2,1fr); }
     .ha-grid{ grid-template-columns:1fr; }
     .ha-area{ height:104px; }
+    .ha-kan{ grid-template-columns:repeat(2,1fr); }
+    .ha-repgrid{ grid-template-columns:1fr; }
+    .ha-repchart{ min-height:110px; }
     .ha-bar em{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
     .services-featured{ margin-bottom:0; }
     .cases-list li:nth-child(even){ padding-left:0; border-left:none; }
@@ -766,6 +850,11 @@
     .ha-main{ padding:12px 12px 11px; }
     .ha-toast{ right:10px; bottom:10px; font-size:10px; padding:7px 10px; }
     .ha-chip{ display:none; }
+    .float-stack{ right:14px; bottom:14px; gap:10px; }
+    .scroll-progress{ width:46px; height:46px; }
+    .scroll-progress span{ font-size:10px; }
+    .wa-fab{ width:50px; height:50px; }
+    .wa-fab svg{ width:25px; height:25px; }
     .feat-block{ padding:24px; }
     .feat-block.wide{ padding:24px; }
     .dif-item{ padding:22px 16px; }
@@ -817,7 +906,7 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="hero-app" aria-hidden="true">
+        <div class="hero-app">
           <div class="ha-bar">
             <span></span><span></span><span></span>
             <em>app.databravo.com.br</em>
@@ -825,16 +914,16 @@
           </div>
           <div class="ha-body">
             <aside class="ha-side">
-              <svg class="ha-mark" viewBox="0 0 120 96" fill="none">
+              <svg class="ha-mark" viewBox="0 0 120 96" fill="none" aria-hidden="true">
                 <g fill="#8b5cf6"><circle cx="58" cy="40" r="33"/><circle cx="90" cy="54" r="26"/><circle cx="30" cy="60" r="22"/><rect x="10" y="56" width="100" height="30" rx="15"/></g>
               </svg>
-              <span class="ha-nav on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span>
-              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
-              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8z"/></svg></span>
-              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></span>
-              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M4.2 7l1.7 1M18.1 16l1.7 1M4.2 17l1.7-1M18.1 8l1.7-1"/></svg></span>
+              <button class="ha-nav on" data-view="overview" aria-label="Visão geral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></button>
+              <button class="ha-nav" data-view="autom" aria-label="Automações"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></button>
+              <button class="ha-nav" data-view="kanban" aria-label="Kanban"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="10" rx="1"/><rect x="17" y="4" width="5" height="13" rx="1"/></svg></button>
+              <button class="ha-nav" data-view="reports" aria-label="Relatórios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></button>
             </aside>
             <div class="ha-main">
+              <div class="ha-view on" data-view="overview">
               <div class="ha-head">
                 <div><b>Visão geral</b><span>Atualizado agora mesmo</span></div>
                 <div class="ha-actions"><span class="ha-chip">Últimos 30 dias</span><span class="ha-avatar">DB</span></div>
@@ -889,6 +978,96 @@
                     <div class="ha-row">
                       <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
                       <div><b>Relatório semanal pronto</b><span>há 41 min</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="ha-view" data-view="autom">
+                <div class="ha-head">
+                  <div><b>Automações</b><span>4 fluxos ativos</span></div>
+                  <div class="ha-actions"><span class="ha-chip">+ Novo fluxo</span><span class="ha-avatar">DB</span></div>
+                </div>
+                <div class="ha-autos">
+                  <div class="ha-auto">
+                    <span class="ha-ico ok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
+                    <div><b>Boas-vindas no WhatsApp</b><span>Disparado 218× hoje</span></div>
+                    <span class="ha-switch on"><i></i></span>
+                  </div>
+                  <div class="ha-auto">
+                    <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8z"/></svg></span>
+                    <div><b>Qualificação de leads</b><span>84 leads qualificados esta semana</span></div>
+                    <span class="ha-switch on"><i></i></span>
+                  </div>
+                  <div class="ha-auto">
+                    <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2h12l2 5H4l2-5zM4 7h16v13H4V7z"/></svg></span>
+                    <div><b>Carrinho abandonado</b><span>Recuperou R$ 8,4k este mês</span></div>
+                    <span class="ha-switch on"><i></i></span>
+                  </div>
+                  <div class="ha-auto">
+                    <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l2.9 6.3 6.6.6-5 4.4 1.5 6.5L12 16.4 6 19.8l1.5-6.5-5-4.4 6.6-.6L12 2z"/></svg></span>
+                    <div><b>NPS pós-venda</b><span>Ativando agora…</span></div>
+                    <span class="ha-switch auto"><i></i></span>
+                  </div>
+                </div>
+                <div class="ha-kpis" style="grid-template-columns:repeat(2,1fr);">
+                  <div class="ha-kpi still"><i>Mensagens hoje</i><b>1.284</b><em>+31%</em></div>
+                  <div class="ha-kpi still"><i>Taxa de resposta</i><b>98%</b><em>+2%</em></div>
+                </div>
+              </div>
+
+              <div class="ha-view" data-view="kanban">
+                <div class="ha-head">
+                  <div><b>Pipeline comercial</b><span>12 negócios em andamento</span></div>
+                  <div class="ha-actions"><span class="ha-chip">Este mês</span><span class="ha-avatar">DB</span></div>
+                </div>
+                <div class="ha-kan">
+                  <div class="ha-kcol">
+                    <h6>Novo <i>4</i></h6>
+                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 6k</span></div></div>
+                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 3k</span></div></div>
+                  </div>
+                  <div class="ha-kcol">
+                    <h6>Em conversa <i>5</i></h6>
+                    <div class="ha-kcard hot"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 18k</span></div></div>
+                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 9k</span></div></div>
+                  </div>
+                  <div class="ha-kcol">
+                    <h6>Proposta <i>2</i></h6>
+                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 24k</span></div></div>
+                  </div>
+                  <div class="ha-kcol win">
+                    <h6>Fechado <i>7</i></h6>
+                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 12k</span></div></div>
+                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 31k</span></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ha-view" data-view="reports">
+                <div class="ha-head">
+                  <div><b>Relatórios</b><span>Gerados automaticamente</span></div>
+                  <div class="ha-actions"><span class="ha-chip">Exportar</span><span class="ha-avatar">DB</span></div>
+                </div>
+                <div class="ha-repgrid">
+                  <div class="ha-repchart">
+                    <b style="--h:38%"></b><b style="--h:62%"></b><b style="--h:46%"></b><b style="--h:78%"></b><b style="--h:55%"></b><b style="--h:88%"></b><b style="--h:66%"></b><b style="--h:94%"></b>
+                  </div>
+                  <div class="ha-replist">
+                    <div class="ha-rep">
+                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6"/></svg></span>
+                      <div><b>Vendas · Junho</b><span>gerado há 2 dias</span></div>
+                      <em>PDF</em>
+                    </div>
+                    <div class="ha-rep">
+                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6"/></svg></span>
+                      <div><b>Funil de conversão</b><span>gerado há 5 dias</span></div>
+                      <em>XLSX</em>
+                    </div>
+                    <div class="ha-rep">
+                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+                      <div><b>Fechamento mensal</b><span>gerando agora…</span><div class="ha-repprog"><i></i></div></div>
                     </div>
                   </div>
                 </div>
@@ -1322,6 +1501,19 @@
   </div>
 </footer>
 
+<div class="float-stack">
+  <div class="scroll-progress" aria-hidden="true">
+    <svg viewBox="0 0 44 44">
+      <circle class="bg" cx="22" cy="22" r="18"/>
+      <circle class="val" cx="22" cy="22" r="18"/>
+    </svg>
+    <span id="scrollPct">0%</span>
+  </div>
+  <a class="wa-fab" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener" aria-label="Falar com a Data Bravo no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+</div>
+
 <script>
   (function(){
     var stackItems = [
@@ -1438,6 +1630,36 @@
       // hero dashboard counts on load
       var heroApp = document.querySelector('.hero-app');
       if(heroApp) setTimeout(function(){ countUp(heroApp); }, 350);
+
+      // hero dashboard: sidebar navigation between mock screens
+      var haNavs = document.querySelectorAll('.ha-nav[data-view]');
+      var haViews = document.querySelectorAll('.ha-view');
+      haNavs.forEach(function(n){
+        n.addEventListener('click', function(){
+          var v = n.getAttribute('data-view');
+          haNavs.forEach(function(x){ x.classList.toggle('on', x === n); });
+          haViews.forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-view') === v); });
+        });
+      });
+
+      // scroll progress ring
+      (function(){
+        var ring = document.querySelector('.scroll-progress .val');
+        var txt = document.getElementById('scrollPct');
+        if(!ring || !txt) return;
+        var C = 2 * Math.PI * 18;
+        ring.style.strokeDasharray = C;
+        ring.style.strokeDashoffset = C;
+        function update(){
+          var max = document.documentElement.scrollHeight - window.innerHeight;
+          var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+          ring.style.strokeDashoffset = C * (1 - p);
+          txt.textContent = Math.round(p * 100) + '%';
+        }
+        window.addEventListener('scroll', update, { passive:true });
+        window.addEventListener('resize', update);
+        update();
+      })();
       function activate(name){
         items.forEach(function(it){
           var on = it.getAttribute('data-scene') === name;
