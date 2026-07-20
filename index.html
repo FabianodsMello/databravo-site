@@ -145,81 +145,96 @@
   .hero-body strong{ color:var(--ink-muted); font-weight:600; }
   .hero-actions{ display:flex; gap:26px; flex-wrap:wrap; align-items:center; margin-top:6px; }
 
-  .hero-visual{ position:relative; height:500px; }
+  .hero-visual{ position:relative; }
 
-  /* Laptop mockup */
-  .laptop{ position:absolute; left:0; top:22px; width:76%; filter:drop-shadow(0 26px 46px rgba(0,0,0,.5)); }
-  .laptop-body{ background:#161022; border:1px solid var(--line-strong); border-radius:12px 12px 3px 3px; padding:9px 9px 0; }
-  .laptop-bar{ display:flex; gap:6px; padding:7px 5px; }
-  .laptop-bar span{ width:7px; height:7px; border-radius:50%; background:#382c52; }
-  .laptop-screen{
-    background:#0d0916; border-radius:5px; padding:16px 18px; font-family:var(--font-mono); font-size:11.5px; line-height:1.85;
-    min-height:210px; border:1px solid rgba(255,255,255,.04);
-    background-image:
-      linear-gradient(155deg, rgba(124,58,237,.16), transparent 55%),
-      repeating-linear-gradient(58deg, rgba(167,139,250,.05) 0 1px, transparent 1px 22px);
-  }
-  .laptop-screen .c-kw{ color:var(--violet-bright); }
-  .laptop-screen .c-fn{ color:#7ee7c7; }
-  .laptop-screen .c-str{ color:#f0c56e; }
-  .laptop-screen .c-cmt{ color:var(--ink-faint); font-style:italic; }
-  .laptop-base{ height:12px; background:#0f0a1a; border-radius:0 0 10px 10px; }
-  .laptop-hinge{ height:4px; width:24%; margin:0 auto; background:#1e1730; border-radius:0 0 5px 5px; }
-
-  /* Phone mockup */
-  .phone{ position:absolute; right:4%; bottom:0; width:262px; filter:drop-shadow(0 26px 42px rgba(0,0,0,.55)); }
-  .phone-body{ background:#0e0a17; border:1px solid var(--line-strong); border-radius:30px; padding:11px; }
-  .phone-notch{ width:64px; height:5px; background:#221a38; border-radius:6px; margin:0 auto 9px; }
-  .phone-screen{
-    border-radius:20px; padding:13px 11px; height:392px; display:flex; flex-direction:column; overflow:hidden;
-    background-color:#0d0916;
-    background-image:
-      linear-gradient(160deg, rgba(124,58,237,.22), transparent 60%),
-      repeating-linear-gradient(58deg, rgba(167,139,250,.06) 0 1px, transparent 1px 20px);
-  }
-  /* Dashboard mockup (hero) — reads as a real product screen */
-  .dash-screen{ background-image:none; background-color:#0b0813; padding:0; }
-  .dash-head{ display:flex; align-items:center; justify-content:space-between; padding:13px 14px 11px; border-bottom:1px solid rgba(255,255,255,.05); }
-  .dash-brand{ display:flex; align-items:center; gap:8px; }
-  .dash-brand svg{ width:18px; height:15px; flex-shrink:0; }
-  .dash-head b{ font-size:12px; font-weight:700; display:block; letter-spacing:.01em; }
-  .dash-avatar{ width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,var(--violet),var(--violet-bright)); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#fff; }
-  .dash-tabs{ display:flex; gap:4px; padding:10px 14px 0; }
-  .dash-tab{ font-size:10px; font-weight:600; color:var(--ink-faint); padding:5px 10px; border-radius:7px; }
-  .dash-tab.on{ color:var(--ink); background:rgba(167,139,250,.12); }
-  .dash-body{ padding:12px 14px 14px; display:flex; flex-direction:column; gap:11px; flex:1; min-height:0; }
-  .dash-stats{ display:flex; gap:9px; }
-  .dash-stat{ flex:1; background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:11px; padding:9px 11px; display:flex; flex-direction:column; gap:3px; }
-  .dash-stat-label{ font-size:9px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; font-weight:600; }
-  .dash-stat-row{ display:flex; align-items:baseline; gap:5px; flex-wrap:nowrap; }
-  .dash-stat-value{ font-size:14.5px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .dash-delta{ font-size:8.5px; font-weight:700; color:var(--whats); background:rgba(53,194,107,.12); border-radius:5px; padding:1.5px 5px; }
-  .dash-chart-card{ background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:11px; padding:10px 11px 6px; }
-  .dash-chart-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
-  .dash-chart-head i{ font-style:normal; font-size:9px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; font-weight:600; }
-  .dash-chart-head em{ font-style:normal; font-size:9.5px; color:var(--violet-bright); font-weight:700; }
-  .dash-area{ width:100%; height:74px; display:block; }
-  .dash-area .fill{ fill:url(#dashGrad); }
-  .dash-area .stroke{ fill:none; stroke:var(--violet-bright); stroke-width:2.2; stroke-linecap:round; stroke-dasharray:420; stroke-dashoffset:420; animation:dash-draw 1.6s cubic-bezier(.4,0,.2,1) .4s forwards; }
-  .dash-area .tip{ fill:#fff; stroke:var(--violet-bright); stroke-width:2.5; opacity:0; animation:dash-tip .4s ease 1.9s forwards; }
-  @keyframes dash-draw{ to{ stroke-dashoffset:0; } }
-  @keyframes dash-tip{ to{ opacity:1; } }
-  .dash-list{ display:flex; flex-direction:column; }
-  .dash-row{ display:flex; align-items:center; gap:9px; padding:7px 1px; opacity:0; transform:translateY(6px); animation:row-in .5s ease forwards; }
-  .dash-row + .dash-row{ border-top:1px solid rgba(255,255,255,.04); }
-  .dash-row:nth-child(1){ animation-delay:1s; } .dash-row:nth-child(2){ animation-delay:1.2s; } .dash-row:nth-child(3){ animation-delay:1.4s; }
-  @keyframes row-in{ to{ opacity:1; transform:translateY(0); } }
-  .dash-ico{ width:22px; height:22px; border-radius:7px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:rgba(167,139,250,.1); border:1px solid var(--line); }
-  .dash-ico svg{ width:11px; height:11px; color:var(--violet-bright); }
-  .dash-ico.ok{ background:rgba(53,194,107,.1); }
-  .dash-ico.ok svg{ color:var(--whats); }
-  .dash-row b{ display:block; font-size:11px; font-weight:600; color:var(--ink-muted); }
-  .dash-row span{ font-size:9px; color:var(--ink-faint); }
-  .dash-row em{ font-style:normal; margin-left:auto; font-size:9.5px; font-weight:700; color:var(--ink-muted); font-variant-numeric:tabular-nums; }
+  /* HERO desktop app — a full product window: sidebar, KPIs, live chart, feed */
+  .hero-app{ position:relative; border:1px solid var(--line-strong); border-radius:14px; background:#0b0813;
+    box-shadow:0 48px 90px -42px rgba(0,0,0,.85); overflow:hidden; }
+  .ha-bar{ display:flex; align-items:center; gap:6px; padding:11px 14px; border-bottom:1px solid var(--line); }
+  .ha-bar span{ width:9px; height:9px; border-radius:50%; background:#3a2f52; }
+  .ha-bar em{ font-style:normal; font-family:var(--font-mono); font-size:10.5px; color:var(--ink-faint); margin-left:10px; background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:6px; padding:3px 10px; }
+  .ha-live{ margin-left:auto; font-style:normal; font-size:10px; font-weight:600; color:var(--whats); display:flex; align-items:center; gap:5px; }
+  .ha-live::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--whats); animation:haBlink 1.8s ease-in-out infinite; }
+  @keyframes haBlink{ 0%,100%{ opacity:1; box-shadow:0 0 0 0 rgba(53,194,107,.5); } 50%{ opacity:.55; box-shadow:0 0 0 5px rgba(53,194,107,0); } }
+  .ha-body{ display:flex; }
+  .ha-side{ width:52px; border-right:1px solid var(--line); padding:13px 0; display:flex; flex-direction:column; align-items:center; gap:5px; flex-shrink:0; }
+  .ha-side .ha-mark{ width:24px; height:19px; margin-bottom:9px; }
+  .ha-nav{ width:33px; height:33px; border-radius:9px; display:flex; align-items:center; justify-content:center; color:var(--ink-faint); }
+  .ha-nav svg{ width:15px; height:15px; }
+  .ha-nav.on{ background:rgba(124,58,237,.2); color:var(--violet-bright); }
+  .ha-main{ flex:1; padding:14px 15px 13px; display:flex; flex-direction:column; gap:11px; min-width:0; }
+  .ha-head{ display:flex; justify-content:space-between; align-items:center; }
+  .ha-head b{ font-size:13.5px; font-weight:700; display:block; }
+  .ha-head span{ font-size:9.5px; color:var(--ink-faint); }
+  .ha-actions{ display:flex; align-items:center; gap:8px; }
+  .ha-chip{ font-size:9.5px; font-weight:600; color:var(--ink-muted); border:1px solid var(--line); border-radius:7px; padding:4px 9px; white-space:nowrap; }
+  .ha-avatar{ width:25px; height:25px; border-radius:50%; background:linear-gradient(135deg,var(--violet),var(--violet-bright)); display:flex; align-items:center; justify-content:center; font-size:8.5px; font-weight:700; color:#fff; flex-shrink:0; }
+  .ha-kpis{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .ha-kpi{ background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:10px; padding:8px 9px; min-width:0;
+    opacity:0; transform:translateY(9px); animation:haRise .6s cubic-bezier(.16,1,.3,1) forwards; }
+  .ha-kpi:nth-child(1){ animation-delay:.15s; } .ha-kpi:nth-child(2){ animation-delay:.25s; }
+  .ha-kpi:nth-child(3){ animation-delay:.35s; } .ha-kpi:nth-child(4){ animation-delay:.45s; }
+  @keyframes haRise{ to{ opacity:1; transform:translateY(0); } }
+  .ha-kpi i{ font-style:normal; font-size:8px; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-faint); font-weight:600; display:block; margin-bottom:2px; white-space:nowrap; }
+  .ha-kpi b{ font-size:13px; font-weight:700; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .ha-kpi em{ font-style:normal; font-size:8px; font-weight:700; color:var(--whats); background:rgba(53,194,107,.12); padding:1px 4px; border-radius:4px; margin-left:4px; white-space:nowrap; }
+  .ha-kpi em.down{ color:#f18b8b; background:rgba(241,139,139,.1); }
+  .ha-spark{ width:100%; height:14px; margin-top:4px; display:block; }
+  .ha-spark polyline{ fill:none; stroke:var(--violet-bright); stroke-width:1.5; opacity:.65;
+    stroke-dasharray:120; stroke-dashoffset:120; animation:haSpark 1.2s ease-out .6s forwards; }
+  @keyframes haSpark{ to{ stroke-dashoffset:0; } }
+  .ha-grid{ display:grid; grid-template-columns:1.55fr 1fr; gap:9px; }
+  .ha-chart{ position:relative; background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:11px; padding:10px 11px 5px; overflow:hidden; min-width:0; }
+  .ha-chart-head{ display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; }
+  .ha-chart-head i{ font-style:normal; font-size:8.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.05em; font-weight:600; }
+  .ha-chart-head em{ font-style:normal; font-size:9.5px; color:var(--violet-bright); font-weight:700; }
+  .ha-area{ width:100%; height:132px; display:block; }
+  .ha-area .grid-l{ stroke:rgba(255,255,255,.05); stroke-width:1; stroke-dasharray:3 5; }
+  .ha-area .fill{ fill:url(#haGrad); }
+  .ha-area .stroke{ fill:none; stroke:var(--violet-bright); stroke-width:2.4; stroke-linecap:round; stroke-dasharray:460; stroke-dashoffset:460; animation:haDraw 1.8s cubic-bezier(.4,0,.2,1) .5s forwards; }
+  .ha-area .tip{ fill:#fff; stroke:var(--violet-bright); stroke-width:2.5; opacity:0; animation:haTip .4s ease 2.2s forwards; }
+  .ha-area .tip-pulse{ fill:none; stroke:var(--violet-bright); stroke-width:1.5; opacity:0; animation:haTipPulse 2.2s ease-out 2.4s infinite; transform-box:fill-box; transform-origin:center; }
+  @keyframes haDraw{ to{ stroke-dashoffset:0; } }
+  @keyframes haTip{ to{ opacity:1; } }
+  @keyframes haTipPulse{ 0%{ opacity:.8; transform:scale(.4); } 70%,100%{ opacity:0; transform:scale(2.6); } }
+  .ha-scan{ position:absolute; top:0; bottom:0; width:46px; pointer-events:none;
+    background:linear-gradient(90deg,transparent,rgba(167,139,250,.07),transparent); animation:haScan 5.5s linear infinite; }
+  @keyframes haScan{ 0%{ left:-18%; } 100%{ left:112%; } }
+  .ha-col{ display:flex; flex-direction:column; gap:9px; min-width:0; }
+  .ha-goal{ background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:11px; padding:9px 11px; display:flex; align-items:center; gap:10px; }
+  .ha-donut{ width:50px; height:50px; flex-shrink:0; }
+  .ha-donut .bg{ fill:none; stroke:rgba(255,255,255,.07); stroke-width:6; }
+  .ha-donut .val{ fill:none; stroke:var(--violet-bright); stroke-width:6; stroke-linecap:round;
+    stroke-dasharray:138.2; stroke-dashoffset:138.2; transform:rotate(-90deg); transform-origin:center; transform-box:fill-box;
+    animation:haDonut 1.5s cubic-bezier(.4,0,.2,1) .7s forwards; }
+  @keyframes haDonut{ to{ stroke-dashoffset:33.2; } }
+  .ha-goal b{ font-size:13px; display:block; }
+  .ha-goal span{ font-size:9px; color:var(--ink-faint); }
+  .ha-feed{ background:rgba(255,255,255,.025); border:1px solid var(--line); border-radius:11px; padding:4px 11px; flex:1; }
+  .ha-row{ display:flex; align-items:center; gap:8px; padding:7px 0; opacity:0; transform:translateY(6px); animation:haRise .5s ease forwards; }
+  .ha-row + .ha-row{ border-top:1px solid rgba(255,255,255,.04); }
+  .ha-row:nth-child(1){ animation-delay:1.1s; } .ha-row:nth-child(2){ animation-delay:1.3s; } .ha-row:nth-child(3){ animation-delay:1.5s; }
+  .ha-ico{ width:21px; height:21px; border-radius:7px; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:rgba(167,139,250,.1); border:1px solid var(--line); }
+  .ha-ico svg{ width:10px; height:10px; color:var(--violet-bright); }
+  .ha-ico.ok{ background:rgba(53,194,107,.1); }
+  .ha-ico.ok svg{ color:var(--whats); }
+  .ha-row b{ display:block; font-size:10.5px; font-weight:600; color:var(--ink-muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .ha-row span{ font-size:8.5px; color:var(--ink-faint); }
+  .ha-row > div{ min-width:0; }
+  .ha-toast{ position:absolute; right:13px; bottom:13px; display:flex; align-items:center; gap:7px;
+    background:rgba(19,13,31,.92); border:1px solid rgba(53,194,107,.45); border-radius:10px;
+    padding:8px 12px; font-size:11px; font-weight:700; color:#7ce0a3; backdrop-filter:blur(6px);
+    opacity:0; transform:translateY(12px); animation:haToast 8s cubic-bezier(.34,1.56,.64,1) 2s infinite; }
+  .ha-toast::before{ content:"✓"; font-size:9px; width:14px; height:14px; border-radius:50%; background:var(--whats); color:#06130b; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  @keyframes haToast{ 0%,8%{ opacity:0; transform:translateY(12px); } 13%,55%{ opacity:1; transform:translateY(0); } 62%,100%{ opacity:0; transform:translateY(12px); } }
   @media (prefers-reduced-motion: reduce){
-    .dash-area .stroke{ stroke-dashoffset:0; animation:none; }
-    .dash-area .tip{ opacity:1; animation:none; }
-    .dash-row{ opacity:1; transform:none; animation:none; }
+    .ha-kpi,.ha-row{ opacity:1; transform:none; animation:none; }
+    .ha-area .stroke,.ha-spark polyline{ stroke-dashoffset:0; animation:none; }
+    .ha-area .tip{ opacity:1; animation:none; }
+    .ha-area .tip-pulse,.ha-scan{ display:none; }
+    .ha-donut .val{ stroke-dashoffset:33.2; animation:none; }
+    .ha-toast,.ha-live::before{ animation:none; }
+    .ha-toast{ opacity:1; transform:none; }
   }
 
   /* Reveal: visible by default (progressive enhancement). JS arms off-screen
@@ -396,10 +411,24 @@
   .erp-chart span:nth-child(2n){ animation-delay:.3s; }
   .erp-chart span:nth-child(3n){ animation-delay:.6s; }
   @keyframes erpbar{ 0%,100%{ transform:scaleY(.62); } 50%{ transform:scaleY(1); } }
-  .erp-table{ display:flex; flex-direction:column; gap:9px; }
-  .erp-tr{ height:11px; border-radius:4px; background:rgba(255,255,255,.05); animation:erprow 2.6s ease-in-out infinite; }
-  .erp-tr:nth-child(2){ animation-delay:.5s; } .erp-tr:nth-child(3){ animation-delay:1s; }
-  @keyframes erprow{ 0%,100%{ background:rgba(255,255,255,.05); } 50%{ background:rgba(167,139,250,.22); } }
+  .erp-rows{ display:flex; flex-direction:column; gap:8px; }
+  .erp-row{ display:flex; align-items:center; gap:10px; padding:7px 9px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.02); }
+  .erp-row .ln{ flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,.09); }
+  .erp-row .ln.s{ flex:0 0 22%; background:rgba(255,255,255,.05); }
+  .erp-pill{ font-size:9px; font-weight:700; padding:2.5px 8px; border-radius:6px; white-space:nowrap; }
+  .erp-pill.ok{ color:var(--whats); background:rgba(53,194,107,.14); }
+  .erp-pill.info{ color:var(--violet-dot); background:rgba(167,139,250,.14); }
+  .erp-pill.warn{ color:#f0c56e; background:rgba(240,197,110,.12); }
+  .erp-row{ animation:erpRowIn 6s ease infinite; }
+  .erp-row:nth-child(2){ animation-delay:.35s; }
+  .erp-row:nth-child(3){ animation-delay:.7s; }
+  @keyframes erpRowIn{ 0%{ opacity:0; transform:translateX(-10px); } 6%,96%{ opacity:1; transform:translateX(0); } 100%{ opacity:0; } }
+  .erp-note{ position:absolute; right:16px; top:14px; display:flex; align-items:center; gap:6px;
+    background:rgba(19,13,31,.95); border:1px solid var(--line-strong); border-radius:9px; padding:6px 10px;
+    font-size:10px; font-weight:700; color:var(--violet-dot);
+    opacity:0; transform:translateY(-8px); animation:erpNote 6s cubic-bezier(.34,1.56,.64,1) infinite; z-index:2; }
+  .erp-note::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--violet-bright); }
+  @keyframes erpNote{ 0%,18%{ opacity:0; transform:translateY(-8px); } 26%,64%{ opacity:1; transform:translateY(0); } 74%,100%{ opacity:0; transform:translateY(-8px); } }
 
   /* scene: CRM kanban — one deal physically travels Lead → Qualificado → Fechado */
   .crm{ position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; height:100%; }
@@ -427,6 +456,21 @@
   @keyframes crmOk{ 0%,55%{ opacity:0; transform:scale(.4); } 62%,88%{ opacity:1; transform:scale(1); } 100%{ opacity:0; } }
   .crm-glow{ animation:crmColGlow 7.5s ease infinite; }
   @keyframes crmColGlow{ 0%,52%{ border-color:var(--line); } 60%,86%{ border-color:rgba(167,139,250,.55); } 100%{ border-color:var(--line); } }
+  .crm-mover em{ position:absolute; left:7px; bottom:4px; font-style:normal; font-size:8.5px; font-weight:800; color:rgba(255,255,255,.9); letter-spacing:.02em; }
+  .crm-confetti{ position:absolute; right:14%; top:56px; width:0; height:0; pointer-events:none; z-index:3; }
+  .crm-confetti i{ position:absolute; width:6px; height:6px; border-radius:2px; opacity:0; animation:crmConf 7.5s cubic-bezier(.2,.6,.3,1) infinite; }
+  .crm-confetti i:nth-child(1){ background:var(--violet-bright); --dx:-30px; --dy:-38px; }
+  .crm-confetti i:nth-child(2){ background:var(--whats); --dx:22px; --dy:-44px; animation-delay:.06s; }
+  .crm-confetti i:nth-child(3){ background:#f0c56e; --dx:-14px; --dy:-52px; animation-delay:.12s; }
+  .crm-confetti i:nth-child(4){ background:#fff; --dx:34px; --dy:-30px; animation-delay:.03s; width:4px; height:4px; }
+  .crm-confetti i:nth-child(5){ background:var(--violet-dot); --dx:-40px; --dy:-18px; animation-delay:.09s; width:4px; height:4px; }
+  .crm-confetti i:nth-child(6){ background:var(--whats); --dx:12px; --dy:-60px; animation-delay:.15s; width:4px; height:4px; }
+  @keyframes crmConf{
+    0%,56%{ opacity:0; transform:translate(0,0) rotate(0); }
+    59%{ opacity:1; }
+    72%{ opacity:0; transform:translate(var(--dx),var(--dy)) rotate(200deg); }
+    100%{ opacity:0; transform:translate(var(--dx),var(--dy)) rotate(200deg); }
+  }
 
   /* scene: LMS */
   .lms-video{ height:118px; border-radius:10px; background:linear-gradient(135deg, rgba(124,58,237,.28), rgba(124,58,237,.04)); border:1px solid var(--line-strong); display:flex; align-items:center; justify-content:center; margin-bottom:13px; }
@@ -442,6 +486,19 @@
   @keyframes lmsrow{ 0%,5%{ opacity:.32; } 16%,100%{ opacity:1; } }
   .lms-check{ width:17px; height:17px; border-radius:50%; background:var(--violet); flex-shrink:0; position:relative; }
   .lms-check::after{ content:""; position:absolute; left:6px; top:3px; width:4px; height:8px; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg); }
+  .lms-wave{ position:absolute; left:50%; transform:translateX(-50%); bottom:10px; display:flex; align-items:flex-end; gap:3px; height:16px; }
+  .lms-wave i{ width:3px; border-radius:2px; background:rgba(255,255,255,.75); animation:lmsWave 1.1s ease-in-out infinite; }
+  .lms-wave i:nth-child(1){ height:35%; } .lms-wave i:nth-child(2){ height:80%; animation-delay:.12s; }
+  .lms-wave i:nth-child(3){ height:55%; animation-delay:.24s; } .lms-wave i:nth-child(4){ height:95%; animation-delay:.36s; }
+  .lms-wave i:nth-child(5){ height:45%; animation-delay:.48s; }
+  @keyframes lmsWave{ 0%,100%{ transform:scaleY(.4); } 50%{ transform:scaleY(1); } }
+  .lms-video{ position:relative; }
+  .lms-cert{ position:absolute; right:16px; top:14px; display:flex; align-items:center; gap:7px;
+    background:rgba(19,13,31,.95); border:1px solid rgba(240,197,110,.5); border-radius:10px; padding:7px 11px;
+    font-size:10.5px; font-weight:700; color:#f0c56e; z-index:2;
+    opacity:0; transform:scale(.6) rotate(-4deg); animation:lmsCert 5s cubic-bezier(.34,1.56,.64,1) infinite; }
+  .lms-cert::before{ content:"🏅"; font-size:12px; }
+  @keyframes lmsCert{ 0%,68%{ opacity:0; transform:scale(.6) rotate(-4deg); } 76%,94%{ opacity:1; transform:scale(1) rotate(0); } 100%{ opacity:0; } }
 
   /* scene: Mobile */
   .mob{ display:flex; justify-content:center; align-items:center; height:100%; }
@@ -456,9 +513,33 @@
   .mob-b.line{ height:12px; } .mob-b.line.s{ width:60%; }
   .mob-b.grid{ height:44px; }
   .mob-grid{ display:flex; gap:9px; } .mob-grid .mob-b{ flex:1; }
+  .mob-phone{ animation:mobTilt 9s ease-in-out infinite; }
+  @keyframes mobTilt{
+    0%,28%{ transform:perspective(700px) rotateY(-6deg); }
+    33%,61%{ transform:perspective(700px) rotateY(5deg); }
+    66%,94%{ transform:perspective(700px) rotateY(-2deg); }
+    100%{ transform:perspective(700px) rotateY(-6deg); }
+  }
   .mob-tab{ position:absolute; bottom:9px; left:11px; right:11px; height:32px; border-top:1px solid var(--line); display:flex; justify-content:space-around; align-items:center; }
   .mob-tab i{ width:16px; height:16px; border-radius:5px; background:rgba(255,255,255,.12); }
-  .mob-tab i.on{ background:var(--violet-bright); }
+  .mob-tab i:nth-child(1){ animation:mobTab1 9s ease infinite; }
+  .mob-tab i:nth-child(2){ animation:mobTab2 9s ease infinite; }
+  .mob-tab i:nth-child(3){ animation:mobTab3 9s ease infinite; }
+  @keyframes mobTab1{ 0%,30%{ background:var(--violet-bright); } 33%,100%{ background:rgba(255,255,255,.12); } }
+  @keyframes mobTab2{ 0%,30%{ background:rgba(255,255,255,.12); } 33%,63%{ background:var(--violet-bright); } 66%,100%{ background:rgba(255,255,255,.12); } }
+  @keyframes mobTab3{ 0%,63%{ background:rgba(255,255,255,.12); } 66%,97%{ background:var(--violet-bright); } 100%{ background:rgba(255,255,255,.12); } }
+  .mob-tap{ position:absolute; bottom:16px; width:18px; height:18px; border:2px solid rgba(255,255,255,.85); border-radius:50%; opacity:0; animation:mobTap 9s ease infinite; z-index:2; }
+  @keyframes mobTap{
+    0%,28%{ opacity:0; left:44%; transform:scale(.5); }
+    30%{ opacity:.9; left:44%; transform:scale(1); }
+    32.5%{ opacity:0; left:44%; transform:scale(1.8); }
+    61%{ opacity:0; left:72%; transform:scale(.5); }
+    63%{ opacity:.9; left:72%; transform:scale(1); }
+    65.5%{ opacity:0; left:72%; transform:scale(1.8); }
+    94%{ opacity:0; left:16%; transform:scale(.5); }
+    96%{ opacity:.9; left:16%; transform:scale(1); }
+    98.5%,100%{ opacity:0; left:16%; transform:scale(1.8); }
+  }
 
   /* scene: Scraping */
   .scr{ display:grid; grid-template-columns:1fr 44px 1.1fr; gap:12px; align-items:center; height:100%; }
@@ -474,6 +555,10 @@
   .scr-table .tr:last-child{ border-bottom:none; }
   .scr-table .tr:nth-child(1){ animation-delay:.2s; } .scr-table .tr:nth-child(2){ animation-delay:.85s; } .scr-table .tr:nth-child(3){ animation-delay:1.5s; } .scr-table .tr:nth-child(4){ animation-delay:2.1s; }
   @keyframes scrrow{ 0%,40%{ background:rgba(255,255,255,.03);} 55%{ background:rgba(167,139,250,.22);} 100%{ background:rgba(167,139,250,.07);} }
+  .scr-badge{ position:absolute; right:16px; top:14px; font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--whats);
+    background:rgba(53,194,107,.1); border:1px solid rgba(53,194,107,.4); border-radius:8px; padding:5px 10px;
+    animation:scrBadge 1.9s ease-in-out infinite; z-index:2; }
+  @keyframes scrBadge{ 0%,100%{ box-shadow:0 0 0 0 rgba(53,194,107,.25); } 50%{ box-shadow:0 0 0 6px rgba(53,194,107,0); } }
 
   /* scene: Infra & Dados */
   .inf{ display:flex; flex-direction:column; gap:16px; height:100%; }
@@ -488,6 +573,12 @@
   .inf-pipe i:nth-child(3){ animation-delay:.5s; } .inf-pipe i:nth-child(5){ animation-delay:1s; }
   @keyframes infpulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(167,139,250,0); border-color:var(--line-strong);} 50%{ box-shadow:0 0 0 5px rgba(167,139,250,.14); border-color:var(--violet-bright);} }
   .inf-arrow{ flex:1; height:2px; background:linear-gradient(90deg,var(--line-strong),rgba(167,139,250,.5)); }
+  .inf-forecast{ fill:none; stroke:rgba(240,197,110,.75); stroke-width:1.8; stroke-dasharray:6 6; opacity:0; animation:infForecast 4.5s ease-in-out infinite; }
+  @keyframes infForecast{ 0%,50%{ opacity:0; } 62%,95%{ opacity:1; } 100%{ opacity:0; } }
+  .inf-uptime{ position:absolute; right:16px; top:14px; font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--whats);
+    background:rgba(53,194,107,.1); border:1px solid rgba(53,194,107,.4); border-radius:8px; padding:5px 10px; z-index:2;
+    display:flex; align-items:center; gap:6px; }
+  .inf-uptime::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--whats); animation:haBlink 1.8s ease-in-out infinite; }
 
   /* scene: IA */
   .ia{ position:relative; height:100%; }
@@ -499,6 +590,24 @@
   .ia-node:nth-child(odd){ animation-delay:.6s; }
   .ia-core{ fill:var(--violet-bright); }
   @keyframes iapulse{ 0%,100%{ opacity:.55; } 50%{ opacity:1; } }
+  .ia-ring{ fill:none; stroke:var(--violet-bright); stroke-width:1.5; opacity:0;
+    transform-box:fill-box; transform-origin:center; animation:iaRing 2.6s ease-out infinite; }
+  .ia-ring.r2{ animation-delay:1.3s; }
+  @keyframes iaRing{ 0%{ opacity:.7; transform:scale(1); } 80%,100%{ opacity:0; transform:scale(3.4); } }
+  .ia-travel{ fill:#fff; transform-box:fill-box; transform-origin:center; opacity:0; }
+  .ia-travel.t1{ animation:iaT1 2.2s ease-in-out infinite; }
+  .ia-travel.t2{ animation:iaT2 2.2s ease-in-out .7s infinite; }
+  .ia-travel.t3{ animation:iaT3 2.2s ease-in-out 1.4s infinite; }
+  @keyframes iaT1{ 0%{ opacity:0; transform:translate(0,0); } 12%{ opacity:1; } 88%{ opacity:1; } 100%{ opacity:0; transform:translate(-90px,-65px); } }
+  @keyframes iaT2{ 0%{ opacity:0; transform:translate(0,0); } 12%{ opacity:1; } 88%{ opacity:1; } 100%{ opacity:0; transform:translate(105px,0); } }
+  @keyframes iaT3{ 0%{ opacity:0; transform:translate(0,0); } 12%{ opacity:1; } 88%{ opacity:1; } 100%{ opacity:0; transform:translate(90px,55px); } }
+  .ia-chip{ position:absolute; left:16px; bottom:14px; display:flex; align-items:center; gap:8px;
+    background:rgba(19,13,31,.95); border:1px solid var(--line-strong); border-radius:10px; padding:8px 12px;
+    font-size:11px; font-weight:600; color:var(--ink-muted); z-index:2; }
+  .ia-chip .dots{ display:flex; gap:3px; }
+  .ia-chip .dots i{ width:4px; height:4px; border-radius:50%; background:var(--violet-bright); animation:bounce-ia 1.2s ease-in-out infinite; }
+  .ia-chip .dots i:nth-child(2){ animation-delay:.15s; } .ia-chip .dots i:nth-child(3){ animation-delay:.3s; }
+  @keyframes bounce-ia{ 0%,60%,100%{ transform:translateY(0); opacity:.4; } 30%{ transform:translateY(-4px); opacity:1; } }
 
   /* scene: Outsourcing */
   .out{ display:flex; flex-direction:column; gap:18px; height:100%; justify-content:center; }
@@ -515,6 +624,18 @@
   .out-sprint{ height:6px; border-radius:3px; background:rgba(255,255,255,.08); overflow:hidden; }
   .out-sprint i{ display:block; height:100%; width:0; background:linear-gradient(90deg,var(--violet),var(--violet-bright)); animation:outfill 4.5s ease-in-out infinite; }
   @keyframes outfill{ 0%{ width:4%;} 88%,100%{ width:100%;} }
+  .out-editor{ border:1px solid var(--line); border-radius:9px; background:rgba(255,255,255,.02); padding:10px 12px; display:flex; flex-direction:column; gap:7px; }
+  .out-code{ height:7px; border-radius:3px; background:linear-gradient(90deg,var(--violet-bright) 0 38%, rgba(126,231,199,.8) 38% 62%, rgba(240,197,110,.7) 62% 100%);
+    width:0; opacity:.55; animation:outType 4.5s steps(18) infinite; }
+  .out-code:nth-child(2){ animation-delay:.5s; max-width:72%; }
+  .out-code:nth-child(3){ animation-delay:1s; max-width:85%; }
+  @keyframes outType{ 0%,5%{ width:0; } 30%,100%{ width:100%; } }
+  .out-merge{ position:absolute; right:16px; top:14px; display:flex; align-items:center; gap:7px;
+    background:rgba(19,13,31,.95); border:1px solid rgba(167,139,250,.5); border-radius:9px; padding:6px 11px;
+    font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--violet-dot); z-index:2;
+    opacity:0; transform:translateY(-8px); animation:outMerge 4.5s cubic-bezier(.34,1.56,.64,1) infinite; }
+  .out-merge::before{ content:""; width:10px; height:10px; border-radius:50%; border:2px solid var(--violet-bright); }
+  @keyframes outMerge{ 0%,74%{ opacity:0; transform:translateY(-8px); } 82%,96%{ opacity:1; transform:translateY(0); } 100%{ opacity:0; } }
 
   @media (prefers-reduced-motion: reduce){
     .svc-scene *{ animation:none !important; }
@@ -620,33 +741,41 @@
 
   @media (max-width:1024px){
     .hero-grid{ grid-template-columns:1fr; }
-    .hero-visual{ height:420px; margin-top:24px; }
+    .hero-visual{ margin-top:28px; max-width:640px; }
     .feature-grid{ grid-template-columns:1fr; gap:40px; }
     .feature-visual{ order:-1; }
   }
   @media (max-width:640px){
     section{ padding:64px 0; }
-    .hero{ padding:140px 0 48px; }
-    /* Two overlapping devices only read well with room to breathe; on
-       narrow screens show the product screen alone, centered. */
-    .laptop{ display:none; }
-    .hero-visual{ height:auto; }
-    .phone{ position:relative; right:auto; bottom:auto; width:100%; max-width:280px; margin:0 auto; }
+    .hero{ padding:132px 0 48px; }
+    .hero-visual{ max-width:100%; }
+    /* Desktop window compacts: sidebar goes, KPIs 2x2, columns stack */
+    .ha-side{ display:none; }
+    .ha-kpis{ grid-template-columns:repeat(2,1fr); }
+    .ha-grid{ grid-template-columns:1fr; }
+    .ha-area{ height:104px; }
+    .ha-bar em{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
     .services-featured{ margin-bottom:0; }
     .cases-list li:nth-child(even){ padding-left:0; border-left:none; }
     .cases-list li:nth-child(odd){ padding-right:0; }
+    .mva{ max-width:100%; }
+    .final-cta{ padding:90px 0; }
   }
   @media (max-width:480px){
     .wrap{ padding:0 20px; }
-    .phone{ max-width:240px; }
-    .phone-screen{ height:310px; padding:11px 9px; }
-    .wireframe-body{ padding:18px; gap:12px; }
-    .wf-hero{ height:56px; }
-    .wf-row .wf-block{ height:44px; }
+    .ha-main{ padding:12px 12px 11px; }
+    .ha-toast{ right:10px; bottom:10px; font-size:10px; padding:7px 10px; }
+    .ha-chip{ display:none; }
     .feat-block{ padding:24px; }
     .feat-block.wide{ padding:24px; }
     .dif-item{ padding:22px 16px; }
     .nav-inner{ padding:14px 20px; }
+    .logo img{ height:38px; }
+    .svc-scenes{ height:300px; }
+    .svc-scene{ padding:16px; }
+    .mva-stage{ height:250px; }
+    .btn{ padding:13px 22px; font-size:14px; }
+    .hero-actions{ gap:18px; }
   }
 </style>
 
@@ -663,7 +792,7 @@
     </nav>
     <div class="nav-cta">
       <a class="btn btn-soft btn-sm" href="#servicos">Ver serviços</a>
-      <a class="btn btn-primary btn-sm" href="#contato">Iniciar projeto</a>
+      <a class="btn btn-primary btn-sm" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener">Iniciar projeto</a>
     </div>
     <button class="nav-toggle" aria-label="Menu">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -680,7 +809,7 @@
         <p class="hero-sub">Somos uma software house: construímos sistemas, sites, automações de atendimento e produtos SaaS próprios, do primeiro MVP à operação em escala.</p>
         <p class="hero-body">De uma landing page a um SaaS completo, de automação no WhatsApp a ERP, CRM e dados, <strong>onze frentes de engenharia, uma arquitetura só</strong>, mantida por um time técnico que entende de código, não só de entrega.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#contato">Iniciar meu projeto</a>
+          <a class="btn btn-primary" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener">Iniciar meu projeto</a>
           <a class="link-inline" href="#servicos">
             Ver nossos serviços
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -688,84 +817,85 @@
         </div>
       </div>
       <div class="hero-visual">
-        <div class="laptop">
-          <div class="laptop-body">
-            <div class="laptop-bar"><span></span><span></span><span></span></div>
-            <div class="laptop-screen">
-<span class="c-cmt">// automação real, não script solto</span><br>
-<span class="c-kw">async function</span> <span class="c-fn">onMessage</span>(lead) {<br>
-&nbsp;&nbsp;<span class="c-kw">const</span> intent = ai.classify(lead.text)<br>
-&nbsp;&nbsp;<span class="c-kw">if</span> (intent === <span class="c-str">'qualificado'</span>) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;crm.push(lead)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;whatsapp.<span class="c-fn">reply</span>(lead, flows.qualificacao)<br>
-&nbsp;&nbsp;} <span class="c-kw">else</span> {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ia.<span class="c-fn">responder</span>(lead, { voz: <span class="c-kw">true</span> })<br>
-&nbsp;&nbsp;}<br>
-}
-            </div>
+        <div class="hero-app" aria-hidden="true">
+          <div class="ha-bar">
+            <span></span><span></span><span></span>
+            <em>app.databravo.com.br</em>
+            <i class="ha-live">ao vivo</i>
           </div>
-          <div class="laptop-hinge"></div>
-          <div class="laptop-base"></div>
-        </div>
-        <div class="phone">
-          <div class="phone-body">
-            <div class="phone-notch"></div>
-            <div class="phone-screen dash-screen">
-              <div class="dash-head">
-                <div class="dash-brand">
-                  <svg viewBox="0 0 120 96" fill="none" aria-hidden="true">
-                    <g fill="#8b5cf6">
-                      <circle cx="58" cy="40" r="33"/><circle cx="90" cy="54" r="26"/><circle cx="30" cy="60" r="22"/>
-                      <rect x="10" y="56" width="100" height="30" rx="15"/>
-                    </g>
-                  </svg>
-                  <b>Painel Data Bravo</b>
-                </div>
-                <div class="dash-avatar">FB</div>
+          <div class="ha-body">
+            <aside class="ha-side">
+              <svg class="ha-mark" viewBox="0 0 120 96" fill="none">
+                <g fill="#8b5cf6"><circle cx="58" cy="40" r="33"/><circle cx="90" cy="54" r="26"/><circle cx="30" cy="60" r="22"/><rect x="10" y="56" width="100" height="30" rx="15"/></g>
+              </svg>
+              <span class="ha-nav on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span>
+              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8z"/></svg></span>
+              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></span>
+              <span class="ha-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M4.2 7l1.7 1M18.1 16l1.7 1M4.2 17l1.7-1M18.1 8l1.7-1"/></svg></span>
+            </aside>
+            <div class="ha-main">
+              <div class="ha-head">
+                <div><b>Visão geral</b><span>Atualizado agora mesmo</span></div>
+                <div class="ha-actions"><span class="ha-chip">Últimos 30 dias</span><span class="ha-avatar">DB</span></div>
               </div>
-              <div class="dash-tabs">
-                <span class="dash-tab on">Visão geral</span>
-                <span class="dash-tab">Vendas</span>
-                <span class="dash-tab">Relatórios</span>
+              <div class="ha-kpis">
+                <div class="ha-kpi"><i>Receita</i><b data-count="128" data-prefix="R$ " data-suffix="k">R$ 128k</b><em>+12%</em>
+                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,11 14,9 28,10 42,6 56,8 70,4 84,5 100,2"/></svg></div>
+                <div class="ha-kpi"><i>Pedidos</i><b data-count="2401">2.401</b><em>+8%</em>
+                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,10 14,11 28,8 42,9 56,6 70,7 84,4 100,3"/></svg></div>
+                <div class="ha-kpi"><i>Conversão</i><b data-count="48" data-decimal="1" data-suffix="%">4,8%</b><em>+0,6</em>
+                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,12 14,10 28,11 42,8 56,9 70,5 84,6 100,3"/></svg></div>
+                <div class="ha-kpi"><i>Tickets</i><b data-count="32">32</b><em class="down">-18%</em>
+                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,3 14,5 28,4 42,7 56,6 70,9 84,8 100,11"/></svg></div>
               </div>
-              <div class="dash-body">
-                <div class="dash-stats">
-                  <div class="dash-stat"><span class="dash-stat-label">Pedidos</span><span class="dash-stat-row"><span class="dash-stat-value">1.284</span><span class="dash-delta">+12%</span></span></div>
-                  <div class="dash-stat"><span class="dash-stat-label">Receita</span><span class="dash-stat-row"><span class="dash-stat-value">R$ 42k</span><span class="dash-delta">+8%</span></span></div>
-                </div>
-                <div class="dash-chart-card">
-                  <div class="dash-chart-head"><i>Últimos 30 dias</i><em>↑ 23%</em></div>
-                  <svg class="dash-area" viewBox="0 0 240 74" preserveAspectRatio="none" aria-hidden="true">
+              <div class="ha-grid">
+                <div class="ha-chart">
+                  <div class="ha-chart-head"><i>Faturamento</i><em>↑ 23% vs. mês anterior</em></div>
+                  <svg class="ha-area" viewBox="0 0 300 132" preserveAspectRatio="none">
                     <defs>
-                      <linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="rgba(139,92,246,.32)"/>
+                      <linearGradient id="haGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0" stop-color="rgba(139,92,246,.34)"/>
                         <stop offset="1" stop-color="rgba(139,92,246,0)"/>
                       </linearGradient>
                     </defs>
-                    <path class="fill" d="M0,58 C24,52 34,60 52,54 C70,48 82,30 104,36 C126,42 138,26 160,22 C182,18 198,30 216,20 C226,14 234,12 240,10 L240,74 L0,74 Z"/>
-                    <path class="stroke" d="M0,58 C24,52 34,60 52,54 C70,48 82,30 104,36 C126,42 138,26 160,22 C182,18 198,30 216,20 C226,14 234,12 240,10"/>
-                    <circle class="tip" cx="240" cy="10" r="3.2"/>
+                    <line class="grid-l" x1="0" y1="33" x2="300" y2="33"/>
+                    <line class="grid-l" x1="0" y1="66" x2="300" y2="66"/>
+                    <line class="grid-l" x1="0" y1="99" x2="300" y2="99"/>
+                    <path class="fill" d="M0,104 C28,96 42,108 64,98 C86,88 100,58 128,66 C156,74 170,48 196,42 C222,36 240,56 262,38 C276,27 290,22 300,18 L300,132 L0,132 Z"/>
+                    <path class="stroke" d="M0,104 C28,96 42,108 64,98 C86,88 100,58 128,66 C156,74 170,48 196,42 C222,36 240,56 262,38 C276,27 290,22 300,18"/>
+                    <circle class="tip-pulse" cx="300" cy="18" r="4"/>
+                    <circle class="tip" cx="300" cy="18" r="3.4"/>
                   </svg>
+                  <div class="ha-scan"></div>
                 </div>
-                <div class="dash-list">
-                  <div class="dash-row">
-                    <span class="dash-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2h12l2 5H4l2-5zM4 7h16v13H4V7z"/></svg></span>
-                    <div><b>Novo pedido recebido</b><span>há 2 min</span></div>
-                    <em>R$ 890</em>
+                <div class="ha-col">
+                  <div class="ha-goal">
+                    <svg class="ha-donut" viewBox="0 0 50 50">
+                      <circle class="bg" cx="25" cy="25" r="22"/>
+                      <circle class="val" cx="25" cy="25" r="22"/>
+                    </svg>
+                    <div><b data-count="76" data-suffix="%">76%</b><span>da meta do mês</span></div>
                   </div>
-                  <div class="dash-row">
-                    <span class="dash-ico ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-                    <div><b>Pagamento aprovado</b><span>há 8 min</span></div>
-                    <em>R$ 1.240</em>
-                  </div>
-                  <div class="dash-row">
-                    <span class="dash-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
-                    <div><b>Relatório semanal pronto</b><span>há 41 min</span></div>
+                  <div class="ha-feed">
+                    <div class="ha-row">
+                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2h12l2 5H4l2-5zM4 7h16v13H4V7z"/></svg></span>
+                      <div><b>Novo pedido recebido</b><span>há 2 min</span></div>
+                    </div>
+                    <div class="ha-row">
+                      <span class="ha-ico ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
+                      <div><b>Pagamento aprovado</b><span>há 8 min</span></div>
+                    </div>
+                    <div class="ha-row">
+                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
+                      <div><b>Relatório semanal pronto</b><span>há 41 min</span></div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div class="ha-toast">Pagamento aprovado · R$ 1.240</div>
         </div>
       </div>
     </div>
@@ -927,7 +1057,12 @@
                   <div class="erp-kpi"><i>Margem</i><b data-count="34" data-suffix="%">34%</b></div>
                 </div>
                 <div class="erp-chart"><span style="--h:42%"></span><span style="--h:66%"></span><span style="--h:52%"></span><span style="--h:84%"></span><span style="--h:60%"></span><span style="--h:92%"></span></div>
-                <div class="erp-table"><div class="erp-tr"></div><div class="erp-tr"></div><div class="erp-tr"></div></div>
+                <div class="erp-rows">
+                  <div class="erp-row"><span class="ln"></span><span class="ln s"></span><span class="erp-pill ok">Pago</span></div>
+                  <div class="erp-row"><span class="ln"></span><span class="ln s"></span><span class="erp-pill info">Enviado</span></div>
+                  <div class="erp-row"><span class="ln"></span><span class="ln s"></span><span class="erp-pill warn">Pendente</span></div>
+                </div>
+                <div class="erp-note">Novo pedido #2.402</div>
               </div>
 
               <div class="svc-scene" data-scene="crm">
@@ -935,12 +1070,17 @@
                   <div class="crm-col"><h6>Lead <i>4</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
                   <div class="crm-col"><h6>Qualificado <i>2</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
                   <div class="crm-col crm-glow"><h6>Fechado <i>7</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
-                  <div class="crm-mover"><div class="ln"></div><div class="ln s"></div><span class="ok">✓</span></div>
+                  <div class="crm-mover"><div class="ln"></div><em>R$ 12k</em><span class="ok">✓</span></div>
+                  <div class="crm-confetti"><i></i><i></i><i></i><i></i><i></i><i></i></div>
                 </div>
               </div>
 
               <div class="svc-scene" data-scene="lms">
-                <div class="lms-video"><div class="lms-play"></div></div>
+                <div class="lms-video">
+                  <div class="lms-play"></div>
+                  <div class="lms-wave"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <div class="lms-cert">Certificado emitido</div>
                 <div class="lms-prog"><i></i></div>
                 <div class="lms-lessons">
                   <div class="lms-lesson"><span class="lms-check"></span>Módulo 1 · Fundamentos</div>
@@ -958,12 +1098,14 @@
                       <div class="mob-screen"><div class="mob-b line"></div><div class="mob-b hero"></div><div class="mob-b line"></div><div class="mob-b line s"></div></div>
                       <div class="mob-screen"><div class="mob-grid"><div class="mob-b grid"></div><div class="mob-b grid"></div></div><div class="mob-b hero"></div><div class="mob-b line s"></div></div>
                     </div>
-                    <div class="mob-tab"><i class="on"></i><i></i><i></i></div>
+                    <div class="mob-tab"><i></i><i></i><i></i></div>
+                    <div class="mob-tap"></div>
                   </div>
                 </div>
               </div>
 
               <div class="svc-scene" data-scene="scraping">
+                <div class="scr-badge">+128 registros/min</div>
                 <div class="scr">
                   <div class="scr-src"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
                   <div class="scr-flow"><div class="scr-dot"></div><div class="scr-dot"></div><div class="scr-dot"></div></div>
@@ -972,11 +1114,13 @@
               </div>
 
               <div class="svc-scene" data-scene="infra">
+                <div class="inf-uptime">uptime 99,99%</div>
                 <div class="inf">
                   <div class="inf-chart">
                     <svg class="inf-svg" viewBox="0 0 300 150" preserveAspectRatio="none">
                       <polyline class="inf-area" points="0,118 50,88 100,100 150,58 200,74 250,32 300,50 300,150 0,150"/>
                       <polyline class="inf-line" points="0,118 50,88 100,100 150,58 200,74 250,32 300,50"/>
+                      <polyline class="inf-forecast" points="250,32 270,26 300,14"/>
                     </svg>
                   </div>
                   <div class="inf-pipe">
@@ -1006,16 +1150,24 @@
                     <circle class="ia-node" cx="240" cy="55" r="8"/>
                     <circle class="ia-node" cx="255" cy="110" r="8"/>
                     <circle class="ia-node" cx="240" cy="165" r="8"/>
+                    <circle class="ia-ring" cx="150" cy="110" r="14"/>
+                    <circle class="ia-ring r2" cx="150" cy="110" r="14"/>
                     <circle class="ia-core" cx="150" cy="110" r="14"/>
+                    <circle class="ia-travel t1" cx="150" cy="110" r="3"/>
+                    <circle class="ia-travel t2" cx="150" cy="110" r="3"/>
+                    <circle class="ia-travel t3" cx="150" cy="110" r="3"/>
                   </svg>
+                  <div class="ia-chip">IA gerando resposta<span class="dots"><i></i><i></i><i></i></span></div>
                 </div>
               </div>
 
               <div class="svc-scene" data-scene="outsourcing">
+                <div class="out-merge">PR aprovado · merge</div>
                 <div class="out">
                   <div class="out-team">
                     <div class="out-av">JS</div><div class="out-av">TS</div><div class="out-av">PY</div><div class="out-av">GO</div><div class="out-av">+4</div>
                   </div>
+                  <div class="out-editor"><div class="out-code"></div><div class="out-code"></div><div class="out-code"></div></div>
                   <div class="out-commits">
                     <div class="out-commit"><span class="cd"></span>feat: módulo de pagamentos</div>
                     <div class="out-commit"><span class="cd"></span>test: cobertura 92%</div>
@@ -1149,8 +1301,8 @@
     <div class="wrap">
       <h2 class="reveal up">Sua empresa não precisa de mais improviso. Precisa de sistema.</h2>
       <p class="lede reveal up">Times que constroem tecnologia própria saem na frente. A Data Bravo projeta, desenvolve e automatiza a operação que sustenta esse salto.</p>
-      <a class="btn btn-primary reveal up" style="padding:17px 34px; font-size:16px;" href="mailto:contato@databravo.com.br">Iniciar meu projeto agora</a>
-      <p class="note reveal up">Resposta em até 1 dia útil · contato@databravo.com.br</p>
+      <a class="btn btn-primary reveal up" style="padding:17px 34px; font-size:16px;" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener">Iniciar meu projeto agora</a>
+      <p class="note reveal up">Atendimento direto no WhatsApp · contato@databravo.com.br</p>
     </div>
   </section>
 </main>
@@ -1266,17 +1418,26 @@
           var target = parseFloat(el.getAttribute('data-count'));
           var prefix = el.getAttribute('data-prefix') || '';
           var suffix = el.getAttribute('data-suffix') || '';
-          var start = performance.now(), dur = 900;
+          var dec = parseInt(el.getAttribute('data-decimal') || '0', 10);
+          var start = performance.now(), dur = 1100;
           function tick(now){
             var t = Math.min(1, (now-start)/dur);
             var eased = 1 - Math.pow(1-t, 3);
-            var val = Math.round(target*eased);
-            el.textContent = prefix + val.toLocaleString('pt-BR') + suffix;
+            var val;
+            if(dec > 0){
+              val = (target*eased/10).toFixed(dec).replace('.', ',');
+            } else {
+              val = Math.round(target*eased).toLocaleString('pt-BR');
+            }
+            el.textContent = prefix + val + suffix;
             if(t < 1) requestAnimationFrame(tick);
           }
           requestAnimationFrame(tick);
         });
       }
+      // hero dashboard counts on load
+      var heroApp = document.querySelector('.hero-app');
+      if(heroApp) setTimeout(function(){ countUp(heroApp); }, 350);
       function activate(name){
         items.forEach(function(it){
           var on = it.getAttribute('data-scene') === name;
