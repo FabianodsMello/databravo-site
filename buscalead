@@ -1,8 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/buscalead/:path*",
-      "destination": "https://data-bravo-busca-leads.vercel.app/:path*"
-    }
-  ]
-}
