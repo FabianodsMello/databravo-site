@@ -2,7 +2,8 @@
   "rewrites": [
     { "source": "/buscalead", "destination": "https://data-bravo-busca-leads.vercel.app" },
     { "source": "/buscalead/:path*", "destination": "https://data-bravo-busca-leads.vercel.app/:path*" },
-    { "source": "/linkbio", "destination": "https://link-bio-data.vercel.app/linkbio" },
-    { "source": "/linkbio/:path*", "destination": "https://link-bio-data.vercel.app/linkbio/:path*" }
+    { "source": "/linkbio/assets/:path*", "destination": "https://link-bio-data.vercel.app/assets/:path*" },
+    { "source": "/linkbio", "destination": "https://link-bio-data.vercel.app/" },
+    { "source": "/linkbio/:path*", "destination": "https://link-bio-data.vercel.app/" }
   ]
 }
