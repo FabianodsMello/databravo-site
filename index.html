@@ -744,19 +744,122 @@
     .svc-scenes{ height:320px; }
   }
 
-  /* CASES — editorial two-column list, no cards */
-  .cases-list{ display:grid; grid-template-columns:repeat(2,1fr); }
-  .cases-list li{ padding:26px 30px 26px 0; border-top:1px solid var(--line); }
-  .cases-list li:nth-child(odd){ padding-right:34px; }
-  .cases-list li:nth-child(even){ padding-left:34px; border-left:1px solid var(--line); }
-  .case-tag{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--violet-bright); }
-  .cases-list h3{ font-family:var(--font-body); font-size:16.5px; font-weight:700; margin:9px 0 8px; }
-  .cases-list p{ font-size:13.5px; color:var(--ink-faint); }
-  @media (max-width:760px){
-    .cases-list{ grid-template-columns:1fr; }
-    .cases-list li:nth-child(even){ border-left:none; padding-left:0; }
-    .cases-list li:nth-child(odd){ padding-right:0; }
+  /* CASES — estudos de caso (ilha clara): compacto por padrao, historia expande no hover */
+  .cases{ background:#f4f2fb; border-top:1px solid #e7e2f4; border-bottom:1px solid #e7e2f4; }
+  .cases .section-head h2{ color:#17111f; }
+  .cases .section-head .lede{ color:#5f5875; }
+  .cases-eyebrow{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#7c3aed; display:block; margin-bottom:12px; }
+
+  .case-studies{ display:flex; flex-direction:column; }
+  .case{ display:grid; grid-template-columns:1fr 0.66fr; gap:46px; align-items:center; padding:38px 0; border-top:1px solid #e4dff1; }
+  .case:first-child{ border-top:none; padding-top:8px; }
+  .case-meta{ display:flex; align-items:center; gap:12px; margin-bottom:15px; flex-wrap:wrap; }
+  .case-num{ font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#7c3aed; }
+  .case-badge{ display:inline-flex; align-items:center; gap:6px; font-size:11px; font-weight:700; color:#178a4a; background:rgba(53,194,107,.13); border:1px solid rgba(53,194,107,.3); border-radius:100px; padding:3px 11px; }
+  .case-badge::before{ content:""; width:6px; height:6px; border-radius:50%; background:#25c667; }
+  .case-title{ font-family:var(--font-display); font-weight:600; font-size:clamp(1.3rem,2.2vw,1.8rem); line-height:1.16; letter-spacing:-.01em; color:#17111f; text-wrap:balance; }
+
+  .case-hint{ margin-top:14px; font-size:12.5px; color:#9990b5; font-weight:600; display:inline-flex; align-items:center; gap:7px; transition:opacity .3s ease; }
+  .case-hint svg{ width:14px; height:14px; }
+  .case:hover .case-hint, .case:focus-within .case-hint{ opacity:0; }
+
+  .case-story{ max-height:0; opacity:0; overflow:hidden; margin-top:0;
+    transition:max-height .55s cubic-bezier(.16,1,.3,1), opacity .4s ease, margin-top .45s ease; }
+  .case:hover .case-story, .case:focus-within .case-story{ max-height:400px; opacity:1; margin-top:18px; }
+  .case-row{ display:grid; grid-template-columns:132px 1fr; gap:18px; padding:12px 0; border-top:1px solid #e8e3f4; }
+  .case-row:first-child{ border-top:none; }
+  .case-row b{ font-size:14px; font-weight:700; color:#7c3aed; }
+  .case-row p{ font-size:14px; color:#5f5875; line-height:1.55; }
+
+  /* janela do mockup (clara) */
+  .cwin{ background:#fff; border:1px solid #e9e5f5; border-radius:14px; overflow:hidden; box-shadow:0 24px 46px -26px rgba(70,50,130,.42); }
+  .cwin-bar{ display:flex; align-items:center; gap:5px; padding:10px 13px; border-bottom:1px solid #f1eef9; }
+  .cwin-bar span{ width:8px; height:8px; border-radius:50%; background:#ddd7ee; }
+  .cwin-bar em{ margin-left:9px; font-style:normal; font-size:11px; color:#948cae; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .cwin-body{ padding:18px 16px; min-height:158px; display:flex; flex-direction:column; justify-content:center; }
+  .case:not(.in-view) .cwin-body *{ animation-play-state:paused !important; }
+
+  /* mockup: barras (e-commerce, data warehouse) */
+  .cm-bars{ display:flex; align-items:flex-end; gap:8px; height:86px; margin-bottom:15px; }
+  .cm-bars i{ flex:1; border-radius:5px 5px 3px 3px; background:#ece7fb; transform-origin:bottom; animation:cmBar 2.8s ease-in-out infinite; }
+  .cm-bars i.hi{ background:linear-gradient(180deg,#8b5cf6,#7c3aed); }
+  .cm-bars i:nth-child(2n){ animation-delay:.3s; } .cm-bars i:nth-child(3n){ animation-delay:.6s; }
+  @keyframes cmBar{ 0%,100%{ transform:scaleY(.5); } 50%{ transform:scaleY(1); } }
+  .cm-lines{ display:flex; flex-direction:column; gap:8px; }
+  .cm-lines i{ height:8px; border-radius:4px; background:#efeaf9; }
+  .cm-lines i:nth-child(2){ width:64%; }
+
+  /* mockup: lista com progresso (LMS) */
+  .cm-list{ display:flex; flex-direction:column; gap:15px; }
+  .cm-litem{ display:flex; align-items:center; gap:12px; }
+  .cm-av{ width:26px; height:26px; border-radius:50%; background:#ece7fb; flex-shrink:0; }
+  .cm-litem:nth-child(1) .cm-av{ background:linear-gradient(135deg,#8b5cf6,#7c3aed); }
+  .cm-bar2{ flex:1; height:9px; border-radius:5px; background:#efeaf9; overflow:hidden; }
+  .cm-bar2 i{ display:block; height:100%; width:8%; background:linear-gradient(90deg,#8b5cf6,#7c3aed); animation:cmFill 3.4s ease-in-out infinite; }
+  .cm-litem:nth-child(2) .cm-bar2 i{ animation-delay:.5s; } .cm-litem:nth-child(3) .cm-bar2 i{ animation-delay:1s; }
+  @keyframes cmFill{ 0%{ width:8%; } 68%,100%{ width:var(--w,82%); } }
+
+  /* mockup: chat (whatsapp) */
+  .cm-chat{ display:flex; flex-direction:column; gap:10px; }
+  .cm-bub{ height:22px; border-radius:12px; opacity:0; transform:translateY(6px); animation:cmBub 5s ease-in-out infinite; }
+  .cm-bub.in{ width:58%; background:#eee9f8; align-self:flex-start; border-bottom-left-radius:3px; }
+  .cm-bub.out{ width:70%; background:linear-gradient(135deg,#8b5cf6,#7c3aed); align-self:flex-end; border-bottom-right-radius:3px; }
+  .cm-bub:nth-child(1){ animation-delay:.2s; } .cm-bub:nth-child(2){ animation-delay:.9s; }
+  .cm-bub:nth-child(3){ animation-delay:1.6s; } .cm-bub:nth-child(4){ animation-delay:2.3s; }
+  @keyframes cmBub{ 0%{ opacity:0; transform:translateY(6px); } 7%{ opacity:1; transform:none; } 90%{ opacity:1; } 100%{ opacity:0; } }
+
+  /* mockup: equalizador de voz (IA) */
+  .cm-wave{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .cm-play{ width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#8b5cf6,#7c3aed); flex-shrink:0; position:relative; }
+  .cm-play::after{ content:""; position:absolute; left:15px; top:12px; border-left:10px solid #fff; border-top:7px solid transparent; border-bottom:7px solid transparent; }
+  .cm-eq{ flex:1; display:flex; align-items:center; gap:4px; height:44px; }
+  .cm-eq i{ flex:1; border-radius:3px; background:linear-gradient(180deg,#a78bfa,#7c3aed); transform-origin:center; animation:cmEq 1s ease-in-out infinite; }
+  .cm-eq i:nth-child(2n){ animation-delay:.15s; } .cm-eq i:nth-child(3n){ animation-delay:.3s; } .cm-eq i:nth-child(4n){ animation-delay:.45s; }
+  @keyframes cmEq{ 0%,100%{ transform:scaleY(.25); } 50%{ transform:scaleY(1); } }
+
+  /* mockup: funil / kanban (CRM) */
+  .cm-funnel{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .cm-col{ background:#f6f3fd; border:1px solid #ece7fb; border-radius:9px; padding:8px; }
+  .cm-col h6{ margin:0 0 7px; font-size:8px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#a79ec5; }
+  .cm-card{ height:20px; border-radius:6px; background:#e6dffb; margin-bottom:6px; }
+  .cm-card.hot{ background:linear-gradient(135deg,#8b5cf6,#7c3aed); animation:cmHot 3s ease-in-out infinite; }
+  .cm-col:nth-child(2) .cm-card.hot{ animation-delay:1s; } .cm-col:nth-child(3) .cm-card.hot{ animation-delay:2s; }
+  @keyframes cmHot{ 0%,100%{ transform:none; box-shadow:none; } 50%{ transform:translateY(-2px); box-shadow:0 6px 14px -6px rgba(124,58,237,.7); } }
+
+  /* mockup: match (nós conectando) */
+  .cm-match{ position:relative; height:130px; }
+  .cm-match svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .cm-mline{ stroke:#c9bdf5; stroke-width:2; stroke-dasharray:5 5; opacity:0; animation:cmLine 3.6s ease-in-out infinite; }
+  .cm-mline.a{ animation-delay:0s; } .cm-mline.b{ animation-delay:1.2s; } .cm-mline.c{ animation-delay:2.4s; }
+  @keyframes cmLine{ 0%,10%{ opacity:0; } 22%,55%{ opacity:1; } 70%,100%{ opacity:0; } }
+  .cm-mnode{ fill:#ece7fb; }
+  .cm-mnode.on{ fill:url(#cmMatchG); animation:cmNode 3.6s ease-in-out infinite; }
+  .cm-mnode.b1{ animation-delay:.1s; } .cm-mnode.b2{ animation-delay:1.3s; } .cm-mnode.b3{ animation-delay:2.5s; }
+  @keyframes cmNode{ 0%,12%{ fill:#ece7fb; } 24%,55%{ fill:#7c3aed; } 70%,100%{ fill:#ece7fb; } }
+
+  /* mockup: indicadores / ecossistema */
+  .cm-kpis{ display:flex; gap:8px; margin-bottom:14px; }
+  .cm-kpi{ flex:1; background:#f6f3fd; border:1px solid #ece7fb; border-radius:9px; padding:8px 10px; }
+  .cm-kpi b{ display:block; font-size:15px; font-weight:800; color:#17111f; font-variant-numeric:tabular-nums; }
+  .cm-kpi span{ font-size:8px; color:#a79ec5; text-transform:uppercase; letter-spacing:.05em; font-weight:700; }
+  .cm-spark{ width:100%; height:44px; display:block; }
+  .cm-spark .fill{ fill:rgba(124,58,237,.1); }
+  .cm-spark .stroke{ fill:none; stroke:#7c3aed; stroke-width:2.4; stroke-linecap:round; stroke-dasharray:300; stroke-dashoffset:300; animation:cmSpark 3.4s ease-in-out infinite; }
+  @keyframes cmSpark{ 0%{ stroke-dashoffset:300; } 55%,100%{ stroke-dashoffset:0; } }
+
+  @media (prefers-reduced-motion: reduce){
+    .cm-bars i,.cm-bar2 i,.cm-bub,.cm-eq i,.cm-card.hot,.cm-mline,.cm-mnode,.cm-spark .stroke{ animation:none !important; }
+    .cm-bub{ opacity:1; transform:none; } .cm-bar2 i{ width:70%; } .cm-spark .stroke{ stroke-dashoffset:0; }
+    .case-story{ transition:none; }
   }
+  @media (max-width:900px){
+    .case{ grid-template-columns:1fr; gap:22px; padding:30px 0; }
+    .case-visual{ order:-1; }
+    .case-story{ max-height:none; opacity:1; overflow:visible; margin-top:18px; }
+    .case-hint{ display:none; }
+    .case-row{ grid-template-columns:120px 1fr; }
+  }
+  @media (max-width:520px){ .case-row{ grid-template-columns:1fr; gap:3px; padding:10px 0; } }
 
   /* DIFERENCIAIS — spec strip, no card grid */
   .dif-strip{ display:flex; border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong); }
@@ -771,19 +874,21 @@
   }
   @media (max-width:560px){ .dif-item{ flex:1 1 100%; } }
 
-  /* PROCESS — real sequence, numbers earn their place */
-  .process{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  /* PROCESS — fundo branco, texto preto, numeros roxos */
+  .process{ background:#ffffff; border-top:1px solid #ebe6f5; border-bottom:1px solid #ebe6f5; }
+  .process .section-head h2{ color:#17111f; }
+  .process .section-head .lede{ color:#5f5875; }
   .process-line{ position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
-  .process-line::before{ content:""; position:absolute; top:23px; left:0; right:0; height:1px; background:var(--line-strong); }
+  .process-line::before{ content:""; position:absolute; top:23px; left:0; right:0; height:1px; background:#e6e0f2; }
   .process-step{ position:relative; padding-top:64px; }
   .process-num{
     position:absolute; top:0; left:0; width:46px; height:46px; border-radius:50%;
-    background:var(--bg); border:1px solid var(--line-strong);
+    background:#f5f3fc; border:1px solid #e3ddf3;
     display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display); font-size:14px; color:var(--violet-bright);
+    font-family:var(--font-display); font-size:14px; font-weight:600; color:#7c3aed;
   }
-  .process-step h3{ font-family:var(--font-body); font-size:16px; font-weight:700; margin-bottom:8px; }
-  .process-step p{ font-size:13.5px; color:var(--ink-faint); }
+  .process-step h3{ font-family:var(--font-body); font-size:16px; font-weight:700; margin-bottom:8px; color:#17111f; }
+  .process-step p{ font-size:13.5px; color:#655d7a; }
   @media (max-width:900px){ .process-line{ grid-template-columns:1fr; gap:36px; } .process-line::before{ display:none; } }
 
   /* MARQUEES (stack + languages) */
@@ -1392,21 +1497,223 @@
     </div>
   </section>
 
-  <section id="cases">
+  <section id="cases" class="cases">
     <div class="wrap">
       <div class="section-head reveal up">
+        <span class="cases-eyebrow">Cases</span>
         <h2>Sistemas que já resolvem problema real.</h2>
+        <p class="lede">Projetos que saíram do diagnóstico e estão em produção. Passe o mouse em cada um para ver como foi construído.</p>
       </div>
-      <ul class="cases-list reveal up">
-        <li><span class="case-tag">Automação · WhatsApp</span><h3>Fluxos Educacionais via WhatsApp</h3><p>Automação conversacional com lógica estruturada e integração sistêmica.</p></li>
-        <li><span class="case-tag">IA · WhatsApp</span><h3>Bot Conversacional com IA</h3><p>Bot inteligente com respostas em áudio geradas por IA e integração com sistemas internos.</p></li>
-        <li><span class="case-tag">CRM &amp; Bots</span><h3>Bots Integrados a CRM</h3><p>Fluxos automatizados de atendimento, qualificação e organização comercial.</p></li>
-        <li><span class="case-tag">Plataforma</span><h3>E-commerce Educacional</h3><p>Plataforma própria com regras comerciais complexas e arquitetura para alto volume de acessos.</p></li>
-        <li><span class="case-tag">Dados &amp; BI</span><h3>Data Warehouse Corporativo</h3><p>Modelagem de dados e consolidação de múltiplas fontes para dashboards estratégicos.</p></li>
-        <li><span class="case-tag">LMS</span><h3>Plataforma para Empreendedores</h3><p>Ambiente digital completo com trilhas, gestão de usuários e engajamento.</p></li>
-        <li><span class="case-tag">Plataforma</span><h3>Match Empresas e Startups</h3><p>Sistema de matchmaking baseado em critérios estratégicos e governança de inovação.</p></li>
-        <li><span class="case-tag">Inovação</span><h3>Gestão de Ecossistemas</h3><p>Arquitetura digital para mapeamento, monitoramento e gestão de indicadores.</p></li>
-      </ul>
+
+      <div class="case-studies reveal up">
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 01 · Desenvolvimento</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Um e-commerce próprio para regras comerciais que nenhuma plataforma pronta suportava.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Descontos, combos e regras de estoque específicas não cabiam em nenhuma plataforma de prateleira.</p></div>
+              <div class="case-row"><b>A construção</b><p>Desenhamos uma plataforma própria do zero, com arquitetura pensada para alto volume de acessos e as regras exatas do negócio.</p></div>
+              <div class="case-row"><b>Hoje</b><p>A plataforma está no ar, sustentando picos de tráfego e crescendo junto com o catálogo e o volume de pedidos.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Catálogo · Estoque · Checkout</em></div>
+              <div class="cwin-body">
+                <div class="cm-bars"><i style="height:52%"></i><i class="hi" style="height:88%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:58%"></i><i class="hi" style="height:94%"></i></div>
+                <div class="cm-lines"><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 02 · Dados &amp; BI</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Um Data Warehouse Corporativo que virou a fonte única da verdade.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Múltiplas fontes de dados sem consolidação impediam decisões estratégicas confiáveis.</p></div>
+              <div class="case-row"><b>A construção</b><p>Modelamos os dados, construímos a estrutura SQL e consolidamos as fontes distintas em uma única base.</p></div>
+              <div class="case-row"><b>Hoje</b><p>Dashboards estratégicos rodam com dados confiáveis, atualizados e centralizados, todos os dias.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Fontes · SQL · BI</em></div>
+              <div class="cwin-body">
+                <div class="cm-bars"><i style="height:44%"></i><i style="height:60%"></i><i class="hi" style="height:92%"></i><i style="height:50%"></i><i class="hi" style="height:78%"></i><i style="height:64%"></i></div>
+                <div class="cm-lines"><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 03 · Plataforma Educacional (LMS)</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Um ambiente digital completo para formar empreendedores em escala.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Formar e acompanhar centenas de empreendedores exigia um ambiente próprio, não uma solução genérica de cursos.</p></div>
+              <div class="case-row"><b>A construção</b><p>Construímos a plataforma com trilhas de aprendizagem, gestão de usuários e monitoramento de engajamento.</p></div>
+              <div class="case-row"><b>Hoje</b><p>O ambiente forma e acompanha empreendedores continuamente, com o engajamento monitorado em tempo real.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Trilhas · Usuários · Engajamento</em></div>
+              <div class="cwin-body">
+                <div class="cm-list">
+                  <div class="cm-litem"><span class="cm-av"></span><span class="cm-bar2"><i style="--w:88%"></i></span></div>
+                  <div class="cm-litem"><span class="cm-av"></span><span class="cm-bar2"><i style="--w:64%"></i></span></div>
+                  <div class="cm-litem"><span class="cm-av"></span><span class="cm-bar2"><i style="--w:76%"></i></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 04 · Automação &amp; WhatsApp</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Fluxos educacionais via WhatsApp, respondendo milhares sem time manual.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Manter contato contínuo com milhares de participantes de programas de capacitação, sem uma equipe respondendo um a um.</p></div>
+              <div class="case-row"><b>A construção</b><p>Construímos uma automação conversacional com lógica estruturada, distribuindo conteúdos e acompanhando a jornada de cada participante.</p></div>
+              <div class="case-row"><b>Hoje</b><p>A jornada roda sozinha, liberando o time humano para os momentos que exigem atenção real.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Fluxos · Jornadas · Respostas</em></div>
+              <div class="cwin-body">
+                <div class="cm-chat">
+                  <span class="cm-bub in"></span><span class="cm-bub out"></span><span class="cm-bub in"></span><span class="cm-bub out"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 05 · IA &amp; Voz</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Um bot conversacional que responde em áudio, gerado por IA.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>O atendimento precisava responder em áudio, de forma natural, sem depender de gravações manuais.</p></div>
+              <div class="case-row"><b>A construção</b><p>Desenvolvemos um bot com respostas em áudio geradas por IA, integrado aos sistemas internos.</p></div>
+              <div class="case-row"><b>Hoje</b><p>O bot responde em voz, com contexto, e conversa com os sistemas da operação em tempo real.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Áudio · IA · Integração</em></div>
+              <div class="cwin-body">
+                <div class="cm-wave">
+                  <span class="cm-play"></span>
+                  <span class="cm-eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+                </div>
+                <div class="cm-lines"><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 06 · CRM &amp; Automação</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Bots integrados ao CRM, para nenhum lead se perder no caminho.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Leads chegavam por vários canais e se perdiam antes de entrar no funil comercial.</p></div>
+              <div class="case-row"><b>A construção</b><p>Construímos fluxos automatizados de atendimento e qualificação, integrados diretamente ao CRM.</p></div>
+              <div class="case-row"><b>Hoje</b><p>Cada lead entra qualificado e organizado no CRM, sem digitação manual.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Leads · Qualificação · CRM</em></div>
+              <div class="cwin-body">
+                <div class="cm-funnel">
+                  <div class="cm-col"><h6>Lead</h6><div class="cm-card hot"></div><div class="cm-card"></div></div>
+                  <div class="cm-col"><h6>Qualificado</h6><div class="cm-card hot"></div></div>
+                  <div class="cm-col"><h6>No CRM</h6><div class="cm-card hot"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 07 · Plataforma &amp; Inovação</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Uma plataforma que conecta empresas e startups por desafio real.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Grandes empresas precisavam encontrar startups alinhadas a desafios reais de inovação, de forma estruturada.</p></div>
+              <div class="case-row"><b>A construção</b><p>Desenvolvemos um sistema de matchmaking baseado em desafios, perfis e critérios estratégicos.</p></div>
+              <div class="case-row"><b>Hoje</b><p>O sistema roda o match entre empresas e startups com governança de inovação.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Desafios · Perfis · Match</em></div>
+              <div class="cwin-body">
+                <div class="cm-match">
+                  <svg viewBox="0 0 300 130" preserveAspectRatio="none">
+                    <defs><linearGradient id="cmMatchG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+                    <line class="cm-mline a" x1="54" y1="30" x2="246" y2="70"/>
+                    <line class="cm-mline b" x1="54" y1="70" x2="246" y2="110"/>
+                    <line class="cm-mline c" x1="54" y1="110" x2="246" y2="30"/>
+                    <rect class="cm-mnode on b1" x="22" y="15" width="32" height="30" rx="8"/>
+                    <rect class="cm-mnode on b2" x="22" y="55" width="32" height="30" rx="8"/>
+                    <rect class="cm-mnode on b3" x="22" y="95" width="32" height="30" rx="8"/>
+                    <rect class="cm-mnode on b3" x="246" y="15" width="32" height="30" rx="8"/>
+                    <rect class="cm-mnode on b1" x="246" y="55" width="32" height="30" rx="8"/>
+                    <rect class="cm-mnode on b2" x="246" y="95" width="32" height="30" rx="8"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" tabindex="0">
+          <div class="case-info">
+            <div class="case-meta"><span class="case-num">Projeto 08 · Plataforma &amp; Dados</span><span class="case-badge">Em produção</span></div>
+            <h3 class="case-title">Gestão de ecossistemas de inovação, além de qualquer planilha.</h3>
+            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
+            <div class="case-story">
+              <div class="case-row"><b>O pedido</b><p>Mapear e monitorar uma rede de empresas, startups, universidades e instituições exigia mais que planilhas.</p></div>
+              <div class="case-row"><b>A construção</b><p>Construímos uma arquitetura digital para mapear, monitorar e gerar indicadores do ecossistema.</p></div>
+              <div class="case-row"><b>Hoje</b><p>A plataforma mapeia, monitora e gera indicadores de todo o ecossistema em um só lugar.</p></div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="cwin" aria-hidden="true">
+              <div class="cwin-bar"><span></span><span></span><span></span><em>Mapa · Monitor · Indicadores</em></div>
+              <div class="cwin-body">
+                <div class="cm-kpis">
+                  <div class="cm-kpi"><span>Atores</span><b>312</b></div>
+                  <div class="cm-kpi"><span>Conexões</span><b>1.8k</b></div>
+                  <div class="cm-kpi"><span>Projetos</span><b>47</b></div>
+                </div>
+                <svg class="cm-spark" viewBox="0 0 300 44" preserveAspectRatio="none">
+                  <defs><linearGradient id="cmSparkG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(124,58,237,.16)"/><stop offset="1" stop-color="rgba(124,58,237,0)"/></linearGradient></defs>
+                  <path class="fill" style="fill:url(#cmSparkG)" d="M0,34 C24,30 40,32 64,24 C88,16 104,20 128,14 C152,8 168,18 192,12 C216,6 232,14 256,8 C272,5 288,4 300,3 L300,44 L0,44 Z"/>
+                  <path class="stroke" d="M0,34 C24,30 40,32 64,24 C88,16 104,20 128,14 C152,8 168,18 192,12 C216,6 232,14 256,8 C272,5 288,4 300,3"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
@@ -1753,6 +2060,20 @@
     } catch (err) {
       document.querySelectorAll('.reveal').forEach(function(el){ el.classList.remove('armed'); });
     }
+
+    // Cases: só anima o mockup do case que está visível na tela (poupa CPU)
+    (function(){
+      var cases = document.querySelectorAll('.case');
+      if(!cases.length) return;
+      if(!('IntersectionObserver' in window)){
+        cases.forEach(function(c){ c.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ e.target.classList.toggle('in-view', e.isIntersecting); });
+      }, { rootMargin: '80px 0px', threshold: 0.01 });
+      cases.forEach(function(c){ io.observe(c); });
+    })();
 
     // Hero: subtle constellation on pure black — no gradient wash, no glow bloom.
     var canvas = document.getElementById('heroCanvas');
