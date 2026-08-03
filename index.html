@@ -748,6 +748,12 @@
   .cases{ background:#f4f2fb; border-top:1px solid #e7e2f4; border-bottom:1px solid #e7e2f4; }
   .cases .section-head h2{ color:#17111f; }
   .cases .section-head .lede{ color:#5f5875; }
+  /* titulos das ilhas claras em uma linha no desktop; quebram so no mobile */
+  @media (min-width:820px){
+    .cases .section-head, .process .section-head{ max-width:none; }
+    .cases .section-head h2, .process .section-head h2{ white-space:nowrap; text-wrap:nowrap; }
+    .cases .section-head .lede, .process .section-head .lede{ max-width:640px; }
+  }
   .cases-eyebrow{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#7c3aed; display:block; margin-bottom:12px; }
 
   .case-studies{ display:flex; flex-direction:column; }
