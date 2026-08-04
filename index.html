@@ -748,11 +748,14 @@
   .cases{ background:#f4f2fb; border-top:1px solid #e7e2f4; border-bottom:1px solid #e7e2f4; }
   .cases .section-head h2{ color:#17111f; }
   .cases .section-head .lede{ color:#5f5875; }
-  /* titulos das ilhas claras em uma linha no desktop; quebram so no mobile */
+  /* titulos em uma linha no desktop; quebram so no mobile (< 820px) */
   @media (min-width:820px){
-    .cases .section-head, .process .section-head{ max-width:none; }
-    .cases .section-head h2, .process .section-head h2{ white-space:nowrap; text-wrap:nowrap; }
-    .cases .section-head .lede, .process .section-head .lede{ max-width:640px; }
+    .cases .section-head, .process .section-head, #servicos .section-head{ max-width:none; }
+    .cases .section-head h2, .process .section-head h2, #servicos .section-head h2,
+    #contato h2{ white-space:nowrap; text-wrap:nowrap; }
+    .cases .section-head .lede, .process .section-head .lede, #servicos .section-head .lede{ max-width:640px; }
+    /* CTA e longa: id vence a max-width:720px da regra base; fonte fluida cabe em 1 linha */
+    #contato h2{ max-width:none; font-size:min(2.6vw, 40px); line-height:1.12; }
   }
   .cases-eyebrow{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:#7c3aed; display:block; margin-bottom:12px; }
 
@@ -926,12 +929,12 @@
   details[open] summary .plus::after{ transform:rotate(90deg); opacity:0; }
   details.faq-item p{ padding:0 0 22px; color:var(--ink-muted); font-size:14.5px; max-width:680px; }
 
-  /* FINAL CTA */
-  .final-cta{ text-align:left; padding:130px 0; position:relative; }
+  /* FINAL CTA — ilha clara (a FAQ acima segue escura) */
+  .final-cta{ text-align:left; padding:120px 0; position:relative; background:#ffffff; border-top:1px solid #ebe6f5; }
   .final-cta .wrap{ display:flex; flex-direction:column; align-items:flex-start; gap:22px; }
-  .final-cta h2{ max-width:720px; }
-  .final-cta .lede{ max-width:560px; }
-  .final-cta .note{ font-size:13px; color:var(--ink-faint); }
+  .final-cta h2{ max-width:720px; color:#17111f; }
+  .final-cta .lede{ max-width:560px; color:#5f5875; }
+  .final-cta .note{ font-size:13px; color:#8a83a0; }
 
   footer{ border-top:1px solid var(--line); padding:46px 0 32px; }
   .foot-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
