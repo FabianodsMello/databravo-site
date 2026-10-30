@@ -123,6 +123,11 @@
   .nav-links{ display:flex; align-items:center; gap:32px; }
   .nav-links a{ font-size:14.5px; color:var(--ink-muted); transition:color .2s ease; }
   .nav-links a:hover{ color:var(--ink); }
+  /* link destacado para a pagina externa de LPs/sites */
+  .nav-links a.nav-lp{ display:inline-flex; align-items:center; gap:5px; color:var(--violet-bright); font-weight:600; }
+  .nav-links a.nav-lp:hover{ color:var(--violet-dot); }
+  .nav-links a.nav-lp svg{ width:13px; height:13px; }
+  .nav-cta .btn-soft svg{ vertical-align:middle; }
   .nav-cta{ display:flex; align-items:center; gap:14px; }
   .nav-toggle{ display:none; background:none; border:1px solid var(--line-strong); border-radius:8px; padding:8px; color:var(--ink); }
 
@@ -465,30 +470,115 @@
     .feat-block.wide p{ max-width:100%; }
   }
 
-  /* SERVICES showcase — hover a service, its live mini-screen animates */
-  .svc-showcase{ display:grid; grid-template-columns:0.84fr 1.16fr; gap:26px; align-items:start; margin-top:14px; }
-  .svc-menu{ display:flex; flex-direction:column; }
-  .svc-item{ display:grid; grid-template-columns:24px 1fr; gap:14px; align-items:start; width:100%; text-align:left; padding:15px 16px; background:transparent; border:1px solid transparent; border-top-color:var(--line); border-radius:12px; color:var(--ink-muted); cursor:pointer; transition:background .25s ease, color .25s ease, border-color .25s ease; font-family:inherit; }
-  .svc-item:first-child{ border-top-color:transparent; }
-  .svc-item svg{ width:20px; height:20px; color:var(--ink-faint); margin-top:1px; transition:color .25s ease, transform .45s cubic-bezier(.34,1.56,.64,1); }
-  .svc-item h4{ font-family:var(--font-body); font-weight:700; font-size:15px; color:inherit; }
-  .svc-item .svc-sub{ display:block; font-size:12.5px; color:var(--ink-faint); margin-top:0; max-height:0; opacity:0; overflow:hidden; transition:opacity .3s ease, max-height .35s cubic-bezier(.16,1,.3,1), margin-top .3s ease; }
-  .svc-item:hover{ color:var(--ink); }
-  .svc-item.active{ background:rgba(124,58,237,.1); border-color:var(--line-strong); color:var(--ink); }
-  .svc-item.active svg{ color:var(--violet-bright); transform:scale(1.12) rotate(-6deg); }
-  .svc-item.active .svc-sub{ max-height:64px; opacity:1; margin-top:6px; }
-
-  .svc-stage{ position:sticky; top:96px; }
+  /* SERVICES carousel — swipe horizontally between fronts, each with its own motion */
+  .svc-carousel{ position:relative; margin-top:18px; }
+  .svc-track{ display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scroll-behavior:smooth; padding:4px 2px 22px; scrollbar-width:none; }
+  .svc-track::-webkit-scrollbar{ display:none; }
+  .svc-card{ flex:0 0 min(560px,86vw); scroll-snap-align:center; }
+  .svc-win{ border:1px solid var(--line-strong); border-radius:16px; background:#0c0816; overflow:hidden; box-shadow:0 24px 50px -26px rgba(0,0,0,.75); }
   .svc-frame{ border:1px solid var(--line-strong); border-radius:16px; background:#0c0816; overflow:hidden; box-shadow:0 24px 50px -26px rgba(0,0,0,.75); }
   .svc-frame-bar{ display:flex; align-items:center; gap:6px; padding:11px 14px; border-bottom:1px solid var(--line); }
   .svc-frame-bar span{ width:8px; height:8px; border-radius:50%; background:#3a2f52; }
-  .svc-frame-bar em{ margin-left:10px; font-style:normal; font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); }
-  .svc-scenes{ position:relative; height:352px; }
-  .svc-scene{ position:absolute; inset:0; padding:22px; opacity:0; visibility:hidden; transform:scale(.97) translateY(10px); filter:blur(7px); transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1), filter .5s ease, visibility 0s .5s; }
-  .svc-scene.active{ opacity:1; visibility:visible; transform:none; filter:none; transition-delay:0s; }
-  .svc-scene:not(.active) *{ animation-play-state:paused !important; }
+  .svc-frame-bar em{ margin-left:10px; font-style:normal; font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .svc-pane{ position:relative; height:340px; padding:22px; overflow:hidden; }
+  .svc-card:not(.in-view) .svc-pane *{ animation-play-state:paused !important; }
+  .svc-cap{ display:grid; grid-template-columns:24px 1fr; gap:13px; align-items:start; padding:16px 6px 2px; }
+  .svc-cap svg{ width:21px; height:21px; color:var(--violet-bright); margin-top:2px; }
+  .svc-cap h3{ font-family:var(--font-body); font-weight:700; font-size:16.5px; color:var(--ink); margin:0; }
+  .svc-cap p{ font-size:13px; color:var(--ink-muted); margin:5px 0 0; line-height:1.5; }
+  .svc-nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:6px; }
+  .svc-dots{ display:flex; gap:7px; flex-wrap:wrap; align-items:center; flex:1; }
+  .svc-dot{ width:7px; height:7px; border-radius:50%; border:0; padding:0; background:var(--line-strong); cursor:pointer; transition:background .25s ease, transform .25s ease; }
+  .svc-dot.on{ background:var(--violet-bright); transform:scale(1.5); }
+  .svc-arrows{ display:flex; gap:8px; flex-shrink:0; }
+  .svc-arrow{ width:42px; height:42px; border-radius:50%; border:1px solid var(--line-strong); background:rgba(124,58,237,.08); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .25s ease, opacity .25s ease; }
+  .svc-arrow:hover{ background:rgba(124,58,237,.2); }
+  .svc-arrow svg{ width:18px; height:18px; }
+  .svc-arrow[disabled]{ opacity:.3; cursor:default; }
+
+  /* scene: Landing Pages & Sites */
+  .lp{ position:relative; display:grid; grid-template-columns:1.25fr .9fr; gap:14px; height:100%; }
+  .lp-page{ position:relative; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.02); padding:14px; overflow:hidden; }
+  .lp-hero{ height:58px; border-radius:9px; background:linear-gradient(120deg,var(--violet),var(--violet-bright)); opacity:0; transform:translateY(12px); animation:lpIn 6s ease infinite; }
+  .lp-line{ height:9px; border-radius:5px; background:rgba(255,255,255,.12); margin-top:12px; opacity:0; transform:translateY(12px); animation:lpIn 6s ease infinite .5s; }
+  .lp-line.s{ width:62%; animation-delay:.9s; }
+  .lp-cta{ display:inline-block; margin-top:16px; padding:8px 16px; border-radius:8px; font-size:11px; font-weight:800; color:#fff; background:linear-gradient(135deg,var(--violet),var(--violet-bright)); opacity:0; transform:translateY(12px); animation:lpIn 6s ease infinite 1.3s, lpPulse 1.8s ease-in-out infinite 2.4s; }
+  .lp-cursor{ position:absolute; width:14px; height:14px; right:40px; bottom:26px; border-left:2px solid #fff; border-top:2px solid #fff; transform:rotate(-45deg); opacity:0; animation:lpCursor 6s ease infinite; }
+  .lp-badge{ position:absolute; right:12px; top:10px; z-index:3; font-size:10px; font-weight:800; color:var(--whats); background:rgba(53,194,107,.14); border:1px solid rgba(53,194,107,.4); border-radius:8px; padding:4px 9px; opacity:0; animation:lpBadge 6s ease infinite; }
+  .lp-side{ display:flex; flex-direction:column; gap:12px; }
+  .lp-gauge{ position:relative; border:1px solid var(--line); border-radius:12px; background:rgba(167,139,250,.05); padding:12px 10px; text-align:center; }
+  .lp-gauge svg{ width:72px; height:72px; transform:rotate(-90deg); }
+  .lp-g-bg{ fill:none; stroke:var(--line-strong); stroke-width:7; }
+  .lp-g-val{ fill:none; stroke:var(--violet-bright); stroke-width:7; stroke-linecap:round; stroke-dasharray:201; stroke-dashoffset:201; animation:lpGauge 6s cubic-bezier(.16,1,.3,1) infinite; }
+  .lp-gauge b{ position:absolute; top:40px; left:0; right:0; font-size:18px; }
+  .lp-gauge i{ display:block; font-style:normal; font-size:9.5px; color:var(--ink-faint); margin-top:6px; text-transform:uppercase; letter-spacing:.05em; }
+  .lp-conv{ border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.02); padding:11px 13px; }
+  .lp-conv span{ display:block; font-size:9.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); }
+  .lp-conv b{ font-size:20px; color:var(--violet-dot); }
+  @keyframes lpIn{ 0%{opacity:0;transform:translateY(12px);} 12%,86%{opacity:1;transform:translateY(0);} 100%{opacity:0;transform:translateY(12px);} }
+  @keyframes lpPulse{ 0%,100%{box-shadow:0 0 0 0 rgba(124,58,237,.5);} 50%{box-shadow:0 0 0 7px rgba(124,58,237,0);} }
+  @keyframes lpCursor{ 0%,40%{opacity:0;transform:translate(14px,14px) rotate(-45deg);} 52%{opacity:1;transform:translate(0,0) rotate(-45deg);} 60%{opacity:1;transform:translate(0,0) rotate(-45deg) scale(.82);} 72%,100%{opacity:0;transform:translate(0,0) rotate(-45deg);} }
+  @keyframes lpBadge{ 0%,62%{opacity:0;transform:translateY(-6px);} 72%,92%{opacity:1;transform:translateY(0);} 100%{opacity:0;} }
+  @keyframes lpGauge{ 0%{stroke-dashoffset:201;} 30%,100%{stroke-dashoffset:10;} }
+
+  /* scene: Automação de Atendimento (WhatsApp) */
+  .wa{ position:relative; display:flex; flex-direction:column; height:100%; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.02); overflow:hidden; }
+  .wa-head{ display:flex; align-items:center; gap:9px; padding:10px 12px; border-bottom:1px solid var(--line); background:rgba(124,58,237,.08); }
+  .wa-av{ width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--violet),var(--violet-bright)); flex-shrink:0; }
+  .wa-head b{ font-size:12px; display:block; }
+  .wa-head i{ font-style:normal; font-size:10px; color:var(--whats); }
+  .wa-body{ flex:1; display:flex; flex-direction:column; gap:8px; padding:12px; justify-content:flex-end; }
+  .wa-msg{ max-width:80%; font-size:11px; line-height:1.35; padding:7px 10px; border-radius:11px; opacity:0; transform:translateY(8px) scale(.96); }
+  .wa-msg.in{ align-self:flex-start; background:rgba(255,255,255,.07); border-bottom-left-radius:3px; }
+  .wa-msg.out{ align-self:flex-end; color:#fff; background:linear-gradient(135deg,var(--violet),var(--violet-bright)); border-bottom-right-radius:3px; }
+  .wa-msg:nth-child(1){ animation:waIn 9s ease infinite 0s; }
+  .wa-msg:nth-child(2){ animation:waIn 9s ease infinite 1.4s; }
+  .wa-msg:nth-child(3){ animation:waIn 9s ease infinite 2.8s; }
+  .wa-msg.b{ animation:waIn 9s ease infinite 5.4s; }
+  .wa-type{ align-self:flex-start; display:flex; gap:4px; padding:9px 11px; border-radius:11px; background:rgba(255,255,255,.07); opacity:0; animation:waType 9s ease infinite 4s; }
+  .wa-type i{ width:6px; height:6px; border-radius:50%; background:var(--ink-faint); animation:waDot 1.2s ease-in-out infinite; }
+  .wa-type i:nth-child(2){ animation-delay:.2s; }
+  .wa-type i:nth-child(3){ animation-delay:.4s; }
+  .wa-chip{ position:absolute; left:50%; bottom:12px; transform:translateX(-50%) translateY(10px); font-size:10px; font-weight:800; color:var(--whats); background:rgba(53,194,107,.16); border:1px solid rgba(53,194,107,.4); border-radius:9px; padding:5px 11px; opacity:0; animation:waChip 9s ease infinite; }
+  @keyframes waIn{ 0%,4%{opacity:0;transform:translateY(8px) scale(.96);} 12%,92%{opacity:1;transform:translateY(0) scale(1);} 100%{opacity:1;} }
+  @keyframes waType{ 0%,40%{opacity:0;} 46%,58%{opacity:1;} 64%,100%{opacity:0;} }
+  @keyframes waDot{ 0%,100%{transform:translateY(0);opacity:.5;} 50%{transform:translateY(-3px);opacity:1;} }
+  @keyframes waChip{ 0%,74%{opacity:0;transform:translateX(-50%) translateY(10px);} 82%,96%{opacity:1;transform:translateX(-50%) translateY(0);} 100%{opacity:0;} }
+
+  /* scene: SaaS & Mini-SaaS (receita recorrente) */
+  .saas{ position:relative; display:flex; flex-direction:column; gap:13px; height:100%; }
+  .saas-top{ display:flex; gap:12px; align-items:stretch; }
+  .saas-mrr{ flex:1; border:1px solid var(--line); border-radius:11px; background:rgba(167,139,250,.06); padding:11px 13px; }
+  .saas-mrr i{ font-style:normal; font-size:9.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); }
+  .saas-mrr b{ display:block; font-size:22px; margin-top:2px; }
+  .saas-up{ font-size:10px; font-weight:700; color:var(--whats); }
+  .saas-cycle{ position:relative; width:76px; display:flex; align-items:center; justify-content:center; border:1px solid var(--line); border-radius:11px; background:rgba(255,255,255,.02); flex-shrink:0; }
+  .saas-cycle svg{ width:54px; height:54px; transform:rotate(-90deg); }
+  .saas-c-bg{ fill:none; stroke:var(--line-strong); stroke-width:5; }
+  .saas-c-val{ fill:none; stroke:var(--violet-bright); stroke-width:5; stroke-linecap:round; stroke-dasharray:151; stroke-dashoffset:151; animation:saasCycle 3.5s linear infinite; }
+  .saas-renew{ position:absolute; font-size:17px; color:var(--violet-dot); animation:saasSpin 3.5s linear infinite; }
+  .saas-plans{ display:flex; flex-direction:column; gap:9px; }
+  .saas-plan{ display:grid; grid-template-columns:52px 1fr; gap:10px; align-items:center; }
+  .saas-plan span{ font-size:10.5px; color:var(--ink-muted); }
+  .saas-bar{ height:10px; border-radius:6px; background:rgba(255,255,255,.05); overflow:hidden; }
+  .saas-bar i{ display:block; height:100%; width:var(--w); border-radius:6px; background:linear-gradient(90deg,var(--violet),var(--violet-bright)); transform:scaleX(0); transform-origin:left; animation:saasBar 5s ease-in-out infinite; }
+  .saas-plan:nth-child(2) .saas-bar i{ animation-delay:.3s; }
+  .saas-plan:nth-child(3) .saas-bar i{ animation-delay:.6s; }
+  .saas-tenants{ display:flex; gap:6px; margin-top:auto; }
+  .saas-tenants i{ flex:1; height:22px; border-radius:6px; border:1px solid var(--line); background:rgba(124,58,237,.05); animation:saasTenant 4s ease-in-out infinite; }
+  .saas-tenants i:nth-child(odd){ animation-delay:.4s; }
+  .saas-tenants i:nth-child(3n){ animation-delay:.8s; }
+  .saas-note{ position:absolute; right:0; top:52px; font-size:10px; font-weight:800; color:var(--whats); background:rgba(53,194,107,.14); border:1px solid rgba(53,194,107,.4); border-radius:8px; padding:4px 9px; opacity:0; animation:saasNote 5s ease infinite; }
+  @keyframes saasCycle{ 0%{stroke-dashoffset:151;} 100%{stroke-dashoffset:0;} }
+  @keyframes saasSpin{ 0%{transform:rotate(0);} 100%{transform:rotate(360deg);} }
+  @keyframes saasBar{ 0%,100%{transform:scaleX(.5);} 50%{transform:scaleX(1);} }
+  @keyframes saasTenant{ 0%,100%{background:rgba(124,58,237,.05);border-color:var(--line);} 50%{background:rgba(124,58,237,.22);border-color:var(--violet-bright);} }
+  @keyframes saasNote{ 0%,30%{opacity:0;transform:translateY(-6px);} 42%,80%{opacity:1;transform:translateY(0);} 92%,100%{opacity:0;} }
+
   @media (prefers-reduced-motion: reduce){
-    .svc-scene{ transform:none; filter:none; transition:opacity .3s ease; }
+    .svc-pane *{ animation:none !important; }
+    .lp-hero,.lp-line,.lp-cta,.wa-msg{ opacity:1 !important; transform:none !important; }
+    .lp-g-val{ stroke-dashoffset:10; } .saas-c-val{ stroke-dashoffset:40; }
   }
 
   /* scene: ERP */
@@ -870,6 +960,25 @@
   }
   @media (max-width:520px){ .case-row{ grid-template-columns:1fr; gap:3px; padding:10px 0; } }
 
+  /* CASES carousel — rotação horizontal circular, cada case com seu motion */
+  .cases-carousel{ position:relative; }
+  .cases-track{ flex-direction:row; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scroll-behavior:smooth; padding:4px 2px 22px; scrollbar-width:none; }
+  .cases-track::-webkit-scrollbar{ display:none; }
+  .cases-track .case{ flex:0 0 min(500px,88vw); scroll-snap-align:center; display:block; grid-template-columns:none; gap:0; padding:0; border-top:none; }
+  .cases-track .case-info{ margin-top:16px; }
+  .cases-track .case-hint, .cases-track .case-story{ display:none; }
+  .cases-track .case-meta{ margin-bottom:11px; }
+  .cases-track .case-title{ font-size:clamp(1.05rem,2vw,1.32rem); }
+  .cases-nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:4px; }
+  .cases-dots{ display:flex; gap:7px; flex-wrap:wrap; align-items:center; flex:1; }
+  .cases-dots .svc-dot{ background:#d9d1ef; }
+  .cases-dots .svc-dot.on{ background:#7c3aed; }
+  .cases-arrows{ display:flex; gap:8px; flex-shrink:0; }
+  .cases-arrow{ width:42px; height:42px; border-radius:50%; border:1px solid #e0d9f2; background:#fff; color:#17111f; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px -12px rgba(70,50,130,.5); transition:background .25s ease, opacity .25s ease; }
+  .cases-arrow:hover{ background:#f1ecfb; }
+  .cases-arrow svg{ width:18px; height:18px; }
+  .cases-arrow[disabled]{ opacity:.3; cursor:default; }
+
   /* DIFERENCIAIS — spec strip, no card grid */
   .dif-strip{ display:flex; border-top:1px solid var(--line-strong); border-bottom:1px solid var(--line-strong); }
   .dif-item{ flex:1; padding:26px 22px; border-left:1px solid var(--line); }
@@ -1021,9 +1130,10 @@
       <a href="#cases">Cases</a>
       <a href="#processo">Processo</a>
       <a href="#faq">FAQ</a>
+      <a class="nav-lp" href="https://lps.databravo.com.br/" target="_blank" rel="noopener">Sites &amp; LPs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-soft btn-sm" href="#servicos">Ver serviços</a>
+      <a class="btn btn-soft btn-sm" href="https://lps.databravo.com.br/" target="_blank" rel="noopener">Sites &amp; LPs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" style="width:13px;height:13px;margin-left:2px;"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
       <a class="btn btn-primary btn-sm" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener">Iniciar projeto</a>
     </div>
     <button class="nav-toggle" aria-label="Menu">
@@ -1304,75 +1414,87 @@
         <p class="lede">Cada entrega nasce de desenvolvimento próprio, nada de template genérico tentando parecer sistema.</p>
       </div>
 
-      <div class="services-featured reveal up">
-        <div class="feat-block">
-          <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 4H4v16h16V4h-4M8 4v4h8V4M9 12h6M9 16h6"/></svg>
-          <div>
-            <h3>Landing Pages &amp; Sites</h3>
-            <p>Páginas e sites com arquitetura escalável, performance de carregamento e SEO técnico, pensados pra converter.</p>
-          </div>
-        </div>
-        <div class="feat-block">
-          <svg class="feat-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          <div>
-            <h3>Automação de Atendimento</h3>
-            <p>Bots conversacionais no WhatsApp, IA em texto e áudio, qualificação de leads e integração com CRM e ERP.</p>
-          </div>
-        </div>
-        <div class="feat-block primary wide">
-          <div>
-            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            <div class="feat-tag" style="margin-top:16px;">Produto próprio</div>
-          </div>
-          <div>
-            <h3>Soluções SaaS &amp; Mini-SaaS</h3>
-            <p>Desenvolvimento de produtos SaaS ou mini-SaaS internos, com arquitetura multi-tenant, cobrança recorrente e evolução contínua pós-lançamento.</p>
-          </div>
-        </div>
-      </div>
+      <div class="svc-carousel reveal up">
+        <div class="svc-track" role="group" aria-label="Frentes de atuação, arraste para o lado">
 
-      <div class="svc-showcase reveal up">
-        <div class="svc-menu" role="tablist" aria-label="Serviços">
-          <button class="svc-item active" data-scene="erp" role="tab" aria-selected="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-            <span><h4>ERP sob Medida</h4><span class="svc-sub">Sistema de gestão próprio, adaptado à complexidade real da operação.</span></span>
-          </button>
-          <button class="svc-item" data-scene="crm" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8z"/></svg>
-            <span><h4>CRM Customizado</h4><span class="svc-sub">Fluxos comerciais, qualificação e organização de vendas integrados.</span></span>
-          </button>
-          <button class="svc-item" data-scene="lms" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4-8 4-8-4 8-4zM4 11l8 4 8-4M4 15l8 4 8-4"/></svg>
-            <span><h4>Plataformas Educacionais (LMS)</h4><span class="svc-sub">Ambiente digital com trilhas, usuários e monitoramento de engajamento.</span></span>
-          </button>
-          <button class="svc-item" data-scene="mobile" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>
-            <span><h4>Desenvolvimento Mobile</h4><span class="svc-sub">Apps nativos ou híbridos, com UX fluida e integração ao ecossistema.</span></span>
-          </button>
-          <button class="svc-item" data-scene="scraping" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-            <span><h4>Web Scraping &amp; Pipelines</h4><span class="svc-sub">Extração estruturada de dados para alimentar decisões estratégicas.</span></span>
-          </button>
-          <button class="svc-item" data-scene="infra" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
-            <span><h4>Infraestrutura &amp; Dados</h4><span class="svc-sub">Modelagem analítica e estruturas de BI para decisão em tempo real.</span></span>
-          </button>
-          <button class="svc-item" data-scene="ia" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 9h.01M8 15c1 1 2 1.5 4 1.5s3-.5 4-1.5"/></svg>
-            <span><h4>Integrações Avançadas com IA</h4><span class="svc-sub">Conexão entre sistemas, APIs e inteligência artificial aplicada.</span></span>
-          </button>
-          <button class="svc-item" data-scene="outsourcing" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            <span><h4>Outsourcing de TI &amp; Squads</h4><span class="svc-sub">Times técnicos dedicados, com governança e entrega contínua.</span></span>
-          </button>
-        </div>
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
+                <div class="lp">
+                  <div class="lp-badge">Publicado ✓</div>
+                  <div class="lp-page">
+                    <div class="lp-hero"></div>
+                    <div class="lp-line"></div>
+                    <div class="lp-line s"></div>
+                    <span class="lp-cta">Quero agora</span>
+                    <div class="lp-cursor"></div>
+                  </div>
+                  <div class="lp-side">
+                    <div class="lp-gauge"><svg viewBox="0 0 80 80"><circle class="lp-g-bg" cx="40" cy="40" r="32"/><circle class="lp-g-val" cx="40" cy="40" r="32"/></svg><b>98</b><i>Performance</i></div>
+                    <div class="lp-conv"><span>Conversões</span><b data-count="312">312</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 4H4v16h16V4h-4M8 4v4h8V4M9 12h6M9 16h6"/></svg>
+              <div><h3>Landing Pages &amp; Sites</h3><p>Páginas e sites com performance, SEO técnico e arquitetura pensada pra converter.</p></div>
+            </div>
+          </article>
 
-        <div class="svc-stage">
-          <div class="svc-frame">
-            <div class="svc-frame-bar"><span></span><span></span><span></span><em>app.databravo.com.br</em></div>
-            <div class="svc-scenes" aria-hidden="true">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>wa.me/databravo</em></div>
+              <div class="svc-pane" aria-hidden="true">
+                <div class="wa">
+                  <div class="wa-head"><span class="wa-av"></span><div><b>Atendimento IA</b><i>online</i></div></div>
+                  <div class="wa-body">
+                    <div class="wa-msg in">Oi! Quero um orçamento</div>
+                    <div class="wa-msg out">Claro! Me conta o que você precisa 👋</div>
+                    <div class="wa-msg in">Automação no WhatsApp</div>
+                    <div class="wa-type"><i></i><i></i><i></i></div>
+                    <div class="wa-msg out b">Perfeito, já separei um especialista pra você.</div>
+                  </div>
+                  <div class="wa-chip">Lead qualificado ✓</div>
+                </div>
+              </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              <div><h3>Automação de Atendimento</h3><p>Bots no WhatsApp, IA em texto e áudio, qualificação de leads e integração com CRM e ERP.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene active" data-scene="erp">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>app.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
+                <div class="saas">
+                  <div class="saas-top">
+                    <div class="saas-mrr"><i>MRR</i><b data-count="48" data-prefix="R$ " data-suffix="k">R$ 48k</b> <span class="saas-up">▲ 12%</span></div>
+                    <div class="saas-cycle"><svg viewBox="0 0 60 60"><circle class="saas-c-bg" cx="30" cy="30" r="24"/><circle class="saas-c-val" cx="30" cy="30" r="24"/></svg><span class="saas-renew">↻</span></div>
+                  </div>
+                  <div class="saas-plans">
+                    <div class="saas-plan"><span>Starter</span><div class="saas-bar"><i style="--w:48%"></i></div></div>
+                    <div class="saas-plan"><span>Pro</span><div class="saas-bar"><i style="--w:82%"></i></div></div>
+                    <div class="saas-plan"><span>Scale</span><div class="saas-bar"><i style="--w:64%"></i></div></div>
+                  </div>
+                  <div class="saas-tenants"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="saas-note">Assinatura renovada</div>
+                </div>
+              </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <div><h3>Soluções SaaS &amp; Mini-SaaS</h3><p>Produtos SaaS multi-tenant, com cobrança recorrente e evolução contínua.</p></div>
+            </div>
+          </article>
+
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>erp.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="erp-top">
                   <div class="erp-kpi"><i>Receita</i><b data-count="128" data-prefix="R$ " data-suffix="k">R$ 128k</b></div>
                   <div class="erp-kpi"><i>Pedidos</i><b data-count="2401">2.401</b></div>
@@ -1386,8 +1508,17 @@
                 </div>
                 <div class="erp-note">Novo pedido #2.402</div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+              <div><h3>ERP sob Medida</h3><p>Sistema de gestão próprio, adaptado à complexidade real da operação.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="crm">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>crm.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="crm">
                   <div class="crm-col"><h6>Lead <i>4</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
                   <div class="crm-col"><h6>Qualificado <i>2</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
@@ -1396,8 +1527,17 @@
                   <div class="crm-confetti"><i></i><i></i><i></i><i></i><i></i><i></i></div>
                 </div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8z"/></svg>
+              <div><h3>CRM Customizado</h3><p>Fluxos comerciais, qualificação e organização de vendas integrados.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="lms">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>academy.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="lms-video">
                   <div class="lms-play"></div>
                   <div class="lms-wave"><i></i><i></i><i></i><i></i><i></i></div>
@@ -1410,8 +1550,17 @@
                   <div class="lms-lesson"><span class="lms-check"></span>Módulo 3 · Projeto final</div>
                 </div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4-8 4-8-4 8-4zM4 11l8 4 8-4M4 15l8 4 8-4"/></svg>
+              <div><h3>Plataformas Educacionais (LMS)</h3><p>Ambiente digital com trilhas, usuários e monitoramento de engajamento.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="mobile">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>app · iOS &amp; Android</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="mob">
                   <div class="mob-phone">
                     <div class="mob-notch"></div>
@@ -1425,8 +1574,17 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>
+              <div><h3>Desenvolvimento Mobile</h3><p>Apps nativos ou híbridos, com UX fluida e integração ao ecossistema.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="scraping">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>pipelines.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="scr-badge">+128 registros/min</div>
                 <div class="scr">
                   <div class="scr-src"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
@@ -1434,8 +1592,17 @@
                   <div class="scr-table"><div class="tr"></div><div class="tr"></div><div class="tr"></div><div class="tr"></div></div>
                 </div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <div><h3>Web Scraping &amp; Pipelines</h3><p>Extração estruturada de dados para alimentar decisões estratégicas.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="infra">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>bi.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="inf-uptime">uptime 99,99%</div>
                 <div class="inf">
                   <div class="inf-chart">
@@ -1454,8 +1621,17 @@
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+              <div><h3>Infraestrutura &amp; Dados</h3><p>Modelagem analítica e estruturas de BI para decisão em tempo real.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="ia">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>ia.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="ia">
                   <svg class="ia-svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet">
                     <g>
@@ -1482,8 +1658,17 @@
                   <div class="ia-chip">IA gerando resposta<span class="dots"><i></i><i></i><i></i></span></div>
                 </div>
               </div>
+            </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 9h.01M8 15c1 1 2 1.5 4 1.5s3-.5 4-1.5"/></svg>
+              <div><h3>Integrações Avançadas com IA</h3><p>Conexão entre sistemas, APIs e inteligência artificial aplicada.</p></div>
+            </div>
+          </article>
 
-              <div class="svc-scene" data-scene="outsourcing">
+          <article class="svc-card">
+            <div class="svc-win">
+              <div class="svc-frame-bar"><span></span><span></span><span></span><em>squad.databravo.com.br</em></div>
+              <div class="svc-pane" aria-hidden="true">
                 <div class="out-merge">PR aprovado · merge</div>
                 <div class="out">
                   <div class="out-team">
@@ -1498,8 +1683,19 @@
                   <div class="out-sprint"><i></i></div>
                 </div>
               </div>
-
             </div>
+            <div class="svc-cap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              <div><h3>Outsourcing de TI &amp; Squads</h3><p>Times técnicos dedicados, com governança e entrega contínua.</p></div>
+            </div>
+          </article>
+
+        </div>
+        <div class="svc-nav">
+          <div class="svc-dots" aria-hidden="true"></div>
+          <div class="svc-arrows">
+            <button class="svc-arrow" type="button" data-dir="-1" aria-label="Frente anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="svc-arrow" type="button" data-dir="1" aria-label="Próxima frente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
           </div>
         </div>
       </div>
@@ -1511,10 +1707,11 @@
       <div class="section-head reveal up">
         <span class="cases-eyebrow">Cases</span>
         <h2>Sistemas que já resolvem problema real.</h2>
-        <p class="lede">Projetos que saíram do diagnóstico e estão em produção. Passe o mouse em cada um para ver como foi construído.</p>
+        <p class="lede">Projetos que saíram do diagnóstico e estão em produção. Arraste para o lado e veja cada um em movimento.</p>
       </div>
 
-      <div class="case-studies reveal up">
+      <div class="cases-carousel reveal up">
+        <div class="case-studies cases-track" role="group" aria-label="Cases em produção, arraste para o lado">
 
         <article class="case" tabindex="0">
           <div class="case-info">
@@ -1722,6 +1919,14 @@
           </div>
         </article>
 
+        </div>
+        <div class="cases-nav">
+          <div class="cases-dots" aria-hidden="true"></div>
+          <div class="cases-arrows">
+            <button class="cases-arrow" type="button" data-dir="-1" aria-label="Case anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button class="cases-arrow" type="button" data-dir="1" aria-label="Próximo case"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1939,15 +2144,6 @@
     renderFrameworks(); renderFrameworks();
 
     (function(){
-      var items = document.querySelectorAll('.svc-item');
-      var scenes = document.querySelectorAll('.svc-scene');
-      if(!items.length) return;
-      var urlEl = document.querySelector('.svc-frame-bar em');
-      var urls = {
-        erp:'erp.databravo.com.br', crm:'crm.databravo.com.br', lms:'academy.databravo.com.br',
-        mobile:'app · iOS & Android', scraping:'pipelines.databravo.com.br',
-        infra:'bi.databravo.com.br', ia:'ia.databravo.com.br', outsourcing:'squad.databravo.com.br'
-      };
       var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       function countUp(scene){
         if(reducedMotion) return;
@@ -2005,27 +2201,101 @@
         window.addEventListener('resize', update);
         update();
       })();
-      function activate(name){
-        items.forEach(function(it){
-          var on = it.getAttribute('data-scene') === name;
-          it.classList.toggle('active', on);
-          it.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        scenes.forEach(function(sc){
-          var on = sc.getAttribute('data-scene') === name;
-          var was = sc.classList.contains('active');
-          sc.classList.toggle('active', on);
-          if(on && !was) countUp(sc);
-        });
-        if(urlEl && urls[name]) urlEl.textContent = urls[name];
+      // ===== Carrosséis horizontais (serviços + cases) =====
+      function pauseController(cards){
+        if(!('IntersectionObserver' in window)){ cards.forEach(function(c){ c.classList.add('in-view'); }); return; }
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){
+              e.target.classList.add('in-view');
+              if(!e.target.__counted){ e.target.__counted = true; countUp(e.target); }
+            } else {
+              e.target.classList.remove('in-view');
+            }
+          });
+        }, { root:null, threshold:0.3 });
+        cards.forEach(function(c){ io.observe(c); });
       }
-      items.forEach(function(it){
-        var name = it.getAttribute('data-scene');
-        it.addEventListener('mouseenter', function(){ activate(name); });
-        it.addEventListener('focus', function(){ activate(name); });
-        it.addEventListener('click', function(){ activate(name); });
-      });
-      activate('erp');
+
+      function initCarousel(opts){
+        var track = document.querySelector(opts.track);
+        if(!track) return;
+        var cards = Array.prototype.slice.call(track.children);
+        if(!cards.length) return;
+        var dotsWrap = opts.dots ? document.querySelector(opts.dots) : null;
+        var prev = opts.prev ? document.querySelector(opts.prev) : null;
+        var next = opts.next ? document.querySelector(opts.next) : null;
+        var circular = !!opts.circular;
+        var dots = [];
+
+        if(dotsWrap){
+          cards.forEach(function(c, i){
+            var b = document.createElement('button');
+            b.className = 'svc-dot' + (i===0?' on':'');
+            b.type = 'button';
+            b.setAttribute('aria-label', 'Ir para o item ' + (i+1));
+            b.addEventListener('click', function(){ goTo(i); });
+            dotsWrap.appendChild(b);
+            dots.push(b);
+          });
+        }
+
+        function current(){
+          var box = track.getBoundingClientRect(), best = 0, bestD = Infinity;
+          cards.forEach(function(card, i){
+            var r = card.getBoundingClientRect();
+            var d = Math.abs((r.left + r.width/2) - (box.left + box.width/2));
+            if(d < bestD){ bestD = d; best = i; }
+          });
+          return best;
+        }
+        function setActive(i){
+          dots.forEach(function(d, j){ d.classList.toggle('on', j===i); });
+          if(prev && !circular) prev.disabled = i<=0;
+          if(next && !circular) next.disabled = i>=cards.length-1;
+        }
+        function goTo(i){
+          if(circular){ if(i<0) i=cards.length-1; if(i>=cards.length) i=0; }
+          else { i = Math.max(0, Math.min(cards.length-1, i)); }
+          var card = cards[i];
+          track.scrollTo({ left: card.offsetLeft - (track.clientWidth - card.clientWidth)/2, behavior:'smooth' });
+          setActive(i);
+        }
+        if(prev) prev.addEventListener('click', function(){ goTo(current()-1); });
+        if(next) next.addEventListener('click', function(){ goTo(current()+1); });
+
+        var raf;
+        track.addEventListener('scroll', function(){
+          if(raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(function(){ setActive(current()); });
+        }, { passive:true });
+
+        // arrasto com o mouse (desktop)
+        var down=false, sx=0, sl=0, moved=false;
+        track.addEventListener('mousedown', function(e){ down=true; moved=false; sx=e.pageX; sl=track.scrollLeft; });
+        window.addEventListener('mousemove', function(e){ if(!down) return; var dx=e.pageX-sx; if(Math.abs(dx)>4) moved=true; track.scrollLeft = sl - dx; });
+        window.addEventListener('mouseup', function(){ if(!down) return; down=false; if(moved) goTo(current()); });
+        track.addEventListener('click', function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); } }, true);
+
+        pauseController(cards);
+        setActive(0);
+
+        // auto-rotação circular (cases)
+        if(circular && !reducedMotion){
+          var timer=null;
+          function play(){ stop(); timer=setInterval(function(){ goTo(current()+1); }, opts.interval||4200); }
+          function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+          play();
+          track.addEventListener('mouseenter', stop);
+          track.addEventListener('mouseleave', play);
+          track.addEventListener('touchstart', stop, { passive:true });
+          track.addEventListener('focusin', stop);
+          document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else play(); });
+        }
+      }
+
+      initCarousel({ track:'.svc-track', dots:'.svc-dots', prev:'.svc-arrow[data-dir="-1"]', next:'.svc-arrow[data-dir="1"]' });
+      initCarousel({ track:'.cases-track', dots:'.cases-dots', prev:'.cases-arrow[data-dir="-1"]', next:'.cases-arrow[data-dir="1"]', circular:true });
     })();
 
     var toggle = document.querySelector('.nav-toggle');
