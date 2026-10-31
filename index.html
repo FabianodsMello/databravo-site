@@ -1127,8 +1127,8 @@
 .db-card.is-active{ cursor:default; }
 .db-cap{ margin-top:16px; text-align:center; opacity:0; height:0; overflow:hidden; transition:opacity .4s ease .08s; }
 .db-card.is-active .db-cap{ opacity:1; height:auto; }
-.db-cap b{ display:block; font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(1.02rem,2vw,1.28rem); color:#ece8f5; }
-.db-cap span{ display:block; font-size:13.5px; line-height:1.5; color:#9d93b8; margin:5px auto 0; max-width:470px; }
+.db-cap b{ display:block; font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(1.02rem,2vw,1.28rem); line-height:1.32; color:#ece8f5; }
+.db-cap span{ display:block; font-size:13.5px; line-height:1.5; color:#9d93b8; margin:11px auto 0; max-width:470px; }
 .db-bevel{ position:relative; border-radius:20px; padding:2.5px; background:linear-gradient(150deg, rgba(255,255,255,.4) 0%, rgba(124,58,237,.3) 38%, rgba(10,6,20,.5) 72%, rgba(255,255,255,.12) 100%); box-shadow:0 34px 60px -16px rgba(4,2,10,.6), 0 8px 18px rgba(4,2,10,.4); }
 .db-bevel.light{ background:linear-gradient(150deg, rgba(255,255,255,.95) 0%, rgba(124,58,237,.3) 40%, rgba(120,90,180,.32) 74%, rgba(255,255,255,.7) 100%); box-shadow:0 34px 60px -16px rgba(50,30,90,.32), 0 8px 18px rgba(50,30,90,.16); }
 .db-frame{ position:relative; border-radius:17.5px; overflow:hidden; background:#0e0a18; }
@@ -2572,7 +2572,7 @@ function initCoverflow(root, list, startLight, autoplay){
     let cw = Math.min(460, W*0.6);
     if(W<600) cw = Math.min(330, W*0.84);
     stage.style.setProperty('--dcw', cw+'px');
-    stage.style.height = Math.round(36 + cw*2/3 + 6 + 64) + 'px';
+    stage.style.height = Math.round(36 + cw*2/3 + 6 + 104) + 'px';
   }
   function layout(){
     cards.forEach((card,i)=>{
