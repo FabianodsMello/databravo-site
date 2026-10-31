@@ -2093,10 +2093,10 @@ function reg(canvas, def){
     function dotflow(x1,y1,x2,y2,phase,col){ const t=((phase%1)+1)%1; const xx=lerp(x1,x2,t), yy=lerp(y1,y2,t); ctx.beginPath(); ctx.arc(xx,yy,u(1),0,TAU); ctx.fillStyle=col||P.acc; ctx.globalAlpha=Math.sin(t*Math.PI); ctx.fill(); ctx.globalAlpha=1; }
     function kpi(x,y,w,h,label,val,prog,o={}){
       panel(x,y,w,h,u(2.2));
-      txt(label,x+u(3.6),y+u(7.5),{s:3,c:P.dim,w:600});
+      txt(label,x+u(3.6),y+u(6.2),{s:2.6,c:P.dim,w:600});
       const cur=(o.prefix||'')+fmt(val*E.out(prog))+(o.suffix||'');
-      txt(cur,x+u(3.6),y+h-u(5.2),{s:o.big||7.4,w:800,c:o.c||P.txt});
-      if(o.delta){ chip(o.delta,x+w-u(3.6),y+u(7.2),{align:'right',s:2.6,bg:P.light?'rgba(22,163,74,.12)':'rgba(52,211,153,.16)',c:P.good,h:6,padX:2.4}); }
+      txt(cur,x+u(3.6),y+h-u(4.2),{s:o.big||6.6,w:800,c:o.c||P.txt,base:'alphabetic'});
+      if(o.delta){ chip(o.delta,x+w-u(3.2),y+u(5.9),{align:'right',s:2.3,bg:P.light?'rgba(22,163,74,.12)':'rgba(52,211,153,.16)',c:P.good,h:5.4,padX:2}); }
     }
 
     const s = {
@@ -2150,13 +2150,13 @@ scene('landing', { light:true, draw:s=>{
   const rx=x+w*.6, rw=w*.34;
   const pr=s.app(2.2,1.4);
   s.panel(rx,y+u(15),rw,u(26),u(2.4));
-  s.ringGauge(rx+rw/2,y+u(26),u(9),pr*.98,{w:1.8});
-  s.txt(Math.round(98*E.out(pr))+'',rx+rw/2,y+u(27.5),{align:'center',s:7,w:800});
-  s.txt('Performance',rx+rw/2,y+u(36),{align:'center',s:2.7,c:P.dim});
+  s.ringGauge(rx+rw/2,y+u(23),u(7),pr*.98,{w:1.8});
+  s.txt(Math.round(98*E.out(pr))+'',rx+rw/2,y+u(24.6),{align:'center',s:5.6,w:800});
+  s.txt('Performance',rx+rw/2,y+u(37.5),{align:'center',s:2.5,c:P.dim});
   const cv=s.app(3.4,1.6);
   s.panel(rx,y+u(43),rw,u(15),u(2.4));
-  s.txt('Conversões',rx+u(3.4),y+u(49),{s:2.7,c:P.dim});
-  s.txt(fmt(312*E.out(cv)),rx+u(3.4),y+u(55),{s:6.6,w:800,c:P.acc});
+  s.txt('Conversões',rx+u(3.4),y+u(48.5),{s:2.5,c:P.dim});
+  s.txt(fmt(312*E.out(cv)),rx+u(3.4),y+u(55),{s:6,w:800,c:P.acc});
   if(s.t>3.7&&s.t<5){ const cxp=lerp(bx+u(44),bx+u(15),s.app(3.7,.5)); s.cursor(cxp,by+u(6),(s.app(4.1,.3)-s.app(4.5,.3))); }
 }});
 
@@ -2190,9 +2190,9 @@ scene('saas', { light:true, draw:s=>{
   const {u,P}=s, x=u(16), y=u(15), w=s.W-u(32);
   s.kpi(x,y,w*.46,u(24),'MRR',48,s.app(.4,1.6),{prefix:'R$ ',suffix:'k',delta:'▲ 12%',big:8});
   s.panel(x+w*.52,y,w*.48,u(24),u(2.4));
-  s.ringGauge(x+w*.52+w*.24,y+u(12),u(8),(s.t%4)/4,{c:P.acc,w:1.6});
-  s.txt('↻',x+w*.52+w*.24,y+u(13.6),{align:'center',s:6,c:P.acc,w:700});
-  s.txt('Cobrança recorrente',x+w*.52+w*.24,y+u(21),{align:'center',s:2.6,c:P.dim});
+  s.ringGauge(x+w*.52+w*.24,y+u(10),u(6),(s.t%4)/4,{c:P.acc,w:1.6});
+  s.txt('↻',x+w*.52+w*.24,y+u(11.4),{align:'center',s:4.6,c:P.acc,w:700});
+  s.txt('Cobrança recorrente',x+w*.52+w*.24,y+u(20),{align:'center',s:2.4,c:P.dim});
   const py=y+u(28);
   s.panel(x,py,w,s.H-py-u(14),u(2.6));
   const vals=[20,26,24,31,34,40,44,48];
@@ -2400,7 +2400,7 @@ scene('case_ecom', { light:false, draw:s=>{
     s.round(px+u(3.6),yy,pw*.5,u(2),u(1)); s.fill(P.stroke); s.txt('R$',px+pw-u(3.6),yy+u(2),{align:'right',s:2.4,c:P.dim}); s.ctx.globalAlpha=1; });
   const done=s.life(3.6,20,.5); s.ctx.globalAlpha=done;
   s.round(px+u(3.6),y+u(24),pw-u(7.2),u(5),u(1.4)); s.fill(P.good); s.txt('Pedido confirmado',px+pw/2,y+u(27.4),{align:'center',s:2.7,w:700,c:'#fff'}); s.ctx.globalAlpha=1;
-  s.kpi(x,s.H-u(22),w*.54,u(16),'Pedidos hoje',Math.floor(240+s.app(2,3)*180),s.app(2,3),{big:7,delta:'▲ pico'});
+  s.kpi(x,s.H-u(24),w*.54,u(18),'Pedidos hoje',Math.floor(240+s.app(2,3)*180),s.app(2,3),{big:6.4,delta:'▲ pico'});
 }});
 
 /* C2 Data Warehouse (claro) */
@@ -2424,9 +2424,9 @@ scene('case_dw', { light:true, draw:s=>{
 /* C3 LMS escala (roxo) */
 scene('case_lmsescala', { light:false, draw:s=>{
   const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
-  s.kpi(x,y,w*.5,u(18),'Empreendedores',Math.floor(s.app(.4,3)*820),s.app(.4,3),{big:8,delta:'em formação'});
+  s.kpi(x,y,w*.5,u(19),'Empreendedores',Math.floor(s.app(.4,3)*820),s.app(.4,3),{big:7.2,delta:'em formação'});
   const cert=s.life(3.4,20,.6); s.ctx.globalAlpha=cert;
-  s.panel(x+w*.56,y,w*.44,u(18),u(2.4)); s.ringGauge(x+w*.56+u(9),y+u(9),u(5.5),1,{c:P.good});
+  s.panel(x+w*.56,y,w*.44,u(19),u(2.4)); s.ringGauge(x+w*.56+u(9),y+u(9.5),u(5.5),1,{c:P.good});
   s.txt('✓',x+w*.56+u(9),y+u(11),{align:'center',s:5,c:P.good,w:800});
   s.txt('Certificado emitido',x+w*.56+u(18),y+u(9),{s:2.8,w:600}); s.txt('turma concluída',x+w*.56+u(18),y+u(13),{s:2.4,c:P.dim}); s.ctx.globalAlpha=1;
   const gy=y+u(23); const cols=12, rows=4, gw=w, cwd=(gw-u(1.6)*(cols-1))/cols, chh=(s.H-gy-u(13)-u(1.6)*(rows-1))/rows;
@@ -2503,10 +2503,10 @@ scene('case_match', { light:false, draw:s=>{
 scene('case_eco', { light:true, draw:s=>{
   const {u,P}=s, x=u(16), y=u(13), w=s.W-u(32);
   const kw=(w-u(6))/3;
-  s.kpi(x,y,kw,u(16),'Atores',312,s.app(.4,2),{big:6.4});
-  s.kpi(x+kw+u(3),y,kw,u(16),'Conexões',1800,s.app(.7,2),{big:6.4});
-  s.kpi(x+2*(kw+u(3)),y,kw,u(16),'Projetos',47,s.app(1,2),{big:6.4});
-  const gy=y+u(20), gh=s.H-gy-u(13), gcx=s.cx, gcy=gy+gh/2;
+  s.kpi(x,y,kw,u(19),'Atores',312,s.app(.4,2),{big:6});
+  s.kpi(x+kw+u(3),y,kw,u(19),'Conexões',1800,s.app(.7,2),{big:6});
+  s.kpi(x+2*(kw+u(3)),y,kw,u(19),'Projetos',47,s.app(1,2),{big:6});
+  const gy=y+u(22), gh=s.H-gy-u(12), gcx=s.cx, gcy=gy+gh/2;
   const nodes=[]; const N=9;
   for(let i=0;i<N;i++){ const ang=i/N*TAU+s.t*.1; const rad=u(14)+ (i%3)*u(5); nodes.push([gcx+Math.cos(ang)*rad*1.6, gcy+Math.sin(ang)*rad]); }
   for(let i=0;i<N;i++){ const a=clamp(s.app(.6+i*.18,.5)); if(a<=0)continue;
