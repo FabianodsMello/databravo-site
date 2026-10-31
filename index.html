@@ -1119,6 +1119,45 @@
     .hero-actions{ gap:18px; }
   }
 </style>
+<style>
+/* ===== Carrossel 3D de motions (roleta vista de frente) ===== */
+.db-cf{ position:relative; margin:30px auto 0; max-width:1200px; }
+.db-stage{ position:relative; transform-style:preserve-3d; perspective:1700px; perspective-origin:50% 44%; }
+.db-card{ position:absolute; top:0; left:50%; width:var(--dcw,460px); transition:transform .6s cubic-bezier(.22,.61,.36,1), opacity .55s ease, filter .55s ease; will-change:transform,opacity,filter; backface-visibility:hidden; cursor:pointer; }
+.db-card.is-active{ cursor:default; }
+.db-cap{ margin-top:16px; text-align:center; opacity:0; height:0; overflow:hidden; transition:opacity .4s ease .08s; }
+.db-card.is-active .db-cap{ opacity:1; height:auto; }
+.db-cap b{ display:block; font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(1.02rem,2vw,1.28rem); color:#ece8f5; }
+.db-cap span{ display:block; font-size:13.5px; line-height:1.5; color:#9d93b8; margin:5px auto 0; max-width:470px; }
+.db-bevel{ position:relative; border-radius:20px; padding:2.5px; background:linear-gradient(150deg, rgba(255,255,255,.4) 0%, rgba(124,58,237,.3) 38%, rgba(10,6,20,.5) 72%, rgba(255,255,255,.12) 100%); box-shadow:0 34px 60px -16px rgba(4,2,10,.6), 0 8px 18px rgba(4,2,10,.4); }
+.db-bevel.light{ background:linear-gradient(150deg, rgba(255,255,255,.95) 0%, rgba(124,58,237,.3) 40%, rgba(120,90,180,.32) 74%, rgba(255,255,255,.7) 100%); box-shadow:0 34px 60px -16px rgba(50,30,90,.32), 0 8px 18px rgba(50,30,90,.16); }
+.db-frame{ position:relative; border-radius:17.5px; overflow:hidden; background:#0e0a18; }
+.db-frame.light{ background:#fff; }
+.db-bar{ display:flex; align-items:center; gap:6px; padding:9px 13px; border-bottom:1px solid rgba(255,255,255,.08); }
+.db-frame.light .db-bar{ border-bottom:1px solid rgba(26,16,48,.07); }
+.db-bar i{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.16); display:block; }
+.db-frame.light .db-bar i{ background:rgba(26,16,48,.12); }
+.db-bar em{ margin-left:9px; font-style:normal; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:11px; color:#9d93b8; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.db-frame.light .db-bar em{ color:#8b84a3; }
+.db-body{ position:relative; aspect-ratio:3/2; }
+.db-body canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.db-gloss{ position:absolute; inset:0; pointer-events:none; background:linear-gradient(140deg, rgba(255,255,255,.2) 0%, rgba(255,255,255,.04) 22%, rgba(255,255,255,0) 44%); }
+.db-frame.light .db-gloss{ background:linear-gradient(140deg, rgba(255,255,255,.55) 0%, rgba(255,255,255,.1) 20%, rgba(255,255,255,0) 42%); }
+.db-nav{ display:flex; align-items:center; justify-content:center; gap:16px; margin-top:28px; }
+.db-arrow{ width:46px; height:46px; border-radius:50%; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#fff; cursor:pointer; display:grid; place-items:center; transition:background .2s,transform .2s,border-color .2s; }
+.db-arrow:hover{ background:#7c3aed; border-color:#7c3aed; transform:translateY(-1px); }
+.db-arrow svg{ width:20px; height:20px; }
+.db-dots{ display:flex; gap:7px; align-items:center; }
+.db-dot{ width:7px; height:7px; border-radius:50%; border:0; padding:0; background:rgba(255,255,255,.22); cursor:pointer; transition:all .25s; }
+.db-dot.on{ background:#a78bfa; width:22px; border-radius:4px; }
+.cases .db-cap b{ color:#17111f; }
+.cases .db-cap span{ color:#5f5875; }
+.cases .db-arrow{ border-color:#e0d9f2; background:#fff; color:#17111f; box-shadow:0 8px 20px -12px rgba(70,50,130,.5); }
+.cases .db-arrow:hover{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
+.cases .db-dot{ background:#d9d1ef; }
+.cases .db-dot.on{ background:#7c3aed; }
+@media (max-width:640px){ .db-cf{ margin-top:20px; } .db-nav{ gap:12px; margin-top:20px; } .db-arrow{ width:42px; height:42px; } }
+</style>
 
 <header class="nav">
   <div class="nav-inner">
@@ -1415,289 +1454,14 @@
       </div>
 
       <div class="svc-carousel reveal up">
-        <div class="svc-track" role="group" aria-label="Frentes de atuação, arraste para o lado">
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="lp">
-                  <div class="lp-badge">Publicado ✓</div>
-                  <div class="lp-page">
-                    <div class="lp-hero"></div>
-                    <div class="lp-line"></div>
-                    <div class="lp-line s"></div>
-                    <span class="lp-cta">Quero agora</span>
-                    <div class="lp-cursor"></div>
-                  </div>
-                  <div class="lp-side">
-                    <div class="lp-gauge"><svg viewBox="0 0 80 80"><circle class="lp-g-bg" cx="40" cy="40" r="32"/><circle class="lp-g-val" cx="40" cy="40" r="32"/></svg><b>98</b><i>Performance</i></div>
-                    <div class="lp-conv"><span>Conversões</span><b data-count="312">312</b></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 4H4v16h16V4h-4M8 4v4h8V4M9 12h6M9 16h6"/></svg>
-              <div><h3>Landing Pages &amp; Sites</h3><p>Páginas e sites com performance, SEO técnico e arquitetura pensada pra converter.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>wa.me/databravo</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="wa">
-                  <div class="wa-head"><span class="wa-av"></span><div><b>Atendimento IA</b><i>online</i></div></div>
-                  <div class="wa-body">
-                    <div class="wa-msg in">Oi! Quero um orçamento</div>
-                    <div class="wa-msg out">Claro! Me conta o que você precisa 👋</div>
-                    <div class="wa-msg in">Automação no WhatsApp</div>
-                    <div class="wa-type"><i></i><i></i><i></i></div>
-                    <div class="wa-msg out b">Perfeito, já separei um especialista pra você.</div>
-                  </div>
-                  <div class="wa-chip">Lead qualificado ✓</div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-              <div><h3>Automação de Atendimento</h3><p>Bots no WhatsApp, IA em texto e áudio, qualificação de leads e integração com CRM e ERP.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>app.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="saas">
-                  <div class="saas-top">
-                    <div class="saas-mrr"><i>MRR</i><b data-count="48" data-prefix="R$ " data-suffix="k">R$ 48k</b> <span class="saas-up">▲ 12%</span></div>
-                    <div class="saas-cycle"><svg viewBox="0 0 60 60"><circle class="saas-c-bg" cx="30" cy="30" r="24"/><circle class="saas-c-val" cx="30" cy="30" r="24"/></svg><span class="saas-renew">↻</span></div>
-                  </div>
-                  <div class="saas-plans">
-                    <div class="saas-plan"><span>Starter</span><div class="saas-bar"><i style="--w:48%"></i></div></div>
-                    <div class="saas-plan"><span>Pro</span><div class="saas-bar"><i style="--w:82%"></i></div></div>
-                    <div class="saas-plan"><span>Scale</span><div class="saas-bar"><i style="--w:64%"></i></div></div>
-                  </div>
-                  <div class="saas-tenants"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="saas-note">Assinatura renovada</div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-              <div><h3>Soluções SaaS &amp; Mini-SaaS</h3><p>Produtos SaaS multi-tenant, com cobrança recorrente e evolução contínua.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>erp.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="erp-top">
-                  <div class="erp-kpi"><i>Receita</i><b data-count="128" data-prefix="R$ " data-suffix="k">R$ 128k</b></div>
-                  <div class="erp-kpi"><i>Pedidos</i><b data-count="2401">2.401</b></div>
-                  <div class="erp-kpi"><i>Margem</i><b data-count="34" data-suffix="%">34%</b></div>
-                </div>
-                <div class="erp-chart"><span style="--h:42%"></span><span style="--h:66%"></span><span style="--h:52%"></span><span style="--h:84%"></span><span style="--h:60%"></span><span style="--h:92%"></span></div>
-                <div class="erp-rows">
-                  <div class="erp-row"><span class="ln"></span><span class="ln s"></span><span class="erp-pill ok">Pago</span></div>
-                  <div class="erp-row"><span class="ln"></span><span class="ln s"></span><span class="erp-pill info">Enviado</span></div>
-                  <div class="erp-row"><span class="ln"></span><span class="ln s"></span><span class="erp-pill warn">Pendente</span></div>
-                </div>
-                <div class="erp-note">Novo pedido #2.402</div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-              <div><h3>ERP sob Medida</h3><p>Sistema de gestão próprio, adaptado à complexidade real da operação.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>crm.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="crm">
-                  <div class="crm-col"><h6>Lead <i>4</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
-                  <div class="crm-col"><h6>Qualificado <i>2</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
-                  <div class="crm-col crm-glow"><h6>Fechado <i>7</i></h6><div class="crm-deal"><div class="ln"></div><div class="ln s"></div></div></div>
-                  <div class="crm-mover"><div class="ln"></div><em>R$ 12k</em><span class="ok">✓</span></div>
-                  <div class="crm-confetti"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m5-4a4 4 0 100-8 4 4 0 000 8z"/></svg>
-              <div><h3>CRM Customizado</h3><p>Fluxos comerciais, qualificação e organização de vendas integrados.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>academy.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="lms-video">
-                  <div class="lms-play"></div>
-                  <div class="lms-wave"><i></i><i></i><i></i><i></i><i></i></div>
-                </div>
-                <div class="lms-cert">Certificado emitido</div>
-                <div class="lms-prog"><i></i></div>
-                <div class="lms-lessons">
-                  <div class="lms-lesson"><span class="lms-check"></span>Módulo 1 · Fundamentos</div>
-                  <div class="lms-lesson"><span class="lms-check"></span>Módulo 2 · Prática guiada</div>
-                  <div class="lms-lesson"><span class="lms-check"></span>Módulo 3 · Projeto final</div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l8 4-8 4-8-4 8-4zM4 11l8 4 8-4M4 15l8 4 8-4"/></svg>
-              <div><h3>Plataformas Educacionais (LMS)</h3><p>Ambiente digital com trilhas, usuários e monitoramento de engajamento.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>app · iOS &amp; Android</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="mob">
-                  <div class="mob-phone">
-                    <div class="mob-notch"></div>
-                    <div class="mob-screens">
-                      <div class="mob-screen"><div class="mob-b hero"></div><div class="mob-b line"></div><div class="mob-b line s"></div><div class="mob-grid"><div class="mob-b grid"></div><div class="mob-b grid"></div></div></div>
-                      <div class="mob-screen"><div class="mob-b line"></div><div class="mob-b hero"></div><div class="mob-b line"></div><div class="mob-b line s"></div></div>
-                      <div class="mob-screen"><div class="mob-grid"><div class="mob-b grid"></div><div class="mob-b grid"></div></div><div class="mob-b hero"></div><div class="mob-b line s"></div></div>
-                    </div>
-                    <div class="mob-tab"><i></i><i></i><i></i></div>
-                    <div class="mob-tap"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg>
-              <div><h3>Desenvolvimento Mobile</h3><p>Apps nativos ou híbridos, com UX fluida e integração ao ecossistema.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>pipelines.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="scr-badge">+128 registros/min</div>
-                <div class="scr">
-                  <div class="scr-src"><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div><div class="l"></div></div>
-                  <div class="scr-flow"><div class="scr-dot"></div><div class="scr-dot"></div><div class="scr-dot"></div></div>
-                  <div class="scr-table"><div class="tr"></div><div class="tr"></div><div class="tr"></div><div class="tr"></div></div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-              <div><h3>Web Scraping &amp; Pipelines</h3><p>Extração estruturada de dados para alimentar decisões estratégicas.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>bi.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="inf-uptime">uptime 99,99%</div>
-                <div class="inf">
-                  <div class="inf-chart">
-                    <svg class="inf-svg" viewBox="0 0 300 150" preserveAspectRatio="none">
-                      <polyline class="inf-area" points="0,118 50,88 100,100 150,58 200,74 250,32 300,50 300,150 0,150"/>
-                      <polyline class="inf-line" points="0,118 50,88 100,100 150,58 200,74 250,32 300,50"/>
-                      <polyline class="inf-forecast" points="250,32 270,26 300,14"/>
-                    </svg>
-                  </div>
-                  <div class="inf-pipe">
-                    <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></i>
-                    <span class="inf-arrow"></span>
-                    <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></i>
-                    <span class="inf-arrow"></span>
-                    <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
-              <div><h3>Infraestrutura &amp; Dados</h3><p>Modelagem analítica e estruturas de BI para decisão em tempo real.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>ia.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="ia">
-                  <svg class="ia-svg" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid meet">
-                    <g>
-                      <line class="ia-link" x1="150" y1="110" x2="60" y2="45"/>
-                      <line class="ia-link" x1="150" y1="110" x2="45" y2="110"/>
-                      <line class="ia-link" x1="150" y1="110" x2="60" y2="175"/>
-                      <line class="ia-link" x1="150" y1="110" x2="240" y2="55"/>
-                      <line class="ia-link" x1="150" y1="110" x2="255" y2="110"/>
-                      <line class="ia-link" x1="150" y1="110" x2="240" y2="165"/>
-                    </g>
-                    <circle class="ia-node" cx="60" cy="45" r="8"/>
-                    <circle class="ia-node" cx="45" cy="110" r="8"/>
-                    <circle class="ia-node" cx="60" cy="175" r="8"/>
-                    <circle class="ia-node" cx="240" cy="55" r="8"/>
-                    <circle class="ia-node" cx="255" cy="110" r="8"/>
-                    <circle class="ia-node" cx="240" cy="165" r="8"/>
-                    <circle class="ia-ring" cx="150" cy="110" r="14"/>
-                    <circle class="ia-ring r2" cx="150" cy="110" r="14"/>
-                    <circle class="ia-core" cx="150" cy="110" r="14"/>
-                    <circle class="ia-travel t1" cx="150" cy="110" r="3"/>
-                    <circle class="ia-travel t2" cx="150" cy="110" r="3"/>
-                    <circle class="ia-travel t3" cx="150" cy="110" r="3"/>
-                  </svg>
-                  <div class="ia-chip">IA gerando resposta<span class="dots"><i></i><i></i><i></i></span></div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h.01M15 9h.01M8 15c1 1 2 1.5 4 1.5s3-.5 4-1.5"/></svg>
-              <div><h3>Integrações Avançadas com IA</h3><p>Conexão entre sistemas, APIs e inteligência artificial aplicada.</p></div>
-            </div>
-          </article>
-
-          <article class="svc-card">
-            <div class="svc-win">
-              <div class="svc-frame-bar"><span></span><span></span><span></span><em>squad.databravo.com.br</em></div>
-              <div class="svc-pane" aria-hidden="true">
-                <div class="out-merge">PR aprovado · merge</div>
-                <div class="out">
-                  <div class="out-team">
-                    <div class="out-av">JS</div><div class="out-av">TS</div><div class="out-av">PY</div><div class="out-av">GO</div><div class="out-av">+4</div>
-                  </div>
-                  <div class="out-editor"><div class="out-code"></div><div class="out-code"></div><div class="out-code"></div></div>
-                  <div class="out-commits">
-                    <div class="out-commit"><span class="cd"></span>feat: módulo de pagamentos</div>
-                    <div class="out-commit"><span class="cd"></span>test: cobertura 92%</div>
-                    <div class="out-commit"><span class="cd"></span>deploy: sprint 12 em produção</div>
-                  </div>
-                  <div class="out-sprint"><i></i></div>
-                </div>
-              </div>
-            </div>
-            <div class="svc-cap">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-              <div><h3>Outsourcing de TI &amp; Squads</h3><p>Times técnicos dedicados, com governança e entrega contínua.</p></div>
-            </div>
-          </article>
-
-        </div>
-        <div class="svc-nav">
-          <div class="svc-dots" aria-hidden="true"></div>
-          <div class="svc-arrows">
-            <button class="svc-arrow" type="button" data-dir="-1" aria-label="Frente anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
-            <button class="svc-arrow" type="button" data-dir="1" aria-label="Próxima frente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
+        <div class="db-cf" id="dbCfFrentes">
+  <div class="db-stage"></div>
+  <div class="db-nav">
+    <button class="db-arrow" data-dir="-1" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <div class="db-dots"></div>
+    <button class="db-arrow" data-dir="1" type="button" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</div>
       </div>
     </div>
   </section>
@@ -1711,222 +1475,14 @@
       </div>
 
       <div class="cases-carousel reveal up">
-        <div class="case-studies cases-track" role="group" aria-label="Cases em produção, arraste para o lado">
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 01 · Desenvolvimento</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Um e-commerce próprio para regras comerciais que nenhuma plataforma pronta suportava.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Descontos, combos e regras de estoque específicas não cabiam em nenhuma plataforma de prateleira.</p></div>
-              <div class="case-row"><b>A construção</b><p>Desenhamos uma plataforma própria do zero, com arquitetura pensada para alto volume de acessos e as regras exatas do negócio.</p></div>
-              <div class="case-row"><b>Hoje</b><p>A plataforma está no ar, sustentando picos de tráfego e crescendo junto com o catálogo e o volume de pedidos.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Catálogo · Estoque · Checkout</em></div>
-              <div class="cwin-body">
-                <div class="cm-bars"><i style="height:52%"></i><i class="hi" style="height:88%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:58%"></i><i class="hi" style="height:94%"></i></div>
-                <div class="cm-lines"><i></i><i></i></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 02 · Dados &amp; BI</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Um Data Warehouse Corporativo que virou a fonte única da verdade.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Múltiplas fontes de dados sem consolidação impediam decisões estratégicas confiáveis.</p></div>
-              <div class="case-row"><b>A construção</b><p>Modelamos os dados, construímos a estrutura SQL e consolidamos as fontes distintas em uma única base.</p></div>
-              <div class="case-row"><b>Hoje</b><p>Dashboards estratégicos rodam com dados confiáveis, atualizados e centralizados, todos os dias.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Fontes · SQL · BI</em></div>
-              <div class="cwin-body">
-                <div class="cm-bars"><i style="height:44%"></i><i style="height:60%"></i><i class="hi" style="height:92%"></i><i style="height:50%"></i><i class="hi" style="height:78%"></i><i style="height:64%"></i></div>
-                <div class="cm-lines"><i></i><i></i></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 03 · Plataforma Educacional (LMS)</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Um ambiente digital completo para formar empreendedores em escala.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Formar e acompanhar centenas de empreendedores exigia um ambiente próprio, não uma solução genérica de cursos.</p></div>
-              <div class="case-row"><b>A construção</b><p>Construímos a plataforma com trilhas de aprendizagem, gestão de usuários e monitoramento de engajamento.</p></div>
-              <div class="case-row"><b>Hoje</b><p>O ambiente forma e acompanha empreendedores continuamente, com o engajamento monitorado em tempo real.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Trilhas · Usuários · Engajamento</em></div>
-              <div class="cwin-body">
-                <div class="cm-list">
-                  <div class="cm-litem"><span class="cm-av"></span><span class="cm-bar2"><i style="--w:88%"></i></span></div>
-                  <div class="cm-litem"><span class="cm-av"></span><span class="cm-bar2"><i style="--w:64%"></i></span></div>
-                  <div class="cm-litem"><span class="cm-av"></span><span class="cm-bar2"><i style="--w:76%"></i></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 04 · Automação &amp; WhatsApp</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Fluxos educacionais via WhatsApp, respondendo milhares sem time manual.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Manter contato contínuo com milhares de participantes de programas de capacitação, sem uma equipe respondendo um a um.</p></div>
-              <div class="case-row"><b>A construção</b><p>Construímos uma automação conversacional com lógica estruturada, distribuindo conteúdos e acompanhando a jornada de cada participante.</p></div>
-              <div class="case-row"><b>Hoje</b><p>A jornada roda sozinha, liberando o time humano para os momentos que exigem atenção real.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Fluxos · Jornadas · Respostas</em></div>
-              <div class="cwin-body">
-                <div class="cm-chat">
-                  <span class="cm-bub in"></span><span class="cm-bub out"></span><span class="cm-bub in"></span><span class="cm-bub out"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 05 · IA &amp; Voz</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Um bot conversacional que responde em áudio, gerado por IA.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>O atendimento precisava responder em áudio, de forma natural, sem depender de gravações manuais.</p></div>
-              <div class="case-row"><b>A construção</b><p>Desenvolvemos um bot com respostas em áudio geradas por IA, integrado aos sistemas internos.</p></div>
-              <div class="case-row"><b>Hoje</b><p>O bot responde em voz, com contexto, e conversa com os sistemas da operação em tempo real.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Áudio · IA · Integração</em></div>
-              <div class="cwin-body">
-                <div class="cm-wave">
-                  <span class="cm-play"></span>
-                  <span class="cm-eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                </div>
-                <div class="cm-lines"><i></i><i></i></div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 06 · CRM &amp; Automação</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Bots integrados ao CRM, para nenhum lead se perder no caminho.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Leads chegavam por vários canais e se perdiam antes de entrar no funil comercial.</p></div>
-              <div class="case-row"><b>A construção</b><p>Construímos fluxos automatizados de atendimento e qualificação, integrados diretamente ao CRM.</p></div>
-              <div class="case-row"><b>Hoje</b><p>Cada lead entra qualificado e organizado no CRM, sem digitação manual.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Leads · Qualificação · CRM</em></div>
-              <div class="cwin-body">
-                <div class="cm-funnel">
-                  <div class="cm-col"><h6>Lead</h6><div class="cm-card hot"></div><div class="cm-card"></div></div>
-                  <div class="cm-col"><h6>Qualificado</h6><div class="cm-card hot"></div></div>
-                  <div class="cm-col"><h6>No CRM</h6><div class="cm-card hot"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 07 · Plataforma &amp; Inovação</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Uma plataforma que conecta empresas e startups por desafio real.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Grandes empresas precisavam encontrar startups alinhadas a desafios reais de inovação, de forma estruturada.</p></div>
-              <div class="case-row"><b>A construção</b><p>Desenvolvemos um sistema de matchmaking baseado em desafios, perfis e critérios estratégicos.</p></div>
-              <div class="case-row"><b>Hoje</b><p>O sistema roda o match entre empresas e startups com governança de inovação.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Desafios · Perfis · Match</em></div>
-              <div class="cwin-body">
-                <div class="cm-match">
-                  <svg viewBox="0 0 300 130" preserveAspectRatio="none">
-                    <defs><linearGradient id="cmMatchG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
-                    <line class="cm-mline a" x1="54" y1="30" x2="246" y2="70"/>
-                    <line class="cm-mline b" x1="54" y1="70" x2="246" y2="110"/>
-                    <line class="cm-mline c" x1="54" y1="110" x2="246" y2="30"/>
-                    <rect class="cm-mnode on b1" x="22" y="15" width="32" height="30" rx="8"/>
-                    <rect class="cm-mnode on b2" x="22" y="55" width="32" height="30" rx="8"/>
-                    <rect class="cm-mnode on b3" x="22" y="95" width="32" height="30" rx="8"/>
-                    <rect class="cm-mnode on b3" x="246" y="15" width="32" height="30" rx="8"/>
-                    <rect class="cm-mnode on b1" x="246" y="55" width="32" height="30" rx="8"/>
-                    <rect class="cm-mnode on b2" x="246" y="95" width="32" height="30" rx="8"/>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="case" tabindex="0">
-          <div class="case-info">
-            <div class="case-meta"><span class="case-num">Projeto 08 · Plataforma &amp; Dados</span><span class="case-badge">Em produção</span></div>
-            <h3 class="case-title">Gestão de ecossistemas de inovação, além de qualquer planilha.</h3>
-            <span class="case-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg> Passe o mouse para ver como construímos</span>
-            <div class="case-story">
-              <div class="case-row"><b>O pedido</b><p>Mapear e monitorar uma rede de empresas, startups, universidades e instituições exigia mais que planilhas.</p></div>
-              <div class="case-row"><b>A construção</b><p>Construímos uma arquitetura digital para mapear, monitorar e gerar indicadores do ecossistema.</p></div>
-              <div class="case-row"><b>Hoje</b><p>A plataforma mapeia, monitora e gera indicadores de todo o ecossistema em um só lugar.</p></div>
-            </div>
-          </div>
-          <div class="case-visual">
-            <div class="cwin" aria-hidden="true">
-              <div class="cwin-bar"><span></span><span></span><span></span><em>Mapa · Monitor · Indicadores</em></div>
-              <div class="cwin-body">
-                <div class="cm-kpis">
-                  <div class="cm-kpi"><span>Atores</span><b>312</b></div>
-                  <div class="cm-kpi"><span>Conexões</span><b>1.8k</b></div>
-                  <div class="cm-kpi"><span>Projetos</span><b>47</b></div>
-                </div>
-                <svg class="cm-spark" viewBox="0 0 300 44" preserveAspectRatio="none">
-                  <defs><linearGradient id="cmSparkG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(124,58,237,.16)"/><stop offset="1" stop-color="rgba(124,58,237,0)"/></linearGradient></defs>
-                  <path class="fill" style="fill:url(#cmSparkG)" d="M0,34 C24,30 40,32 64,24 C88,16 104,20 128,14 C152,8 168,18 192,12 C216,6 232,14 256,8 C272,5 288,4 300,3 L300,44 L0,44 Z"/>
-                  <path class="stroke" d="M0,34 C24,30 40,32 64,24 C88,16 104,20 128,14 C152,8 168,18 192,12 C216,6 232,14 256,8 C272,5 288,4 300,3"/>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        </div>
-        <div class="cases-nav">
-          <div class="cases-dots" aria-hidden="true"></div>
-          <div class="cases-arrows">
-            <button class="cases-arrow" type="button" data-dir="-1" aria-label="Case anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
-            <button class="cases-arrow" type="button" data-dir="1" aria-label="Próximo case"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
-          </div>
-        </div>
+        <div class="db-cf" id="dbCfCases">
+  <div class="db-stage"></div>
+  <div class="db-nav">
+    <button class="db-arrow" data-dir="-1" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <div class="db-dots"></div>
+    <button class="db-arrow" data-dir="1" type="button" aria-label="Próximo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</div>
       </div>
     </div>
   </section>
@@ -2409,4 +1965,658 @@
       window.addEventListener('resize', function(){ resize(); seed(); if(reduced) step(); });
     }
   })();
+</script>
+<script>
+(function(){
+/* ===================== MOTOR ===================== */
+const FB = "'Poppins','Satoshi',system-ui,sans-serif";
+const FM = "'JetBrains Mono',ui-monospace,monospace";
+const RAF = [];
+let TICK = 0; const REDUCED = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || false;
+function animLoop(now){ TICK = REDUCED?6:now/1000; for(let i=0;i<RAF.length;i++){ const r=RAF[i]; if(r.on) r.fn(TICK); } requestAnimationFrame(animLoop); }
+requestAnimationFrame(animLoop);
+
+const E = {
+  lin:t=>t,
+  io:t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,
+  out:t=>1-Math.pow(1-t,3),
+  out4:t=>1-Math.pow(1-t,4),
+  ioq:t=>t<.5?16*t*t*t*t*t:1-Math.pow(-2*t+2,5)/2,
+  ein:t=>t*t*t
+};
+const clamp=(v,a=0,b=1)=>v<a?a:v>b?b:v;
+const lerp=(a,b,t)=>a+(b-a)*t;
+const TAU=Math.PI*2;
+const fmt=n=>{ n=Math.round(n); return n>=1000? n.toLocaleString('pt-BR') : ''+n; };
+
+function palette(light){
+  return light ? {
+    light:true, bg0:'#F7F4FC', bg1:'#EAE3F7', surf:'#ffffff', surf2:'#F3EFFB',
+    stroke:'rgba(26,16,48,.10)', strokeS:'rgba(26,16,48,.06)',
+    txt:'#1b1030', dim:'#6b6487', faint:'#b3abc9',
+    acc:'#7c3aed', acc2:'#9d5cf5', accSoft:'rgba(124,58,237,.12)',
+    good:'#16a34a', grid:'rgba(26,16,48,.05)', shadow:'rgba(40,24,80,.14)'
+  } : {
+    light:false, bg0:'#130c24', bg1:'#0c0718', surf:'rgba(255,255,255,.055)', surf2:'rgba(255,255,255,.03)',
+    stroke:'rgba(255,255,255,.12)', strokeS:'rgba(255,255,255,.07)',
+    txt:'#ece8f5', dim:'#9d93b8', faint:'#6a6188',
+    acc:'#a78bfa', acc2:'#8b5cf6', accSoft:'rgba(139,92,246,.18)',
+    good:'#34d399', grid:'rgba(255,255,255,.05)', shadow:'rgba(0,0,0,.4)'
+  };
+}
+
+function reg(canvas, def){
+  const ctx = canvas.getContext('2d');
+  const P = palette(def.light);
+  const dur = def.dur || 13;
+  let W=0,H=0,U=1;
+  function size(){
+    const r = canvas.getBoundingClientRect();
+    if(!r.width) return;
+    const dpr = Math.min(2, window.devicePixelRatio||1);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W*dpr); canvas.height = Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    U = Math.min(W,H)/100;
+  }
+  const ro = new ResizeObserver(size); ro.observe(canvas); size();
+
+  const rec = { on:false, fn:(t)=>{
+    if(!W){ size(); if(!W) return; }
+    const lt = t % dur, p = lt/dur;
+    const u = n=>n*U;
+
+    function round(x,y,w,h,r){ r=Math.min(r,w/2,h/2); ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+    function fill(c){ ctx.fillStyle=c; ctx.fill(); }
+    function stroke(c,w=1){ ctx.lineWidth=w; ctx.strokeStyle=c; ctx.stroke(); }
+    function panel(x,y,w,h,r=u(2.4),o={}){
+      ctx.save();
+      if(o.shadow!==false){ ctx.shadowColor=P.shadow; ctx.shadowBlur=u(2.6); ctx.shadowOffsetY=u(1.1); }
+      round(x,y,w,h,r); ctx.fillStyle=o.bg||P.surf; ctx.fill(); ctx.shadowColor='transparent';
+      round(x,y,w,h,r); ctx.lineWidth=1; ctx.strokeStyle=o.stroke||P.stroke; ctx.stroke();
+      ctx.restore();
+    }
+    function txt(str,x,y,o={}){
+      ctx.save(); ctx.globalAlpha*=o.a??1;
+      ctx.font=`${o.w||600} ${u(o.s||4)}px ${o.mono?FM:FB}`;
+      ctx.fillStyle=o.c||P.txt; ctx.textAlign=o.align||'left'; ctx.textBaseline=o.base||'alphabetic';
+      if(o.ls!=null) ctx.letterSpacing=u(o.ls)+'px';
+      ctx.fillText(str,x,y); ctx.restore();
+    }
+    function chip(str,x,y,o={}){
+      ctx.save(); ctx.font=`${o.w||700} ${u(o.s||3.2)}px ${FB}`;
+      const tw=ctx.measureText(str).width, padX=u(o.padX||3.4), h=u(o.h||7.4);
+      let w=tw+padX*2; if(o.dot) w+=u(3);
+      const x0 = o.align==='center'? x-w/2 : o.align==='right'? x-w : x;
+      ctx.globalAlpha*=o.a??1;
+      round(x0,y-h/2,w,h,h/2); ctx.fillStyle=o.bg||P.accSoft; ctx.fill();
+      if(o.stroke){ ctx.lineWidth=1; ctx.strokeStyle=o.stroke; ctx.stroke(); }
+      ctx.fillStyle=o.c||P.acc; ctx.textAlign='left'; ctx.textBaseline='middle';
+      if(o.dot){ ctx.beginPath(); ctx.arc(x0+padX+u(1.2),y,u(1.3),0,TAU); ctx.fillStyle=o.dotC||P.good; ctx.fill(); ctx.fillStyle=o.c||P.acc; ctx.fillText(str,x0+padX+u(4),y); }
+      else ctx.fillText(str,x0+padX,y);
+      ctx.restore(); return w;
+    }
+    function lineChart(x,y,w,h,vals,prog,o={}){
+      const n=vals.length, max=Math.max(...vals)*1.08, min=o.min!=null?o.min:0;
+      const px=i=>x+ w*i/(n-1), py=v=>y+h-(v-min)/(max-min)*h;
+      const shown = prog*(n-1);
+      ctx.save();
+      ctx.beginPath(); ctx.moveTo(px(0),py(vals[0]));
+      let lastX=px(0),lastY=py(vals[0]);
+      for(let i=1;i<n;i++){ const seg=clamp(shown-(i-1)); if(seg<=0)break; const xx=lerp(px(i-1),px(i),seg), yy=lerp(py(vals[i-1]),py(vals[i]),E.io(seg)); ctx.lineTo(xx,yy); lastX=xx; lastY=yy; }
+      const grad=ctx.createLinearGradient(0,y,0,y+h); grad.addColorStop(0,o.fill||P.accSoft); grad.addColorStop(1,'rgba(124,58,237,0)');
+      ctx.lineTo(lastX,y+h); ctx.lineTo(px(0),y+h); ctx.closePath(); ctx.fillStyle=grad; ctx.fill();
+      ctx.beginPath(); ctx.moveTo(px(0),py(vals[0]));
+      for(let i=1;i<n;i++){ const seg=clamp(shown-(i-1)); if(seg<=0)break; const xx=lerp(px(i-1),px(i),seg), yy=lerp(py(vals[i-1]),py(vals[i]),E.io(seg)); ctx.lineTo(xx,yy); }
+      ctx.lineWidth=u(.7); ctx.strokeStyle=o.line||P.acc; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke();
+      ctx.beginPath(); ctx.arc(lastX,lastY,u(1.3),0,TAU); ctx.fillStyle=o.line||P.acc; ctx.fill();
+      ctx.beginPath(); ctx.arc(lastX,lastY,u(2.6),0,TAU); ctx.strokeStyle=o.line||P.acc; ctx.globalAlpha=.3; ctx.lineWidth=u(.6); ctx.stroke();
+      ctx.restore();
+    }
+    function bars(x,y,w,h,vals,prog,o={}){
+      const n=vals.length, gap=u(o.gap||2.2), bw=(w-gap*(n-1))/n, max=Math.max(...vals);
+      for(let i=0;i<n;i++){ const gp=clamp(prog*n - i); const hh=h*vals[i]/max*E.out(gp); const bx=x+i*(bw+gap);
+        round(bx,y+h-hh,bw,hh,Math.min(bw/2,u(1))); ctx.fillStyle=(o.hi&&o.hi.includes(i))?P.acc:(P.light?'rgba(124,58,237,.3)':'rgba(167,139,250,.5)'); ctx.fill(); }
+    }
+    function ringGauge(cx,cy,r,prog,o={}){
+      ctx.lineWidth=u(o.w||1.6); ctx.lineCap='round';
+      ctx.beginPath(); ctx.arc(cx,cy,r,0,TAU); ctx.strokeStyle=P.strokeS; ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI/2,-Math.PI/2+TAU*clamp(prog)); ctx.strokeStyle=o.c||P.acc; ctx.stroke();
+    }
+    function cursor(x,y,press=0){
+      ctx.save(); ctx.translate(x,y);
+      if(press>0){ ctx.beginPath(); ctx.arc(0,0,u(3.5)*press,0,TAU); ctx.fillStyle=`rgba(124,58,237,${.25*(1-press)})`; ctx.fill(); }
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(0,u(5.6)); ctx.lineTo(u(1.6),u(4.2)); ctx.lineTo(u(2.7),u(6.4)); ctx.lineTo(u(3.6),u(6)); ctx.lineTo(u(2.5),u(3.8)); ctx.lineTo(u(4.4),u(3.8)); ctx.closePath();
+      ctx.fillStyle='#fff'; ctx.strokeStyle='rgba(0,0,0,.5)'; ctx.lineWidth=u(.5); ctx.fill(); ctx.stroke(); ctx.restore();
+    }
+    function avatar(cx,cy,r,hue){ ctx.save(); const g=ctx.createLinearGradient(cx-r,cy-r,cx+r,cy+r); g.addColorStop(0,`hsl(${hue},62%,62%)`); g.addColorStop(1,`hsl(${hue+30},58%,48%)`); ctx.beginPath(); ctx.arc(cx,cy,r,0,TAU); ctx.fillStyle=g; ctx.fill(); ctx.restore(); }
+    function dotflow(x1,y1,x2,y2,phase,col){ const t=((phase%1)+1)%1; const xx=lerp(x1,x2,t), yy=lerp(y1,y2,t); ctx.beginPath(); ctx.arc(xx,yy,u(1),0,TAU); ctx.fillStyle=col||P.acc; ctx.globalAlpha=Math.sin(t*Math.PI); ctx.fill(); ctx.globalAlpha=1; }
+    function kpi(x,y,w,h,label,val,prog,o={}){
+      panel(x,y,w,h,u(2.2));
+      txt(label,x+u(3.6),y+u(7.5),{s:3,c:P.dim,w:600});
+      const cur=(o.prefix||'')+fmt(val*E.out(prog))+(o.suffix||'');
+      txt(cur,x+u(3.6),y+h-u(5.2),{s:o.big||7.4,w:800,c:o.c||P.txt});
+      if(o.delta){ chip(o.delta,x+w-u(3.6),y+u(7.2),{align:'right',s:2.6,bg:P.light?'rgba(22,163,74,.12)':'rgba(52,211,153,.16)',c:P.good,h:6,padX:2.4}); }
+    }
+
+    const s = {
+      ctx,W,H,U,u,P, t:lt, T:dur, p, cx:W/2, cy:H/2, light:def.light,
+      seg:(st,d,a,b,ease=E.io)=> a+(b-a)*(ease(clamp((lt-st)/d))),
+      app:(st,d,ease=E.out)=> ease(clamp((lt-st)/d)),
+      life:(st,vis,fd=.7)=>{ const e=lt-st; if(e<0)return 0; if(e<fd)return E.out(e/fd); const o=e-fd-vis; if(o<=0)return 1; if(o<fd)return 1-E.io(clamp(o/fd)); return 0; },
+      round, fill, stroke, txt, chip, panel, lineChart, bars, ringGauge, cursor, avatar, dotflow, kpi
+    };
+
+    // background
+    const g = ctx.createLinearGradient(0,0,W*.3,H);
+    g.addColorStop(0,P.bg0); g.addColorStop(1,P.bg1); ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    if(def.light){
+      ctx.save(); const rg=ctx.createRadialGradient(W*.8,H*1.05,0,W*.8,H*1.05,W*.9);
+      rg.addColorStop(0,'rgba(124,58,237,.07)'); rg.addColorStop(1,'rgba(124,58,237,0)'); ctx.fillStyle=rg; ctx.fillRect(0,0,W,H); ctx.restore();
+    } else {
+      ctx.save(); const dx=Math.sin(lt*.18)*W*.06, dy=Math.cos(lt*.14)*H*.05;
+      const rg=ctx.createRadialGradient(W*.3+dx,H*.2+dy,0,W*.3+dx,H*.2+dy,W*.8);
+      rg.addColorStop(0,'rgba(124,58,237,.16)'); rg.addColorStop(1,'rgba(124,58,237,0)'); ctx.fillStyle=rg; ctx.fillRect(0,0,W,H);
+      const rg2=ctx.createRadialGradient(W*.9,H*.9,0,W*.9,H*.9,W*.6);
+      rg2.addColorStop(0,'rgba(88,40,160,.12)'); rg2.addColorStop(1,'rgba(88,40,160,0)'); ctx.fillStyle=rg2; ctx.fillRect(0,0,W,H); ctx.restore();
+    }
+    const camS = 1 + .01*Math.sin(lt*.5), camY = Math.sin(lt*.33)*H*.004;
+    ctx.save(); ctx.translate(W/2, H/2+camY); ctx.scale(camS,camS); ctx.translate(-W/2,-H/2);
+    try{ def.draw(s); }catch(err){ ctx.restore(); throw err; }
+    ctx.restore();
+  }};
+  RAF.push(rec);
+  return { el:canvas, rec };
+}
+
+/* ===================== CENAS ===================== */
+const SCENES = {};
+function scene(key, def){ SCENES[key]=def; }
+
+/* 01 Landing (claro) */
+scene('landing', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(16), w=s.W-u(32), h=s.H-u(30);
+  s.panel(x,y,w,h,u(3));
+  s.round(x,y,w,u(9),u(3)); s.ctx.save(); s.ctx.clip(); s.ctx.fillStyle=P.surf2; s.ctx.fillRect(x,y,w,u(9)); s.ctx.restore();
+  for(let i=0;i<3;i++){ s.ctx.beginPath(); s.ctx.arc(x+u(5)+i*u(3.4),y+u(4.5),u(.9),0,TAU); s.ctx.fillStyle=P.stroke; s.ctx.fill(); }
+  s.txt('databravo.com.br',x+w/2,y+u(5.6),{align:'center',s:2.8,c:P.dim,mono:true});
+  const bx=x+u(6), bw=w*.52; let by=y+u(16);
+  s.ctx.globalAlpha=s.app(.4,1); s.round(bx,by,bw*.7,u(7),u(1.4)); s.fill(P.acc); s.ctx.globalAlpha=1;
+  by+=u(11);
+  s.ctx.globalAlpha=s.app(1.1,1); s.round(bx,by,bw,u(3.4),u(1)); s.fill(P.stroke); s.round(bx,by+u(5.4),bw*.8,u(3.4),u(1)); s.fill(P.strokeS); s.ctx.globalAlpha=1;
+  by+=u(14);
+  const cta=s.app(2.6,.8); s.ctx.globalAlpha=cta;
+  s.round(bx,by,u(30),u(9),u(2)); s.fill(P.acc); s.txt('Quero agora',bx+u(15),by+u(5.6),{align:'center',s:3.1,w:700,c:'#fff'}); s.ctx.globalAlpha=1;
+  const rx=x+w*.6, rw=w*.34;
+  const pr=s.app(2.2,1.4);
+  s.panel(rx,y+u(15),rw,u(26),u(2.4));
+  s.ringGauge(rx+rw/2,y+u(26),u(9),pr*.98,{w:1.8});
+  s.txt(Math.round(98*E.out(pr))+'',rx+rw/2,y+u(27.5),{align:'center',s:7,w:800});
+  s.txt('Performance',rx+rw/2,y+u(36),{align:'center',s:2.7,c:P.dim});
+  const cv=s.app(3.4,1.6);
+  s.panel(rx,y+u(43),rw,u(15),u(2.4));
+  s.txt('Conversões',rx+u(3.4),y+u(49),{s:2.7,c:P.dim});
+  s.txt(fmt(312*E.out(cv)),rx+u(3.4),y+u(55),{s:6.6,w:800,c:P.acc});
+  if(s.t>3.7&&s.t<5){ const cxp=lerp(bx+u(44),bx+u(15),s.app(3.7,.5)); s.cursor(cxp,by+u(6),(s.app(4.1,.3)-s.app(4.5,.3))); }
+}});
+
+/* 02 Automação / WhatsApp (roxo) */
+scene('automacao', { light:false, draw:s=>{
+  const {u,P}=s, x=u(17), y=u(14), w=s.W-u(34), h=s.H-u(26);
+  s.panel(x,y,w,h,u(3));
+  s.round(x,y,w,u(11),u(3)); s.ctx.save(); s.ctx.clip(); s.ctx.fillStyle=P.surf2; s.ctx.fillRect(x,y,w,u(11)); s.ctx.restore();
+  s.avatar(x+u(7),y+u(5.5),u(3.3),265);
+  s.txt('Atendimento IA',x+u(12.5),y+u(4.6),{s:3.1,w:700});
+  s.txt('online',x+u(12.5),y+u(8.4),{s:2.5,c:P.good});
+  const msgs=[['in','Oi! Quero um orçamento',.4],['out','Claro, me conta o que você precisa.',1.4],['in','Automação no WhatsApp',2.6],['type','',3.6],['out','Perfeito. Já separei um especialista.',4.8]];
+  let my=y+u(16);
+  msgs.forEach(m=>{
+    const a=s.life(m[2],20,.5); if(a<=0){ my+=u(9.5); return; }
+    s.ctx.globalAlpha=a;
+    if(m[0]==='type'){ const bx=x+u(6); s.round(bx,my,u(14),u(7.4),u(3.2)); s.fill(P.surf); for(let i=0;i<3;i++){ const b=Math.max(0,Math.sin(s.t*5-i*.6)); s.ctx.beginPath(); s.ctx.arc(bx+u(4)+i*u(3),my+u(3.7),u(.8),0,TAU); s.ctx.globalAlpha=a*(.4+b*.6); s.fill(P.dim); s.ctx.globalAlpha=a; } my+=u(10); s.ctx.globalAlpha=1; return; }
+    const out=m[0]==='out'; s.ctx.font=`600 ${u(2.9)}px ${FB}`; const tw=Math.min(w*.62,s.ctx.measureText(m[1]).width+u(8));
+    const bx = out? x+w-u(6)-tw : x+u(6);
+    s.round(bx,my,tw,u(7.6),u(2.6)); s.fill(out?P.acc:P.surf);
+    s.txt(m[1],bx+u(4),my+u(4.6),{s:2.9,c:out?'#fff':P.txt,w:600});
+    my+=u(9.8); s.ctx.globalAlpha=1;
+  });
+  const q=s.life(6.2,20,.6); s.ctx.globalAlpha=q;
+  s.chip('Lead qualificado',x+w/2,y+h-u(6),{align:'center',dot:true,bg:P.accSoft,c:P.acc,s:3,h:8});
+  s.ctx.globalAlpha=1;
+}});
+
+/* 03 SaaS (claro) */
+scene('saas', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(15), w=s.W-u(32);
+  s.kpi(x,y,w*.46,u(24),'MRR',48,s.app(.4,1.6),{prefix:'R$ ',suffix:'k',delta:'▲ 12%',big:8});
+  s.panel(x+w*.52,y,w*.48,u(24),u(2.4));
+  s.ringGauge(x+w*.52+w*.24,y+u(12),u(8),(s.t%4)/4,{c:P.acc,w:1.6});
+  s.txt('↻',x+w*.52+w*.24,y+u(13.6),{align:'center',s:6,c:P.acc,w:700});
+  s.txt('Cobrança recorrente',x+w*.52+w*.24,y+u(21),{align:'center',s:2.6,c:P.dim});
+  const py=y+u(28);
+  s.panel(x,py,w,s.H-py-u(14),u(2.6));
+  const vals=[20,26,24,31,34,40,44,48];
+  s.lineChart(x+u(5),py+u(5),w*.56,u(18),vals,s.app(1.2,2.4));
+  const plans=[['Starter',.48],['Pro',.82],['Scale',.64]];
+  const plx=x+w*.64, plw=w*.3;
+  plans.forEach((pl,i)=>{ const yy=py+u(5)+i*u(7.2); const a=s.app(1.6+i*.3,.9);
+    s.txt(pl[0],plx,yy+u(1),{s:2.7,c:P.dim,w:600});
+    s.round(plx,yy+u(2.4),plw,u(2.4),u(1.2)); s.fill(P.strokeS);
+    s.round(plx,yy+u(2.4),plw*pl[1]*E.out(a),u(2.4),u(1.2)); s.fill(P.acc);
+  });
+}});
+
+/* 04 ERP (roxo) */
+scene('erp', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  const kw=(w-u(6))/3;
+  s.kpi(x,y,kw,u(19),'Receita',128,s.app(.4,1.4),{prefix:'R$ ',suffix:'k',big:6.4});
+  s.kpi(x+kw+u(3),y,kw,u(19),'Pedidos',2401,s.app(.7,1.4),{big:6.4});
+  s.kpi(x+2*(kw+u(3)),y,kw,u(19),'Margem',34,s.app(1,1.4),{suffix:'%',big:6.4});
+  const cy=y+u(23);
+  s.panel(x,cy,w*.52,s.H-cy-u(13),u(2.4));
+  s.bars(x+u(4),cy+u(5),w*.52-u(8),s.H-cy-u(23),[42,66,52,84,60,92],s.app(1.4,1.8),{hi:[3,5]});
+  const tx=x+w*.56, tw=w*.44;
+  s.panel(tx,cy,tw,s.H-cy-u(13),u(2.4));
+  const rows=[['#2.398','Pago',P.good],['#2.399','Enviado',P.acc],['#2.400','Pendente','#f59e0b']];
+  rows.forEach((r,i)=>{ const yy=cy+u(5)+i*u(8); const a=s.app(1.6+i*.3,.8);
+    s.ctx.globalAlpha=a; s.txt(r[0],tx+u(3.6),yy+u(3.6),{s:2.8,mono:true,c:P.dim});
+    s.chip(r[1],tx+tw-u(3.6),yy+u(2.8),{align:'right',s:2.5,bg:P.light?'rgba(0,0,0,.05)':'rgba(255,255,255,.08)',c:r[2],h:6,padX:2.4}); s.ctx.globalAlpha=1; });
+  const nr=s.life(4,20,.6); const yy=cy+u(5)+3*u(8);
+  s.ctx.globalAlpha=nr; s.ctx.save(); s.ctx.translate(lerp(u(6),0,nr),0);
+  s.round(tx+u(2.4),yy-u(1),tw-u(4.8),u(7),u(1.6)); s.fill(P.accSoft);
+  s.txt('#2.402',tx+u(3.6),yy+u(3.6),{s:2.8,mono:true,c:P.txt});
+  s.chip('Novo',tx+tw-u(3.6),yy+u(2.8),{align:'right',s:2.5,bg:P.acc,c:'#fff',h:6,padX:2.4});
+  s.ctx.restore(); s.ctx.globalAlpha=1;
+}});
+
+/* 05 CRM (claro) */
+scene('crm', { light:true, draw:s=>{
+  const {u,P}=s, x=u(15), y=u(15), w=s.W-u(30), h=s.H-u(28);
+  const cols=['Lead','Qualificado','Fechado']; const cw=(w-u(8))/3;
+  cols.forEach((c,i)=>{ const cxx=x+i*(cw+u(4));
+    s.txt(c,cxx+u(2),y+u(3),{s:2.8,c:P.dim,w:700});
+    s.panel(cxx,y+u(5),cw,h-u(5),u(2.2),{bg:P.surf2,shadow:false});
+  });
+  const mk=(ci,row)=>{ const cxx=x+ci*(cw+u(4)); const yy=y+u(9)+row*u(10);
+    s.round(cxx+u(2),yy,cw-u(4),u(8),u(1.6)); s.fill(P.surf); s.round(cxx+u(2),yy,cw-u(4),u(8),u(1.6)); s.stroke(P.stroke,1);
+    s.round(cxx+u(4),yy+u(2.4),cw*.5,u(2),u(1)); s.fill(P.stroke);
+    s.round(cxx+u(4),yy+u(5),cw*.3,u(1.6),u(.8)); s.fill(P.strokeS);
+  };
+  mk(0,0); mk(0,1); mk(1,0);
+  const prog=(s.t%6)/6; const path=[0,1,2]; const seg=prog*2; const ci=Math.min(1,Math.floor(seg)); const f=E.io(clamp(seg-ci));
+  const fx=x+path[ci]*(cw+u(4)), txx=x+path[ci+1]*(cw+u(4));
+  const mx=lerp(fx,txx,f); const my=y+u(29);
+  s.ctx.save(); s.ctx.shadowColor=P.shadow; s.ctx.shadowBlur=u(3); s.ctx.shadowOffsetY=u(1.4);
+  s.round(mx+u(2),my,cw-u(4),u(8.4),u(1.8)); s.fill(P.acc); s.ctx.shadowColor='transparent';
+  s.round(mx+u(4),my+u(2.4),cw*.52,u(2),u(1)); s.fill('rgba(255,255,255,.85)');
+  s.txt('R$ 12k',mx+u(4),my+u(6.6),{s:2.6,c:'#fff',w:700}); s.ctx.restore();
+  s.chip('7 fechados no mês',x+w/2,s.H-u(6.5),{align:'center',dot:true,s:2.8,bg:P.accSoft,c:P.acc,h:7.6});
+}});
+
+/* 06 LMS (roxo) */
+scene('lms', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  const pw=w, ph=u(30);
+  s.panel(x,y,pw,ph,u(2.6),{bg:'rgba(0,0,0,.35)'});
+  const pl=s.app(.5,.6);
+  s.ctx.save(); s.ctx.beginPath();
+  const pxc=x+pw/2, pyc=y+ph/2-u(2); const tr=u(4)*(.6+.4*pl);
+  s.ctx.moveTo(pxc-tr*.5,pyc-tr); s.ctx.lineTo(pxc-tr*.5,pyc+tr); s.ctx.lineTo(pxc+tr,pyc); s.ctx.closePath(); s.ctx.fillStyle=P.acc; s.ctx.globalAlpha=1-s.app(2,.6)*.5; s.ctx.fill(); s.ctx.restore();
+  const sb=s.t%8/8; const by=y+ph-u(5);
+  s.round(x+u(5),by,pw-u(10),u(1.4),u(.7)); s.fill('rgba(255,255,255,.14)');
+  s.round(x+u(5),by,(pw-u(10))*sb,u(1.4),u(.7)); s.fill(P.acc);
+  s.ctx.beginPath(); s.ctx.arc(x+u(5)+(pw-u(10))*sb,by+u(.7),u(1.4),0,TAU); s.fill(P.acc);
+  const mods=['Módulo 1 · Fundamentos','Módulo 2 · Prática guiada','Módulo 3 · Projeto final'];
+  const ly=y+ph+u(6);
+  mods.forEach((m,i)=>{ const yy=ly+i*u(8); const done=s.app(2+i*1.6,.6);
+    s.ctx.beginPath(); s.ctx.arc(x+u(3.5),yy,u(2.4),0,TAU); s.ctx.lineWidth=u(.6); s.ctx.strokeStyle=P.stroke; s.ctx.stroke();
+    if(done>.3){ s.ctx.save(); s.ctx.beginPath(); s.ctx.arc(x+u(3.5),yy,u(2.4),0,TAU); s.fill(P.good); s.ctx.strokeStyle='#fff'; s.ctx.lineWidth=u(.7); s.ctx.beginPath(); s.ctx.moveTo(x+u(2.3),yy); s.ctx.lineTo(x+u(3.2),yy+u(1)); s.ctx.lineTo(x+u(4.8),yy-u(1.2)); s.ctx.stroke(); s.ctx.restore(); }
+    s.txt(m,x+u(8),yy+u(1.2),{s:3,c:done>.3?P.txt:P.dim,w:600});
+  });
+  const cert=s.life(6.4,20,.6); s.ctx.globalAlpha=cert; s.ctx.save(); s.ctx.translate(0,lerp(u(5),0,cert));
+  s.chip('Certificado emitido',x+w-u(2),ly+u(2),{align:'right',dot:true,s:2.8,bg:P.accSoft,c:P.acc,h:7.6});
+  s.ctx.restore(); s.ctx.globalAlpha=1;
+}});
+
+/* 07 Mobile (claro) */
+scene('mobile', { light:true, draw:s=>{
+  const {u,P}=s;
+  const pw=u(40), ph=s.H-u(20), px=s.cx-pw/2, py=u(10);
+  s.ctx.save(); s.ctx.shadowColor=P.shadow; s.ctx.shadowBlur=u(5); s.ctx.shadowOffsetY=u(2.4);
+  s.round(px,py,pw,ph,u(6)); s.fill('#fff'); s.ctx.shadowColor='transparent';
+  s.round(px,py,pw,ph,u(6)); s.stroke(P.stroke,1.4); s.ctx.restore();
+  s.round(s.cx-u(6),py+u(2.4),u(12),u(2.4),u(1.2)); s.fill('#ece5f8');
+  const ix=px+u(3.4), iy=py+u(7), iw=pw-u(6.8), ih=ph-u(16);
+  s.round(ix,iy,iw,ih,u(3)); s.ctx.save(); s.ctx.clip();
+  const page=(s.t%9)/3; const pIdx=Math.floor(page); const f=E.io(clamp((page-pIdx)*3-2));
+  for(let k=0;k<2;k++){ const idx=pIdx+k; const off=(k-f)*iw; s.ctx.save(); s.ctx.translate(off,0);
+    const seed=idx%3; s.round(ix+u(3),iy+u(3),iw-u(6),u(10),u(2)); s.fill(seed===1?P.accSoft:P.acc);
+    s.round(ix+u(3),iy+u(15),iw-u(6),u(2.4),u(1)); s.fill(P.stroke);
+    s.round(ix+u(3),iy+u(19),iw*.7,u(2.4),u(1)); s.fill(P.strokeS);
+    s.round(ix+u(3),iy+u(24),iw*.46-u(1.5),u(12),u(2)); s.fill(P.surf2);
+    s.round(ix+u(3)+iw*.52,iy+u(24),iw*.46-u(1.5),u(12),u(2)); s.fill(P.surf2);
+    s.ctx.restore(); }
+  s.ctx.restore();
+  const tb=py+ph-u(6.4); const tabs=3; const sel=Math.floor(s.t/3)%3;
+  for(let i=0;i<tabs;i++){ const tx=ix+iw*(i+.5)/tabs; const on=i===sel;
+    s.ctx.beginPath(); s.ctx.arc(tx,tb,u(1.8),0,TAU); s.ctx.fillStyle=on?P.acc:P.stroke; s.ctx.fill(); }
+  const tap=s.t%3; if(tap<.6){ const tx=ix+iw*(sel+.5)/tabs; s.ctx.beginPath(); s.ctx.arc(tx,tb,u(1.8)+u(4)*E.out(tap/.6),0,TAU); s.ctx.strokeStyle=P.acc; s.ctx.globalAlpha=.4*(1-tap/.6); s.ctx.lineWidth=u(.8); s.ctx.stroke(); s.ctx.globalAlpha=1; }
+}});
+
+/* 08 Scraping / Pipelines (roxo) */
+scene('scraping', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(16), w=s.W-u(32), h=s.H-u(30);
+  const sx=x+u(2), sw=u(22), tnx=s.cx-u(6), rx=x+w-u(30), rw=u(30);
+  for(let i=0;i<5;i++){ const yy=y+u(4)+i*u(8); const a=.4+.6*Math.abs(Math.sin(s.t*2-i*.5));
+    s.round(sx,yy,sw,u(6),u(1.4)); s.fill(P.surf);
+    s.round(sx+u(2),yy+u(2.2),sw*.6,u(1.6),u(.8)); s.ctx.globalAlpha=a; s.fill(P.acc2); s.ctx.globalAlpha=1; }
+  s.txt('Fontes',sx+sw/2,y+u(2),{align:'center',s:2.6,c:P.dim});
+  s.ctx.save(); s.ctx.shadowColor=P.accSoft; s.ctx.shadowBlur=u(4);
+  s.round(tnx,s.cy-u(8),u(16),u(16),u(3)); s.fill(P.accSoft); s.ctx.shadowColor='transparent'; s.round(tnx,s.cy-u(8),u(16),u(16),u(3)); s.stroke(P.acc,1.2); s.ctx.restore();
+  s.ctx.save(); s.ctx.translate(tnx+u(8),s.cy); s.ctx.rotate(s.t*.8);
+  for(let i=0;i<6;i++){ s.ctx.rotate(Math.PI/3); s.ctx.beginPath(); s.ctx.moveTo(0,u(3)); s.ctx.lineTo(0,u(5.5)); s.ctx.strokeStyle=P.acc; s.ctx.lineWidth=u(.8); s.ctx.lineCap='round'; s.ctx.stroke(); } s.ctx.restore();
+  for(let i=0;i<4;i++){ const ph=(s.t*.5+i/4); s.dotflow(sx+sw,s.cy,tnx,s.cy,ph,P.acc2); s.dotflow(tnx+u(16),s.cy,rx,s.cy,ph+.3,P.acc); }
+  s.panel(rx,y+u(3),rw,h-u(4),u(2.2));
+  for(let i=0;i<5;i++){ const yy=y+u(7)+i*u(7); const a=s.app(1+i*.5,.6)*(.6+.4*Math.abs(Math.sin(s.t*3-i)));
+    s.ctx.globalAlpha=clamp(a); s.round(rx+u(3),yy,rw*.4,u(2),u(1)); s.fill(P.txt);
+    s.round(rx+u(3)+rw*.46,yy,rw*.3,u(2),u(1)); s.fill(P.dim); s.ctx.globalAlpha=1; }
+  s.chip('128 registros/min',x+w/2,s.H-u(6),{align:'center',dot:true,s:2.8,bg:P.accSoft,c:P.acc,h:7.4});
+}});
+
+/* 09 Infra & Dados / BI (claro) */
+scene('infra', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  s.panel(x,y,w,u(32),u(2.6));
+  s.chip('uptime 99,99%',x+w-u(3.6),y+u(5),{align:'right',dot:true,s:2.6,bg:P.light?'rgba(22,163,74,.1)':'rgba(52,211,153,.14)',c:P.good,h:6.4,padX:2.6});
+  s.txt('Observabilidade',x+u(4),y+u(5.6),{s:2.8,c:P.dim,w:600});
+  const vals=[30,46,40,58,52,70,64,82,78,90];
+  s.lineChart(x+u(4),y+u(9),w-u(8),u(19),vals,(s.t%10)/10,{});
+  const ty=y+u(40);
+  const nodes=[['DB',x+u(10)],['ETL',s.cx],['BI',x+w-u(10)]];
+  nodes.forEach((n,i)=>{ const nx=n[1]; const a=s.app(.4+i*.6,.6);
+    s.ctx.globalAlpha=a; s.panel(nx-u(10),ty,u(20),u(10),u(2));
+    s.txt(n[0],nx,ty+u(6.4),{align:'center',s:3.2,w:700,c:P.acc}); s.ctx.globalAlpha=1;
+    if(i<2){ const x1=nx+u(10),x2=nodes[i+1][1]-u(10); s.ctx.beginPath(); s.ctx.moveTo(x1,ty+u(5)); s.ctx.lineTo(x2,ty+u(5)); s.ctx.strokeStyle=P.stroke; s.ctx.lineWidth=u(.6); s.ctx.stroke();
+      s.dotflow(x1,ty+u(5),x2,ty+u(5),(s.t*.6+i*.4),P.acc); } });
+}});
+
+/* 10 IA (roxo) */
+scene('ia', { light:false, draw:s=>{
+  const {u,P}=s; const cx=s.cx, cy=s.cy-u(6);
+  const pts=[[cx-u(34),cy-u(18)],[cx-u(40),cy],[cx-u(34),cy+u(18)],[cx+u(34),cy-u(18)],[cx+u(40),cy],[cx+u(34),cy+u(18)]];
+  pts.forEach((p,i)=>{ const a=s.app(.3+i*.2,.6);
+    s.ctx.beginPath(); s.ctx.moveTo(p[0],p[1]); s.ctx.lineTo(cx,cy); s.ctx.strokeStyle=P.stroke; s.ctx.globalAlpha=a*.7; s.ctx.lineWidth=u(.5); s.ctx.stroke(); s.ctx.globalAlpha=1;
+    s.dotflow(p[0],p[1],cx,cy,(s.t*.5+i/6),P.acc2);
+    s.ctx.beginPath(); s.ctx.arc(p[0],p[1],u(2.4),0,TAU); s.ctx.globalAlpha=a; s.fill(P.surf); s.ctx.lineWidth=u(.5); s.ctx.strokeStyle=P.stroke; s.ctx.stroke(); s.ctx.globalAlpha=1;
+  });
+  const pulse=1+.08*Math.sin(s.t*2.4);
+  s.ctx.save(); s.ctx.shadowColor=P.acc; s.ctx.shadowBlur=u(6);
+  s.ctx.beginPath(); s.ctx.arc(cx,cy,u(7)*pulse,0,TAU); s.fill(P.acc); s.ctx.restore();
+  s.txt('IA',cx,cy+u(1.4),{align:'center',s:3.4,w:800,c:'#fff'});
+  const full='resposta gerada com contexto'; const ch=Math.floor(clamp((s.t%7-1.5)/3)*full.length);
+  const shown=full.slice(0,ch)+(Math.sin(s.t*6)>0?'▍':'');
+  const by=s.H-u(14);
+  s.panel(u(16),by,s.W-u(32),u(10),u(2.2));
+  s.txt(shown,u(20),by+u(6.4),{s:2.9,mono:true,c:P.acc2,w:500});
+}});
+
+/* 11 Outsourcing / Squads (claro) */
+scene('outsourcing', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  const team=['JS','TS','PY','GO']; const hues=[45,210,265,170];
+  team.forEach((t,i)=>{ const a=s.app(.3+i*.2,.5); s.ctx.globalAlpha=a; s.avatar(x+u(4)+i*u(7.5),y+u(3.5),u(3.2),hues[i]); s.txt(t,x+u(4)+i*u(7.5),y+u(4.6),{align:'center',s:2.2,c:'#fff',w:700}); s.ctx.globalAlpha=1; });
+  s.chip('squad dedicada',x+w-u(2),y+u(3.5),{align:'right',s:2.6,bg:P.accSoft,c:P.acc,h:6.6});
+  const ex=x, ey=y+u(10), ew=w*.54, eh=s.H-ey-u(14);
+  s.panel(ex,ey,ew,eh,u(2.4),{bg:'#1a1230'});
+  const lineW=[.5,.72,.4,.64,.56,.3];
+  lineW.forEach((lw,i)=>{ const yy=ey+u(5)+i*u(5.2); const a=clamp(s.app(1+i*.5,.5)); if(a<=0)return;
+    s.txt((i+1),ex+u(3.4),yy+u(1.6),{s:2.2,mono:true,c:'rgba(255,255,255,.35)'});
+    s.round(ex+u(8),yy,ew*lw*a*.7,u(2.2),u(1)); s.fill(i%2? '#8b5cf6':'#67e8f9'); s.ctx.globalAlpha=.8; s.round(ex+u(8)+ew*lw*.72,yy,ew*lw*a*.2,u(2.2),u(1)); s.fill('#fbbf24'); s.ctx.globalAlpha=1; });
+  const rxx=x+w*.58, rw=w*.42;
+  const commits=[['feat: pagamentos',P.acc],['test: cobertura 92%',P.good],['deploy: sprint 12',P.acc2]];
+  commits.forEach((c,i)=>{ const yy=ey+u(2)+i*u(7.5); const a=s.app(2+i*.6,.6); s.ctx.globalAlpha=a;
+    s.ctx.beginPath(); s.ctx.arc(rxx+u(2),yy+u(2),u(1.3),0,TAU); s.fill(c[1]);
+    if(i<2){ s.ctx.beginPath(); s.ctx.moveTo(rxx+u(2),yy+u(3.3)); s.ctx.lineTo(rxx+u(2),yy+u(7.5)); s.ctx.strokeStyle=P.stroke; s.ctx.lineWidth=u(.5); s.ctx.stroke(); }
+    s.txt(c[0],rxx+u(6),yy+u(3),{s:2.7,mono:true,c:P.txt,w:500}); s.ctx.globalAlpha=1; });
+  const sy=s.H-u(16); s.round(rxx,sy,rw,u(2.4),u(1.2)); s.fill(P.strokeS);
+  s.round(rxx,sy,rw*((s.t%6)/6),u(2.4),u(1.2)); s.fill(P.acc);
+  const mg=s.life(4,20,.6); s.ctx.globalAlpha=mg; s.chip('PR aprovado · merge',rxx,sy-u(4.5),{dot:true,s:2.6,bg:P.accSoft,c:P.acc,h:6.6}); s.ctx.globalAlpha=1;
+}});
+
+/* ======= CASES ======= */
+/* C1 E-commerce (roxo) */
+scene('case_ecom', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  const gx=x, gw=w*.54, gy=y; const cols=3, rows=2, cw=(gw-u(4)*(cols-1))/cols, ch=u(13);
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){ const i=r*cols+c; const a=s.app(.3+i*.18,.5);
+    const bx=gx+c*(cw+u(4)), by=gy+r*(ch+u(4)); s.ctx.globalAlpha=a;
+    s.panel(bx,by,cw,ch,u(1.8),{shadow:false}); s.round(bx+u(2),by+u(2),cw-u(4),u(6),u(1.2)); s.fill(P.accSoft);
+    s.round(bx+u(2),by+u(9.5),cw*.6,u(1.6),u(.8)); s.fill(P.stroke); s.ctx.globalAlpha=1; }
+  const px=x+w*.6, pw=w*.4;
+  s.panel(px,y,pw,u(30),u(2.4));
+  s.txt('Checkout',px+u(3.6),y+u(6),{s:3,w:700});
+  const items=[.7,.5,.6]; items.forEach((it,i)=>{ const yy=y+u(10)+i*u(5); const a=s.app(1.4+i*.3,.5); s.ctx.globalAlpha=a;
+    s.round(px+u(3.6),yy,pw*.5,u(2),u(1)); s.fill(P.stroke); s.txt('R$',px+pw-u(3.6),yy+u(2),{align:'right',s:2.4,c:P.dim}); s.ctx.globalAlpha=1; });
+  const done=s.life(3.6,20,.5); s.ctx.globalAlpha=done;
+  s.round(px+u(3.6),y+u(24),pw-u(7.2),u(5),u(1.4)); s.fill(P.good); s.txt('Pedido confirmado',px+pw/2,y+u(27.4),{align:'center',s:2.7,w:700,c:'#fff'}); s.ctx.globalAlpha=1;
+  s.kpi(x,s.H-u(22),w*.54,u(16),'Pedidos hoje',Math.floor(240+s.app(2,3)*180),s.app(2,3),{big:7,delta:'▲ pico'});
+}});
+
+/* C2 Data Warehouse (claro) */
+scene('case_dw', { light:true, draw:s=>{
+  const {u,P}=s; const cx=s.cx, cy=s.cy;
+  const srcs=[['ERP',s.cx-u(36),u(16)],['CRM',s.cx-u(40),s.cy],['Planilhas',s.cx-u(36),s.H-u(18)]];
+  const whx=s.cx+u(4), why=s.cy;
+  srcs.forEach((sc,i)=>{ const a=s.app(.3+i*.3,.6);
+    s.ctx.globalAlpha=a; s.panel(sc[1]-u(9),sc[2]-u(4),u(18),u(8),u(1.8)); s.txt(sc[0],sc[1],sc[2]+u(1.2),{align:'center',s:2.7,c:P.acc,w:700}); s.ctx.globalAlpha=1;
+    s.ctx.beginPath(); s.ctx.moveTo(sc[1]+u(9),sc[2]); s.ctx.quadraticCurveTo(cx-u(4),cy,whx,why); s.ctx.strokeStyle=P.stroke; s.ctx.lineWidth=u(.6); s.ctx.stroke();
+    s.dotflow(sc[1]+u(9),sc[2],whx,why,(s.t*.5+i/3),P.acc); });
+  s.ctx.save(); s.ctx.shadowColor=P.shadow; s.ctx.shadowBlur=u(3);
+  const cw=u(20), chh=u(26); s.round(whx,why-chh/2,cw,chh,u(4)); s.fill(P.acc); s.ctx.restore();
+  s.ctx.beginPath(); s.ctx.ellipse(whx+cw/2,why-chh/2,cw/2,u(3),0,0,TAU); s.fill(P.acc2);
+  s.txt('Data',whx+cw/2,why-u(1),{align:'center',s:2.8,c:'#fff',w:700}); s.txt('Warehouse',whx+cw/2,why+u(3),{align:'center',s:2.4,c:'rgba(255,255,255,.85)',w:600});
+  const dx=whx+cw+u(6); const a=s.app(2.4,2);
+  s.txt('fonte única',dx,why-u(10),{s:2.6,c:P.dim,w:600});
+  s.lineChart(dx,why-u(6),s.W-dx-u(10),u(16),[20,34,30,46,52,60],a);
+}});
+
+/* C3 LMS escala (roxo) */
+scene('case_lmsescala', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  s.kpi(x,y,w*.5,u(18),'Empreendedores',Math.floor(s.app(.4,3)*820),s.app(.4,3),{big:8,delta:'em formação'});
+  const cert=s.life(3.4,20,.6); s.ctx.globalAlpha=cert;
+  s.panel(x+w*.56,y,w*.44,u(18),u(2.4)); s.ringGauge(x+w*.56+u(9),y+u(9),u(5.5),1,{c:P.good});
+  s.txt('✓',x+w*.56+u(9),y+u(11),{align:'center',s:5,c:P.good,w:800});
+  s.txt('Certificado emitido',x+w*.56+u(18),y+u(9),{s:2.8,w:600}); s.txt('turma concluída',x+w*.56+u(18),y+u(13),{s:2.4,c:P.dim}); s.ctx.globalAlpha=1;
+  const gy=y+u(23); const cols=12, rows=4, gw=w, cwd=(gw-u(1.6)*(cols-1))/cols, chh=(s.H-gy-u(13)-u(1.6)*(rows-1))/rows;
+  for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){ const i=r*cols+c; const a=clamp(s.app(1+i*.05,.4));
+    const bx=x+c*(cwd+u(1.6)), by=gy+r*(chh+u(1.6)); s.round(bx,by,cwd,chh,u(1)); s.ctx.globalAlpha=a; s.fill(i%5===0?P.acc:P.accSoft); s.ctx.globalAlpha=1; }
+}});
+
+/* C4 WhatsApp em massa (claro) */
+scene('case_waflux', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  s.txt('Atendidos',x,y+u(4),{s:2.8,c:P.dim,w:600});
+  s.txt(fmt(s.app(.3,3)*4820),x,y+u(15),{s:12,w:800,c:P.acc});
+  s.chip('sem time manual',x,y+u(20),{s:2.6,bg:P.accSoft,c:P.acc,h:6.6});
+  const ty=y+u(26), rows=4; const rw=w;
+  for(let i=0;i<rows;i++){ const yy=ty+i*u(8.5); const ph=(s.t*.5+i*.3)%1;
+    s.round(x,yy,rw,u(6.4),u(1.6)); s.fill(P.surf2); s.round(x,yy,rw,u(6.4),u(1.6)); s.stroke(P.strokeS,1);
+    s.ctx.beginPath(); s.ctx.arc(x+u(4),yy+u(3.2),u(2),0,TAU); s.fill(P.acc2);
+    s.round(x+u(9),yy+u(2.4),rw-u(16),u(1.6),u(.8)); s.fill(P.stroke);
+    s.round(x+u(9),yy+u(2.4),(rw-u(16))*ph,u(1.6),u(.8)); s.fill(P.acc);
+    s.chip('✓',x+rw-u(2.5),yy+u(3.2),{align:'right',s:2.2,bg:P.light?'rgba(22,163,74,.12)':'rgba(52,211,153,.16)',c:P.good,h:4.6,padX:1.8}); }
+}});
+
+/* C5 Bot em áudio (roxo) */
+scene('case_audio', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32), h=s.H-u(26);
+  s.panel(x,y,w,h,u(2.8));
+  const by=y+u(13);
+  s.ctx.save(); s.ctx.beginPath(); s.ctx.arc(x+u(9),by,u(5.5),0,TAU); s.fill(P.acc); s.ctx.beginPath();
+  s.ctx.moveTo(x+u(7.5),by-u(2.6)); s.ctx.lineTo(x+u(7.5),by+u(2.6)); s.ctx.lineTo(x+u(11.5),by); s.ctx.closePath(); s.ctx.fillStyle='#fff'; s.ctx.fill(); s.ctx.restore();
+  const nb=36, bx0=x+u(18), bw=w-u(24);
+  for(let i=0;i<nb;i++){ const prog=(s.t%6)/6; const played=i/nb<=prog;
+    const amp=(.3+.7*Math.abs(Math.sin(i*.6+s.t*(played?6:0)))); const bh=u(2)+u(9)*amp*(played?1:.3);
+    const xx=bx0+i*(bw/nb); s.round(xx,by-bh/2,bw/nb*.5,bh,u(.6)); s.fill(played?P.acc2:P.stroke); }
+  const full='Claro, consigo agendar para amanhã às 14h.'; const ch=Math.floor(clamp((s.t%6-.6)/3.5)*full.length);
+  s.txt('"'+full.slice(0,ch)+'"',x+u(6),y+h-u(10),{s:3,c:P.txt,w:500});
+  s.chip('voz gerada por IA',x+u(6),y+h-u(5),{dot:true,s:2.6,bg:P.accSoft,c:P.acc,h:6.6});
+  s.chip('integrado ao sistema',x+w-u(6),y+h-u(5),{align:'right',s:2.5,bg:P.surf2,c:P.dim,h:6.6});
+}});
+
+/* C6 Nenhum lead perdido (claro) */
+scene('case_leadnet', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(14), w=s.W-u(32);
+  const chans=['WhatsApp','Site','Instagram']; const fx=s.cx, fy=s.cy;
+  chans.forEach((c,i)=>{ const cyy=y+u(6)+i*u(10); const a=s.app(.3+i*.2,.5); s.ctx.globalAlpha=a;
+    s.panel(x,cyy-u(3.4),u(26),u(6.8),u(1.8),{shadow:false}); s.txt(c,x+u(4),cyy+u(1.2),{s:2.7,c:P.acc,w:600}); s.ctx.globalAlpha=1;
+    s.ctx.beginPath(); s.ctx.moveTo(x+u(26),cyy); s.ctx.quadraticCurveTo(fx-u(14),fy,fx-u(8),fy); s.ctx.strokeStyle=P.stroke; s.ctx.lineWidth=u(.6); s.ctx.stroke();
+    s.dotflow(x+u(26),cyy,fx-u(8),fy,(s.t*.5+i/3),P.acc); });
+  s.ctx.beginPath(); s.ctx.moveTo(fx-u(8),fy-u(8)); s.ctx.lineTo(fx+u(8),fy-u(8)); s.ctx.lineTo(fx+u(3),fy+u(2)); s.ctx.lineTo(fx+u(3),fy+u(9)); s.ctx.lineTo(fx-u(3),fy+u(9)); s.ctx.lineTo(fx-u(3),fy+u(2)); s.ctx.closePath(); s.fill(P.accSoft); s.stroke(P.acc,1);
+  const crmx=x+w-u(28);
+  s.panel(crmx,fy-u(9),u(28),u(18),u(2.2)); s.txt('CRM',crmx+u(3.6),fy-u(3),{s:3,w:700,c:P.acc});
+  for(let i=0;i<3;i++){ const yy=fy+u(1)+i*u(3.4); const a=clamp(s.app(1.5+i*.4,.5)); s.ctx.globalAlpha=a; s.round(crmx+u(3.6),yy,u(20),u(2),u(1)); s.fill(P.stroke); s.ctx.globalAlpha=1; }
+  s.dotflow(fx+u(3),fy+u(6),crmx,fy,(s.t*.6),P.acc);
+  s.chip('0 leads perdidos',s.cx,s.H-u(6),{align:'center',dot:true,s:3,bg:P.light?'rgba(22,163,74,.12)':'rgba(52,211,153,.16)',c:P.good,h:8});
+}});
+
+/* C7 Match empresas x startups (roxo) */
+scene('case_match', { light:false, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(16), w=s.W-u(32), h=s.H-u(32);
+  const lx=x+u(4), rx=x+w-u(20), n=3, gap=h/n;
+  s.txt('Empresas',lx+u(8),y-u(2),{align:'center',s:2.6,c:P.dim});
+  s.txt('Startups',rx+u(8),y-u(2),{align:'center',s:2.6,c:P.dim});
+  const L=[],R=[];
+  for(let i=0;i<n;i++){ const ly=y+gap*(i+.5); L.push([lx,ly]); R.push([rx,ly]);
+    s.panel(lx,ly-u(5),u(16),u(10),u(2)); s.panel(rx,ly-u(5),u(16),u(10),u(2));
+    s.avatar(lx+u(4),ly,u(2.6),260); s.avatar(rx+u(4),ly,u(2.6),180); }
+  const pairs=[[0,1],[1,2],[2,0]];
+  pairs.forEach((pr,i)=>{ const a=s.app(1+i*1.5,1); if(a<=0)return; const p0=[L[pr[0]][0]+u(16),L[pr[0]][1]], p1=[R[pr[1]][0],R[pr[1]][1]];
+    s.ctx.beginPath(); s.ctx.moveTo(p0[0],p0[1]); s.ctx.lineTo(lerp(p0[0],p1[0],E.out(a)),lerp(p0[1],p1[1],E.out(a))); s.ctx.strokeStyle=P.acc; s.ctx.globalAlpha=.8; s.ctx.lineWidth=u(.7); s.ctx.stroke(); s.ctx.globalAlpha=1;
+    if(a>=1){ const mx=(p0[0]+p1[0])/2, my=(p0[1]+p1[1])/2; const mp=s.life(1+i*1.5+1,20,.4); s.ctx.globalAlpha=mp; s.chip('match',mx,my,{align:'center',s:2.4,bg:P.acc,c:'#fff',h:5.4,padX:2.2}); s.ctx.globalAlpha=1; } });
+  s.chip(Math.floor(s.app(1,5)*3)+' matches',s.cx,s.H-u(6),{align:'center',dot:true,s:2.8,bg:P.accSoft,c:P.acc,h:7.4});
+}});
+
+/* C8 Ecossistema (claro) */
+scene('case_eco', { light:true, draw:s=>{
+  const {u,P}=s, x=u(16), y=u(13), w=s.W-u(32);
+  const kw=(w-u(6))/3;
+  s.kpi(x,y,kw,u(16),'Atores',312,s.app(.4,2),{big:6.4});
+  s.kpi(x+kw+u(3),y,kw,u(16),'Conexões',1800,s.app(.7,2),{big:6.4});
+  s.kpi(x+2*(kw+u(3)),y,kw,u(16),'Projetos',47,s.app(1,2),{big:6.4});
+  const gy=y+u(20), gh=s.H-gy-u(13), gcx=s.cx, gcy=gy+gh/2;
+  const nodes=[]; const N=9;
+  for(let i=0;i<N;i++){ const ang=i/N*TAU+s.t*.1; const rad=u(14)+ (i%3)*u(5); nodes.push([gcx+Math.cos(ang)*rad*1.6, gcy+Math.sin(ang)*rad]); }
+  for(let i=0;i<N;i++){ const a=clamp(s.app(.6+i*.18,.5)); if(a<=0)continue;
+    const j=(i+2)%N; s.ctx.globalAlpha=a*.5; s.ctx.beginPath(); s.ctx.moveTo(nodes[i][0],nodes[i][1]); s.ctx.lineTo(nodes[j][0],nodes[j][1]); s.ctx.strokeStyle=P.acc; s.ctx.lineWidth=u(.4); s.ctx.stroke();
+    s.ctx.beginPath(); s.ctx.moveTo(nodes[i][0],nodes[i][1]); s.ctx.lineTo(gcx,gcy); s.ctx.strokeStyle=P.stroke; s.ctx.stroke(); s.ctx.globalAlpha=1; }
+  nodes.forEach((p,i)=>{ const a=clamp(s.app(.4+i*.18,.5)); s.ctx.globalAlpha=a; s.ctx.beginPath(); s.ctx.arc(p[0],p[1],u(2),0,TAU); s.fill(i%3===0?P.acc:P.acc2); s.ctx.globalAlpha=1; });
+  s.ctx.beginPath(); s.ctx.arc(gcx,gcy,u(3.4),0,TAU); s.fill(P.acc);
+}});
+
+
+/* ===================== DADOS + CARROSSEL 3D (site) ===================== */
+const FRENTES = [
+  ['landing','Landing Pages & Sites','Performance, SEO técnico e arquitetura pensada pra converter.','databravo.com.br'],
+  ['automacao','Automação de Atendimento','Bots no WhatsApp, IA em texto e áudio, qualificação e integração com CRM e ERP.','wa.me/databravo'],
+  ['saas','Soluções SaaS & Mini-SaaS','Produtos multi-tenant, cobrança recorrente e evolução contínua.','app.databravo.com.br'],
+  ['erp','ERP sob Medida','Sistema de gestão próprio, adaptado à complexidade real da operação.','erp.databravo.com.br'],
+  ['crm','CRM Customizado','Fluxos comerciais, qualificação e organização de vendas integrados.','crm.databravo.com.br'],
+  ['lms','Plataformas Educacionais (LMS)','Ambiente digital com trilhas, usuários e monitoramento de engajamento.','academy.databravo.com.br'],
+  ['mobile','Desenvolvimento Mobile','Apps nativos ou híbridos, com UX fluida e integração ao ecossistema.','app · iOS & Android'],
+  ['scraping','Web Scraping & Pipelines','Extração estruturada de dados para alimentar decisões estratégicas.','pipelines.databravo.com.br'],
+  ['infra','Infraestrutura & Dados','Modelagem analítica e estruturas de BI para decisão em tempo real.','bi.databravo.com.br'],
+  ['ia','Integrações Avançadas com IA','Conexão entre sistemas, APIs e inteligência artificial aplicada.','ia.databravo.com.br'],
+  ['outsourcing','Outsourcing de TI & Squads','Times técnicos dedicados, com governança e entrega contínua.','squad.databravo.com.br']
+];
+const CASES = [
+  ['case_ecom','E-commerce próprio para regras que nenhuma plataforma suportava.','Projeto 01 · Desenvolvimento · em produção','Catálogo · Estoque · Checkout'],
+  ['case_dw','Data Warehouse corporativo: a fonte única da verdade.','Projeto 02 · Dados & BI · em produção','Fontes · SQL · BI'],
+  ['case_lmsescala','Ambiente digital para formar empreendedores em escala.','Projeto 03 · LMS · em produção','Trilhas · Usuários · Engajamento'],
+  ['case_waflux','Fluxos educacionais no WhatsApp, respondendo milhares.','Projeto 04 · Automação & WhatsApp · em produção','Fluxos · Jornadas · Respostas'],
+  ['case_audio','Bot conversacional que responde em áudio, gerado por IA.','Projeto 05 · IA & Voz · em produção','Áudio · IA · Integração'],
+  ['case_leadnet','Bots integrados ao CRM, para nenhum lead se perder.','Projeto 06 · CRM & Automação · em produção','Leads · Qualificação · CRM'],
+  ['case_match','Plataforma que conecta empresas e startups por desafio real.','Projeto 07 · Plataforma & Inovação · em produção','Desafios · Perfis · Match'],
+  ['case_eco','Gestão de ecossistemas de inovação, além de qualquer planilha.','Projeto 08 · Plataforma & Dados · em produção','Mapa · Monitor · Indicadores']
+];
+
+function initCoverflow(root, list, startLight, autoplay){
+  const stage = root.querySelector('.db-stage');
+  const dotsWrap = root.querySelector('.db-dots');
+  let active = Math.floor(list.length/2);
+  let visible = true, timer = null;
+
+  list.forEach((item,i)=>{
+    const light = (i+(startLight?0:1))%2===0;
+    const card = document.createElement('div'); card.className='db-card';
+    card.innerHTML = '<div class="db-bevel'+(light?' light':'')+'"><div class="db-frame'+(light?' light':'')+'">'
+      + '<div class="db-bar"><i></i><i></i><i></i><em>'+(item[3]||'databravo')+'</em></div>'
+      + '<div class="db-body"><canvas></canvas></div>'
+      + '<div class="db-gloss"></div></div></div>'
+      + '<div class="db-cap"><b>'+item[1]+'</b><span>'+(item[2]||'')+'</span></div>';
+    stage.appendChild(card);
+    const canvas = card.querySelector('canvas');
+    const def = Object.assign({}, SCENES[item[0]]); def.light = light;
+    const r = reg(canvas, def);
+    card._rec = r.rec;
+    card.addEventListener('click', ()=>{ if(card._off!==0) go(i); });
+    if(dotsWrap){ const d=document.createElement('button'); d.className='db-dot'+(i===active?' on':''); d.type='button'; d.setAttribute('aria-label','Item '+(i+1)); d.addEventListener('click',()=>go(i)); dotsWrap.appendChild(d); }
+  });
+  const cards = Array.from(stage.children);
+  const dots = dotsWrap? Array.from(dotsWrap.children):[];
+
+  function sizeVars(){
+    const W = root.clientWidth;
+    let cw = Math.min(460, W*0.6);
+    if(W<600) cw = Math.min(330, W*0.84);
+    stage.style.setProperty('--dcw', cw+'px');
+    stage.style.height = Math.round(36 + cw*2/3 + 6 + 64) + 'px';
+  }
+  function layout(){
+    cards.forEach((card,i)=>{
+      const off = i - active, ao = Math.abs(off);
+      card._off = off;
+      const tx = off*52, ry = Math.max(-82,Math.min(82,-off*42)), tz = -ao*150, sc = Math.max(0.62, 1-ao*0.14);
+      const op = ao>2?0:(ao===0?1:Math.max(0,0.92-(ao-1)*0.5));
+      const bl = ao===0?0:Math.min(5,1+(ao-1)*2.2);
+      card.style.transform = 'translateX(-50%) translateX('+tx+'%) rotateY('+ry+'deg) translateZ('+tz+'px) scale('+sc+')';
+      card.style.zIndex = String(100-ao);
+      card.style.opacity = op;
+      card.style.filter = bl? 'blur('+bl+'px)':'none';
+      card.style.pointerEvents = ao<=2? 'auto':'none';
+      card.classList.toggle('is-active', off===0);
+      card._rec.on = visible && ao<=2;
+    });
+    dots.forEach((d,i)=>d.classList.toggle('on', i===active));
+  }
+  function go(i){ active = Math.max(0, Math.min(list.length-1, i)); layout(); }
+  function step(d){ let n=active+d; if(n<0)n=list.length-1; if(n>=list.length)n=0; go(n); }
+
+  root.querySelectorAll('.db-arrow').forEach(b=> b.addEventListener('click', ()=>step(parseInt(b.dataset.dir,10))));
+
+  let down=false, sx=0;
+  stage.addEventListener('pointerdown', e=>{ down=true; sx=e.clientX; stop(); });
+  window.addEventListener('pointermove', e=>{ if(!down)return; });
+  window.addEventListener('pointerup', e=>{ if(!down)return; down=false; const dx=e.clientX-sx; if(Math.abs(dx)>45) step(dx<0?1:-1); });
+
+  function play(){ if(!autoplay||REDUCED) return; stop(); timer=setInterval(()=>step(1), 5000); }
+  function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+  root.addEventListener('mouseenter', stop); root.addEventListener('mouseleave', play);
+
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver(es=>es.forEach(e=>{ visible=e.isIntersecting; layout(); if(visible) play(); else stop(); }),{threshold:.12});
+    io.observe(root);
+  }
+  sizeVars(); layout(); play();
+  window.addEventListener('resize', ()=>{ sizeVars(); layout(); });
+}
+
+(function(){
+  const f = document.getElementById('dbCfFrentes'); if(f) initCoverflow(f, FRENTES, true, false);
+  const c = document.getElementById('dbCfCases'); if(c) initCoverflow(c, CASES, false, true);
+})();
+
+})();
 </script>
