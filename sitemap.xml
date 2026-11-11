@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://databravo.com.br/</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://databravo.com.br/linkbio</loc>
-    <lastmod>2026-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://lps.databravo.com.br/</loc>
-    <lastmod>2026-11-11</lastmod>
-  </url>
-  <url>
-    <loc>https://databravo.com.br/llms.txt</loc>
-    <lastmod>2026-11-11</lastmod>
-  </url>
+  <url><loc>https://databravo.com.br/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/servicos/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/automacao-de-atendimento-whatsapp/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/desenvolvimento-saas/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/erp-sob-medida/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/crm-personalizado/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/plataforma-educacional-lms/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/desenvolvimento-de-aplicativos/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/web-scraping-e-pipelines-de-dados/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/business-intelligence-e-dashboards/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/integracoes-com-inteligencia-artificial/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/outsourcing-de-ti-e-squads/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/plataformas-de-inovacao/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://databravo.com.br/linkbio</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://lps.databravo.com.br/</loc><lastmod>2026-11-11</lastmod></url>
 </urlset>

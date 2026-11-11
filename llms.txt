@@ -36,6 +36,37 @@ Páginas prontas para Google Ads e Meta Ads, com rastreamento de conversões, e 
 - [Link na Bio sem mensalidade](https://lps.databravo.com.br/link-na-bio-sem-mensalidade/)
 - [Todos os guias](https://lps.databravo.com.br/guias/)
 
+## Páginas de cada serviço
+
+- [Landing pages e sites com pagamento único](https://lps.databravo.com.br/): R$ 1.199, com Link na Bio, domínio e hospedagem por 2 anos.
+- [Automação de atendimento no WhatsApp, com IA](https://databravo.com.br/automacao-de-atendimento-whatsapp/): Chatbot e automação de atendimento no WhatsApp com a API oficial da Meta: IA em texto e áudio, qualificação de leads e integração com CRM, ERP e sistemas internos. Projeto sob medida.
+- [Desenvolvimento de SaaS, Mini-SaaS e MVP](https://databravo.com.br/desenvolvimento-saas/): Desenvolvimento de SaaS e MVP do zero: produto multi-tenant, cobrança recorrente, painel administrativo e arquitetura pronta para escalar. Da ideia ao protótipo em semanas.
+- [ERP sob medida para a sua operação](https://databravo.com.br/erp-sob-medida/): Desenvolvimento de ERP sob medida: sistema de gestão próprio para estoque, vendas, financeiro, produção e indicadores, adaptado à operação real da empresa e integrado aos sistemas que você já usa.
+- [CRM personalizado para o seu processo de vendas](https://databravo.com.br/crm-personalizado/): Desenvolvimento de CRM sob medida: funil de vendas, qualificação de leads, integração com WhatsApp, formulários e anúncios, e relatórios do time comercial.
+- [Plataforma educacional (LMS) sob medida](https://databravo.com.br/plataforma-educacional-lms/): Desenvolvimento de plataforma EAD e LMS: trilhas de aprendizagem, gestão de usuários, certificados, monitoramento de engajamento e trilhas também pelo WhatsApp.
+- [Desenvolvimento de aplicativos para iOS e Android](https://databravo.com.br/desenvolvimento-de-aplicativos/): Criação de aplicativos nativos ou híbridos para iOS e Android, com UX fluida, integração a sistemas e APIs, e publicação nas lojas.
+- [Web scraping e pipelines de dados](https://databravo.com.br/web-scraping-e-pipelines-de-dados/): Extração estruturada de dados da web e de sistemas, pipelines automáticos e enriquecimento de bases para prospecção, pesquisa de mercado e decisões estratégicas.
+- [Business Intelligence, data warehouse e dashboards](https://databravo.com.br/business-intelligence-e-dashboards/): Modelagem de dados, data warehouse, pipelines e dashboards personalizados para decisão em tempo real. Consolidação de múltiplas fontes em uma fonte única da verdade.
+- [Integração de sistemas e inteligência artificial aplicada](https://databravo.com.br/integracoes-com-inteligencia-artificial/): Integração entre sistemas, APIs e inteligência artificial aplicada a processos reais: agentes de IA, automações com n8n, webhooks e conexão entre CRM, ERP, pagamentos e bancos de dados.
+- [Outsourcing de TI e squads de desenvolvimento](https://databravo.com.br/outsourcing-de-ti-e-squads/): Times técnicos dedicados para o seu projeto: desenvolvedores, arquitetos e gestão de produto, com governança, sprints e entrega contínua.
+- [Plataformas de inovação aberta e gestão de ecossistemas](https://databravo.com.br/plataformas-de-inovacao/): Plataformas para programas de inovação aberta, desafios entre empresas e startups, avaliação de startups e gestão de ecossistemas de inovação com mapas e indicadores.
+- [Todos os serviços](https://databravo.com.br/servicos/)
+
+## Cases em produção
+
+- E-commerce próprio para regras que nenhuma plataforma suportava (catálogo, estoque, checkout).
+- Data Warehouse corporativo: a fonte única da verdade da empresa (fontes, SQL, BI).
+- Ambiente digital (LMS) para formar empreendedores em escala.
+- Fluxos educacionais no WhatsApp, respondendo milhares de pessoas.
+- Bot conversacional que responde em áudio gerado por IA.
+- Bots integrados ao CRM, para nenhum lead se perder.
+- Plataforma que conecta empresas e startups por desafio real (inovação aberta).
+- Gestão de ecossistemas de inovação com mapa, monitoramento e indicadores.
+
+## Como trabalhamos
+
+Diagnóstico estratégico, arquitetura da solução, desenvolvimento e testes em sprints, implantação e evolução contínua. O orçamento de sistemas e automações é feito a partir de um diagnóstico técnico; landing pages têm preço fechado de R$ 1.199. Foco em pequenas, médias e grandes empresas, startups e instituições.
+
 ## Para quem é
 
 Pequenas e médias empresas, lojistas, profissionais liberais (advogados, médicos, dentistas, psicólogos, nutricionistas), clínicas e consultórios, prestadores de serviço, empresas de tecnologia, agências de marketing, infoprodutores, instituições de ensino, hubs e centros de inovação, e projetos públicos e privados.
