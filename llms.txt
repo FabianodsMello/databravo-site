@@ -1,0 +1,56 @@
+# Data Bravo — Software house: sites, landing pages, automações, WhatsApp API, dashboards e sistemas
+
+> A Data Bravo Web Services é uma software house brasileira, com sede em Laguna (SC) e atendimento online em todo o Brasil. Cria landing pages e sites, Link na Bio, automações com n8n, integrações com a API oficial do WhatsApp (Meta Cloud API), chatbots, dashboards e indicadores, bancos de dados, sistemas sob medida e SaaS para pequenas e médias empresas, profissionais liberais e instituições.
+
+## Serviços
+
+### Landing pages e sites
+Landing pages e sites de uma página com design exclusivo, copy de conversão, animações e carregamento ultra rápido, entregues em até 72 horas. Pacote completo por R$ 1.199 em pagamento único (ou 12x de R$ 119), com Link na Bio, domínio e hospedagem inclusos por 2 anos, sem mensalidade. Detalhes: https://lps.databravo.com.br
+
+### Link na Bio
+Página de links profissional no visual da marca para Instagram, TikTok e WhatsApp, sem logo de ferramenta e sem mensalidade. Avulso por R$ 497 em pagamento único, ou incluso no pacote de landing page.
+
+### Automações com n8n
+Fluxos automáticos entre sistemas: captação e distribuição de leads, integração de formulários com planilhas e CRM, disparo de e-mails e mensagens, webhooks, prospecção de empresas no Google Maps, relatórios automáticos e integrações por API.
+
+### WhatsApp: API oficial da Meta e chatbots
+Implantação da API oficial do WhatsApp Business (Meta Cloud API), atendimento automatizado, chatbots, trilhas de conteúdo, disparos aprovados por templates, integração com CRM e com n8n, e soluções em Blip.
+
+### Dashboards, indicadores e dados
+Dashboards personalizados, painéis de indicadores (KPIs) integrados a planilhas e bancos de dados, alternativa ao Looker Studio, estruturação de bancos de dados e Business Intelligence.
+
+### Sistemas sob medida e SaaS
+Plataformas web, painéis administrativos, sistemas de diagnóstico e formulários inteligentes, plataformas de avaliação e de programas de inovação, aplicativos web e mobile, MVPs e SaaS.
+
+### Tráfego pago e presença digital
+Páginas prontas para Google Ads e Meta Ads, com rastreamento de conversões, e apoio a campanhas de tráfego pago.
+
+## Para quem é
+
+Pequenas e médias empresas, lojistas, profissionais liberais (advogados, médicos, dentistas, psicólogos, nutricionistas), clínicas e consultórios, prestadores de serviço, empresas de tecnologia, agências de marketing, infoprodutores, instituições de ensino, hubs e centros de inovação, e projetos públicos e privados.
+
+## Portfólio
+
+- [LDS Serviços e Portaria](https://ldsservicoseportaria.com.br) — landing page para portaria, limpeza, segurança e facilities
+- [Making Tecnologia](https://makingtecnologia.com.br) — landing page para TI, redes e infraestrutura
+- [Brevi Digital](https://brevidigital.com.br) — comunicação, marketing e branding
+- [Luisa Soares Cursos](https://luisasoarescursos.com.br) — infoproduto e cursos online
+- [Sanaia Maciel](https://sanaiamaciel.com.br) — saúde, clínicas odontológicas e credenciamento
+- [Gizele Gomes Advocacia](https://gizelegomesadv.com.br) — advocacia
+- [Karine Volpatto](https://karinevolpatto.com.br) — página pessoal e Link na Bio
+- [Porcello Joias](https://joias.porcello.com.br) — joalheria
+- Inova Contestado — plataforma do centro de inovação da região de Caçador (SC)
+
+## Termos relacionados
+
+software house, desenvolvimento de software, agência de desenvolvimento web, criação de sites, criação de landing page, site sem mensalidade, site com pagamento único, link na bio, automação de processos, automação n8n, especialista em n8n, integração de sistemas, integração por API, webhook, API oficial do WhatsApp, WhatsApp Business API, Meta Cloud API, chatbot para WhatsApp, atendimento automatizado, CRM, dashboard personalizado, painel de indicadores, KPIs, Business Intelligence, BI, alternativa ao Looker Studio, banco de dados, sistema sob medida, sistema web, SaaS, MVP, aplicativo, plataforma de inovação, transformação digital, presença digital, tráfego pago, Google Ads, Meta Ads, Santa Catarina, Laguna SC, Florianópolis, Porto Alegre, Rio Grande do Sul, Brasil.
+
+## Contato
+
+- Site: https://databravo.com.br
+- Oferta de landing page: https://lps.databravo.com.br
+- WhatsApp: +55 (51) 99569-0443 — https://wa.me/5551995690443
+- E-mail: contato@databravo.com.br
+- Instagram: https://instagram.com/databravo
+- Empresa: Data Bravo Web Services — CNPJ 57.806.080/0001-94
+- Sede: Laguna, Santa Catarina. Atendimento online em todo o Brasil.

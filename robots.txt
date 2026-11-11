@@ -1,0 +1,66 @@
+# robots.txt — databravo.com.br
+# Data Bravo: software house — sites, landing pages, Link na Bio, automações n8n, API oficial do WhatsApp, dashboards e sistemas.
+# Acesso liberado para buscadores tradicionais e para assistentes e buscadores de IA.
+
+User-agent: *
+Allow: /
+
+# Google (Busca, Gemini, AI Overviews)
+User-agent: Googlebot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: GoogleOther
+Allow: /
+
+# Microsoft Bing (alimenta Copilot e parte do ChatGPT Search)
+User-agent: Bingbot
+Allow: /
+
+# OpenAI (ChatGPT)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Apple (Siri, Apple Intelligence)
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+User-agent: FacebookBot
+Allow: /
+
+# Outros assistentes e índices usados por IAs
+User-agent: DuckAssistBot
+Allow: /
+User-agent: MistralAI-User
+Allow: /
+User-agent: YouBot
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://databravo.com.br/sitemap.xml
