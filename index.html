@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data Bravo, Software House de Desenvolvimento de Software</title>
+<script>try{if(localStorage.getItem('db-theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
 <meta name="description" content="Software house especializada em desenvolvimento sob medida: sistemas, sites, automações de atendimento, ERP, CRM, plataformas e produtos SaaS. Do MVP à operação em escala.">
 <script type="application/ld+json">
 {
@@ -1350,6 +1351,49 @@ html{ overflow-x:hidden; }
 .cases .db-dot{ background:#d9d1ef; }
 .cases .db-dot.on{ background:#7c3aed; }
 @media (max-width:640px){ .db-cf{ margin-top:20px; } .db-nav{ gap:12px; margin-top:20px; } .db-arrow{ width:42px; height:42px; } }
+
+/* ===== Seção MVP: fundo branco ===== */
+.mvp{ background:#ffffff; border-top:1px solid #ebe6f5; border-bottom:1px solid #ebe6f5; }
+.mvp h2{ color:#17111f; }
+.mvp .lede{ color:#5f5875; }
+.mvp .feature-list li{ color:#39314f; }
+.mvp .mva-step span{ color:#17111f; }
+
+/* ===== Botão de tema (topo) ===== */
+.theme-toggle{ display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:var(--ink); cursor:pointer; transition:background .2s ease,border-color .2s ease; flex-shrink:0; padding:0; }
+.theme-toggle:hover{ background:rgba(255,255,255,.1); }
+.theme-toggle svg{ width:18px; height:18px; display:block; }
+.theme-toggle .t-sun{ display:none; }
+:root[data-theme="light"] .theme-toggle .t-sun{ display:block; }
+:root[data-theme="light"] .theme-toggle .t-moon{ display:none; }
+@media (max-width:900px){ .theme-toggle{ width:38px; height:38px; } }
+
+/* ===== Tema claro (site inteiro com fundo branco) ===== */
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#ffffff; --surface:#f3effb; --surface-2:#ece7f7;
+  --line:rgba(26,16,48,0.10); --line-strong:rgba(26,16,48,0.16);
+  --ink:#17111f; --ink-muted:#564f6e; --ink-faint:#837b9c;
+}
+/* ilhas que continuam escuras (logo + mockups): reafirma os tokens escuros */
+:root[data-theme="light"] header.nav,
+:root[data-theme="light"] .hero-app,
+:root[data-theme="light"] .mva-stage,
+:root[data-theme="light"] footer{
+  --line:rgba(167,139,250,0.16); --line-strong:rgba(167,139,250,0.3);
+  --ink:#f4f2fa; --ink-muted:#9c93b5; --ink-faint:#675f81;
+  color:#f4f2fa;
+}
+:root[data-theme="light"] footer{ background:#0a0712; }
+:root[data-theme="light"] .hero-canvas{ opacity:0; }
+:root[data-theme="light"] .cases{ background:#ffffff; }
+/* legendas e controles dos motions no tema claro */
+:root[data-theme="light"] .db-cap b{ color:#17111f; }
+:root[data-theme="light"] .db-cap span{ color:#5f5875; }
+:root[data-theme="light"] .db-arrow{ border-color:#e0d9f2; background:#fff; color:#17111f; box-shadow:0 8px 20px -12px rgba(70,50,130,.5); }
+:root[data-theme="light"] .db-arrow:hover{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
+:root[data-theme="light"] .db-dot{ background:#d9d1ef; }
+:root[data-theme="light"] .db-dot.on{ background:#7c3aed; }
 </style>
 
 <header class="nav">
@@ -1365,6 +1409,10 @@ html{ overflow-x:hidden; }
       <a class="nav-lp" href="https://lps.databravo.com.br/" target="_blank" rel="noopener">Sites &amp; LPs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </nav>
     <div class="nav-cta">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar cor do site" title="Mudar cor do site">
+        <svg class="t-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="t-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
       <a class="btn btn-soft btn-sm" href="https://lps.databravo.com.br/" target="_blank" rel="noopener">Sites &amp; LPs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" style="width:13px;height:13px;margin-left:2px;"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
       <a class="btn btn-primary btn-sm" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener">Iniciar projeto</a>
     </div>
@@ -1373,6 +1421,17 @@ html{ overflow-x:hidden; }
     </button>
   </div>
 </header>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('themeToggle');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var next = root.getAttribute('data-theme')==='light' ? 'dark' : 'light';
+    if(next==='light') root.setAttribute('data-theme','light'); else root.removeAttribute('data-theme');
+    try{ localStorage.setItem('db-theme', next); }catch(e){}
+  });
+})();
+</script>
 
 <main id="top">
   <section class="hero">
