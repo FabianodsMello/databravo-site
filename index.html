@@ -1,7 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data Bravo, Software House de Desenvolvimento de Software</title>
-<script>try{if(localStorage.getItem('db-theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}</script>
 <meta name="description" content="Software house especializada em desenvolvimento sob medida: sistemas, sites, automações de atendimento, ERP, CRM, plataformas e produtos SaaS. Do MVP à operação em escala.">
 <script type="application/ld+json">
 {
@@ -1358,42 +1357,9 @@ html{ overflow-x:hidden; }
 .mvp .lede{ color:#5f5875; }
 .mvp .feature-list li{ color:#39314f; }
 .mvp .mva-step span{ color:#17111f; }
-
-/* ===== Botão de tema (topo) ===== */
-.theme-toggle{ display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:10px; border:1px solid var(--line-strong); background:rgba(255,255,255,.05); color:var(--ink); cursor:pointer; transition:background .2s ease,border-color .2s ease; flex-shrink:0; padding:0; }
-.theme-toggle:hover{ background:rgba(255,255,255,.1); }
-.theme-toggle svg{ width:18px; height:18px; display:block; }
-.theme-toggle .t-sun{ display:none; }
-:root[data-theme="light"] .theme-toggle .t-sun{ display:block; }
-:root[data-theme="light"] .theme-toggle .t-moon{ display:none; }
-@media (max-width:900px){ .theme-toggle{ width:38px; height:38px; } }
-
-/* ===== Tema claro (site inteiro com fundo branco) ===== */
-:root[data-theme="light"]{
-  color-scheme:light;
-  --bg:#ffffff; --surface:#f3effb; --surface-2:#ece7f7;
-  --line:rgba(26,16,48,0.10); --line-strong:rgba(26,16,48,0.16);
-  --ink:#17111f; --ink-muted:#564f6e; --ink-faint:#837b9c;
-}
-/* ilhas que continuam escuras (logo + mockups): reafirma os tokens escuros */
-:root[data-theme="light"] header.nav,
-:root[data-theme="light"] .hero-app,
-:root[data-theme="light"] .mva-stage,
-:root[data-theme="light"] footer{
-  --line:rgba(167,139,250,0.16); --line-strong:rgba(167,139,250,0.3);
-  --ink:#f4f2fa; --ink-muted:#9c93b5; --ink-faint:#675f81;
-  color:#f4f2fa;
-}
-:root[data-theme="light"] footer{ background:#0a0712; }
-:root[data-theme="light"] .hero-canvas{ opacity:0; }
-:root[data-theme="light"] .cases{ background:#ffffff; }
-/* legendas e controles dos motions no tema claro */
-:root[data-theme="light"] .db-cap b{ color:#17111f; }
-:root[data-theme="light"] .db-cap span{ color:#5f5875; }
-:root[data-theme="light"] .db-arrow{ border-color:#e0d9f2; background:#fff; color:#17111f; box-shadow:0 8px 20px -12px rgba(70,50,130,.5); }
-:root[data-theme="light"] .db-arrow:hover{ background:#7c3aed; color:#fff; border-color:#7c3aed; }
-:root[data-theme="light"] .db-dot{ background:#d9d1ef; }
-:root[data-theme="light"] .db-dot.on{ background:#7c3aed; }
+.hero-app{ overflow:hidden; }
+.hero-motion{ display:block; width:100%; aspect-ratio:4/3; }
+.mva-motion{ display:block; width:100%; aspect-ratio:30/19; border-radius:16px; border:1px solid var(--line-strong); background:#0c0816; }
 </style>
 
 <header class="nav">
@@ -1409,10 +1375,6 @@ html{ overflow-x:hidden; }
       <a class="nav-lp" href="https://lps.databravo.com.br/" target="_blank" rel="noopener">Sites &amp; LPs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </nav>
     <div class="nav-cta">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Alternar cor do site" title="Mudar cor do site">
-        <svg class="t-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="t-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      </button>
       <a class="btn btn-soft btn-sm" href="https://lps.databravo.com.br/" target="_blank" rel="noopener">Sites &amp; LPs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true" style="width:13px;height:13px;margin-left:2px;"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
       <a class="btn btn-primary btn-sm" href="https://wa.me/5551995690443?text=Ol%C3%A1!%20Quero%20iniciar%20um%20projeto%20com%20a%20Data%20Bravo." target="_blank" rel="noopener">Iniciar projeto</a>
     </div>
@@ -1421,17 +1383,6 @@ html{ overflow-x:hidden; }
     </button>
   </div>
 </header>
-<script>
-(function(){
-  var root=document.documentElement, btn=document.getElementById('themeToggle');
-  if(!btn) return;
-  btn.addEventListener('click', function(){
-    var next = root.getAttribute('data-theme')==='light' ? 'dark' : 'light';
-    if(next==='light') root.setAttribute('data-theme','light'); else root.removeAttribute('data-theme');
-    try{ localStorage.setItem('db-theme', next); }catch(e){}
-  });
-})();
-</script>
 
 <main id="top">
   <section class="hero">
@@ -1451,174 +1402,7 @@ html{ overflow-x:hidden; }
       </div>
       <div class="hero-visual">
         <div class="hero-app">
-          <div class="ha-bar">
-            <span></span><span></span><span></span>
-            <em>app.databravo.com.br</em>
-            <i class="ha-live">ao vivo</i>
-          </div>
-          <div class="ha-body">
-            <aside class="ha-side">
-              <svg class="ha-mark" viewBox="0 0 120 96" fill="none" aria-hidden="true">
-                <g fill="#8b5cf6"><circle cx="58" cy="40" r="33"/><circle cx="90" cy="54" r="26"/><circle cx="30" cy="60" r="22"/><rect x="10" y="56" width="100" height="30" rx="15"/></g>
-              </svg>
-              <button class="ha-nav on" data-view="overview" aria-label="Visão geral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></button>
-              <button class="ha-nav" data-view="autom" aria-label="Automações"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></button>
-              <button class="ha-nav" data-view="kanban" aria-label="Kanban"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1"/><rect x="10" y="4" width="5" height="10" rx="1"/><rect x="17" y="4" width="5" height="13" rx="1"/></svg></button>
-              <button class="ha-nav" data-view="reports" aria-label="Relatórios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></button>
-            </aside>
-            <div class="ha-main">
-              <div class="ha-view on" data-view="overview">
-              <div class="ha-head">
-                <div><b>Visão geral</b><span>Atualizado agora mesmo</span></div>
-                <div class="ha-actions"><span class="ha-chip">Últimos 30 dias</span><span class="ha-avatar">DB</span></div>
-              </div>
-              <div class="ha-kpis">
-                <div class="ha-kpi"><i>Receita</i><b data-count="128" data-prefix="R$ " data-suffix="k">R$ 128k</b><em>+12%</em>
-                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,11 14,9 28,10 42,6 56,8 70,4 84,5 100,2"/></svg></div>
-                <div class="ha-kpi"><i>Pedidos</i><b data-count="2401">2.401</b><em>+8%</em>
-                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,10 14,11 28,8 42,9 56,6 70,7 84,4 100,3"/></svg></div>
-                <div class="ha-kpi"><i>Conversão</i><b data-count="48" data-decimal="1" data-suffix="%">4,8%</b><em>+0,6</em>
-                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,12 14,10 28,11 42,8 56,9 70,5 84,6 100,3"/></svg></div>
-                <div class="ha-kpi"><i>Tickets</i><b data-count="32">32</b><em class="down">-18%</em>
-                  <svg class="ha-spark" viewBox="0 0 100 14" preserveAspectRatio="none"><polyline points="0,3 14,5 28,4 42,7 56,6 70,9 84,8 100,11"/></svg></div>
-              </div>
-              <div class="ha-grid">
-                <div class="ha-chart">
-                  <div class="ha-chart-head"><i>Faturamento</i><em>↑ 23% vs. mês anterior</em></div>
-                  <svg class="ha-area" viewBox="0 0 300 132" preserveAspectRatio="none">
-                    <defs>
-                      <linearGradient id="haGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0" stop-color="rgba(139,92,246,.34)"/>
-                        <stop offset="1" stop-color="rgba(139,92,246,0)"/>
-                      </linearGradient>
-                    </defs>
-                    <line class="grid-l" x1="0" y1="33" x2="300" y2="33"/>
-                    <line class="grid-l" x1="0" y1="66" x2="300" y2="66"/>
-                    <line class="grid-l" x1="0" y1="99" x2="300" y2="99"/>
-                    <path class="fill" d="M0,104 C28,96 42,108 64,98 C86,88 100,58 128,66 C156,74 170,48 196,42 C222,36 240,56 262,38 C276,27 290,22 300,18 L300,132 L0,132 Z"/>
-                    <path class="stroke" d="M0,104 C28,96 42,108 64,98 C86,88 100,58 128,66 C156,74 170,48 196,42 C222,36 240,56 262,38 C276,27 290,22 300,18"/>
-                    <circle class="tip-pulse" cx="300" cy="18" r="4"/>
-                    <circle class="tip" cx="300" cy="18" r="3.4"/>
-                  </svg>
-                  <div class="ha-scan"></div>
-                </div>
-                <div class="ha-col">
-                  <div class="ha-goal">
-                    <svg class="ha-donut" viewBox="0 0 50 50">
-                      <circle class="bg" cx="25" cy="25" r="22"/>
-                      <circle class="val" cx="25" cy="25" r="22"/>
-                    </svg>
-                    <div><b data-count="76" data-suffix="%">76%</b><span>da meta do mês</span></div>
-                  </div>
-                  <div class="ha-feed">
-                    <div class="ha-row">
-                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 2h12l2 5H4l2-5zM4 7h16v13H4V7z"/></svg></span>
-                      <div><b>Novo pedido recebido</b><span>há 2 min</span></div>
-                    </div>
-                    <div class="ha-row">
-                      <span class="ha-ico ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></span>
-                      <div><b>Pagamento aprovado</b><span>há 8 min</span></div>
-                    </div>
-                    <div class="ha-row">
-                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
-                      <div><b>Relatório semanal pronto</b><span>há 41 min</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-              <div class="ha-view" data-view="autom">
-                <div class="ha-head">
-                  <div><b>Automações</b><span>4 fluxos ativos</span></div>
-                  <div class="ha-actions"><span class="ha-chip">+ Novo fluxo</span><span class="ha-avatar">DB</span></div>
-                </div>
-                <div class="ha-autos">
-                  <div class="ha-auto">
-                    <span class="ha-ico ok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
-                    <div><b>Boas-vindas no WhatsApp</b><span>Disparado 218× hoje</span></div>
-                    <span class="ha-switch on"><i></i></span>
-                  </div>
-                  <div class="ha-auto">
-                    <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8.5V21l-4-2.5v-6z"/></svg></span>
-                    <div><b>Qualificação de leads</b><span>84 leads qualificados esta semana</span></div>
-                    <span class="ha-switch on"><i></i></span>
-                  </div>
-                  <div class="ha-auto">
-                    <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h3l2.5 11h9L21 7H7"/><circle cx="10" cy="19.5" r="1.5"/><circle cx="18" cy="19.5" r="1.5"/></svg></span>
-                    <div><b>Carrinho abandonado</b><span>Recuperou R$ 8,4k este mês</span></div>
-                    <span class="ha-switch on"><i></i></span>
-                  </div>
-                  <div class="ha-auto">
-                    <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9L12 3z"/></svg></span>
-                    <div><b>NPS pós-venda</b><span>Ativando agora…</span></div>
-                    <span class="ha-switch auto"><i></i></span>
-                  </div>
-                </div>
-                <div class="ha-kpis" style="grid-template-columns:repeat(2,1fr);">
-                  <div class="ha-kpi still"><i>Mensagens hoje</i><b>1.284</b><em>+31%</em></div>
-                  <div class="ha-kpi still"><i>Taxa de resposta</i><b>98%</b><em>+2%</em></div>
-                </div>
-              </div>
-
-              <div class="ha-view" data-view="kanban">
-                <div class="ha-head">
-                  <div><b>Pipeline comercial</b><span>12 negócios em andamento</span></div>
-                  <div class="ha-actions"><span class="ha-chip">Este mês</span><span class="ha-avatar">DB</span></div>
-                </div>
-                <div class="ha-kan">
-                  <div class="ha-kcol">
-                    <h6>Novo <i>4</i></h6>
-                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 6k</span></div></div>
-                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 3k</span></div></div>
-                  </div>
-                  <div class="ha-kcol">
-                    <h6>Em conversa <i>5</i></h6>
-                    <div class="ha-kcard hot"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 18k</span></div></div>
-                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 9k</span></div></div>
-                  </div>
-                  <div class="ha-kcol">
-                    <h6>Proposta <i>2</i></h6>
-                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 24k</span></div></div>
-                  </div>
-                  <div class="ha-kcol win">
-                    <h6>Fechado <i>7</i></h6>
-                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 12k</span></div></div>
-                    <div class="ha-kcard"><div class="l"></div><div class="l s"></div><div class="meta"><span class="av"></span><span class="val">R$ 31k</span></div></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="ha-view" data-view="reports">
-                <div class="ha-head">
-                  <div><b>Relatórios</b><span>Gerados automaticamente</span></div>
-                  <div class="ha-actions"><span class="ha-chip">Exportar</span><span class="ha-avatar">DB</span></div>
-                </div>
-                <div class="ha-repgrid">
-                  <div class="ha-repchart">
-                    <b style="--h:38%"></b><b style="--h:62%"></b><b style="--h:46%"></b><b style="--h:78%"></b><b style="--h:55%"></b><b style="--h:88%"></b><b style="--h:66%"></b><b style="--h:94%"></b>
-                  </div>
-                  <div class="ha-replist">
-                    <div class="ha-rep">
-                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6"/></svg></span>
-                      <div><b>Vendas · Junho</b><span>gerado há 2 dias</span></div>
-                      <em>PDF</em>
-                    </div>
-                    <div class="ha-rep">
-                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6"/></svg></span>
-                      <div><b>Funil de conversão</b><span>gerado há 5 dias</span></div>
-                      <em>XLSX</em>
-                    </div>
-                    <div class="ha-rep">
-                      <span class="ha-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></span>
-                      <div><b>Fechamento mensal</b><span>gerando agora…</span><div class="ha-repprog"><i></i></div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="ha-toast">Pagamento aprovado · R$ 1.240</div>
+          <canvas class="hero-motion" data-scene="hero_dash"></canvas>
         </div>
       </div>
     </div>
@@ -1639,60 +1423,7 @@ html{ overflow-x:hidden; }
       </div>
       <div class="feature-visual reveal right">
         <div class="mva" aria-hidden="true">
-          <div class="mva-stage">
-
-            <div class="mva-phase mva-idea">
-              <span class="mva-spark"></span><span class="mva-spark"></span><span class="mva-spark"></span><span class="mva-spark"></span><span class="mva-spark"></span>
-              <svg class="mva-bulb" viewBox="0 0 120 120" fill="none">
-                <g>
-                  <line class="ray" x1="60" y1="8" x2="60" y2="20"/>
-                  <line class="ray" x1="96" y1="24" x2="88" y2="33"/>
-                  <line class="ray" x1="110" y1="56" x2="98" y2="56"/>
-                  <line class="ray" x1="24" y1="24" x2="32" y2="33"/>
-                  <line class="ray" x1="10" y1="56" x2="22" y2="56"/>
-                </g>
-                <path class="glass" d="M60 24a26 26 0 0 0-16 46c3 2.4 5 5 5 9h22c0-4 2-6.6 5-9a26 26 0 0 0-16-46z"/>
-                <path class="fila" d="M52 62c3-5 5-5 8 0s5 5 8 0"/>
-                <rect class="base" x="50" y="82" width="20" height="7" rx="2"/>
-                <rect class="base" x="53" y="91" width="14" height="6" rx="2"/>
-              </svg>
-            </div>
-
-            <div class="mva-phase mva-arch">
-              <svg class="mva-net" viewBox="0 0 300 220" fill="none" preserveAspectRatio="xMidYMid meet">
-                <g>
-                  <line class="mva-flow" x1="150" y1="110" x2="72" y2="46"/>
-                  <line class="mva-flow" x1="150" y1="110" x2="60" y2="150"/>
-                  <line class="mva-flow" x1="150" y1="110" x2="228" y2="52"/>
-                  <line class="mva-flow" x1="150" y1="110" x2="238" y2="150"/>
-                  <line class="mva-flow" x1="150" y1="110" x2="150" y2="196"/>
-                </g>
-                <rect class="mva-box core" x="120" y="88" width="60" height="44" rx="8"/>
-                <rect class="mva-box" x="40" y="26" width="64" height="36" rx="7"/>
-                <rect class="mva-box" x="28" y="132" width="64" height="36" rx="7"/>
-                <rect class="mva-box" x="196" y="30" width="64" height="36" rx="7"/>
-                <rect class="mva-box" x="206" y="132" width="64" height="36" rx="7"/>
-                <rect class="mva-box" x="118" y="178" width="64" height="34" rx="7"/>
-                <circle class="mva-dot" cx="150" cy="110" r="5"/>
-              </svg>
-            </div>
-
-            <div class="mva-phase mva-system">
-              <div class="mva-sys">
-                <div class="mva-sys-head"><span class="t"></span><span class="a"></span></div>
-                <div class="mva-sys-kpis"><i></i><i></i><i></i></div>
-                <div class="mva-sys-chart"><b style="--h:46%"></b><b style="--h:70%"></b><b style="--h:54%"></b><b style="--h:88%"></b><b style="--h:64%"></b><b style="--h:94%"></b></div>
-              </div>
-              <div class="mva-toast">Deploy concluído</div>
-            </div>
-
-          </div>
-          <div class="mva-steps">
-            <div class="mva-step"><b>01</b><span>Ideia</span></div>
-            <div class="mva-step"><b>02</b><span>Arquitetura</span></div>
-            <div class="mva-step"><b>03</b><span>Sistema</span></div>
-            <div class="mva-progress"><i></i></div>
-          </div>
+          <canvas class="mva-motion" data-scene="mvp_build"></canvas>
         </div>
       </div>
     </div>
@@ -2772,6 +2503,210 @@ scene('case_eco', { light:true, draw:s=>{
 }});
 
 
+
+/* ===== HERO: dashboard navegando sozinho ===== */
+scene('hero_dash', { light:false, dur:19.2, draw:s=>{
+  const u=s.u, P=s.P, ctx=s.ctx, W=s.W, H=s.H;
+  const barH=u(8.5), sbW=u(10.5);
+  const VD=4.8, views=['overview','autom','kanban','reports'];
+  const vi=Math.floor(s.t/VD)%4, lt=s.t%VD;
+  const cA=clamp(lt/0.4)*clamp((VD-lt)/0.45);
+
+  ctx.fillStyle=P.bg1; ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(255,255,255,.016)'; ctx.fillRect(sbW,barH,W-sbW,H-barH);
+  ctx.fillStyle='rgba(255,255,255,.03)'; ctx.fillRect(0,barH,sbW,H-barH);
+  ctx.strokeStyle=P.stroke; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(sbW,barH); ctx.lineTo(sbW,H); ctx.stroke();
+
+  ctx.beginPath(); ctx.arc(sbW/2,barH+u(3.4),u(2),0,TAU); s.fill(P.acc);
+  const iy0=barH+u(9);
+  for(let i=0;i<4;i++){ const iy=iy0+i*u(9.2), on=i===vi;
+    if(on){ s.round(sbW/2-u(4),iy-u(4),u(8),u(8),u(2)); s.fill(P.accSoft); }
+    navIcon(i, sbW/2, iy, on?P.acc2:P.faint); }
+
+  ctx.fillStyle=P.surf2; ctx.fillRect(0,0,W,barH);
+  ctx.strokeStyle=P.stroke; ctx.beginPath(); ctx.moveTo(0,barH); ctx.lineTo(W,barH); ctx.stroke();
+  for(let i=0;i<3;i++){ ctx.beginPath(); ctx.arc(u(4)+i*u(2.8),barH/2,u(.85),0,TAU); ctx.fillStyle='rgba(255,255,255,.18)'; ctx.fill(); }
+  s.txt('app.databravo.com.br', W/2, barH/2+u(1), {align:'center',s:2.5,c:P.dim,mono:true});
+  ctx.save(); ctx.globalAlpha=0.55+0.45*Math.sin(s.t*3); ctx.beginPath(); ctx.arc(W-u(15.5),barH/2,u(1),0,TAU); ctx.fillStyle=P.good; ctx.fill(); ctx.restore();
+  s.txt('ao vivo', W-u(13.5), barH/2+u(1), {s:2.3,c:P.good,w:600});
+
+  const mx=sbW+u(4.5), my=barH+u(4), mw=W-sbW-u(9), mh=H-barH-u(7.5);
+  ctx.save(); ctx.globalAlpha=cA; ctx.translate(0,(1-clamp(lt/0.4))*u(2.5));
+  const H4={overview:['Visão geral','Atualizado agora mesmo','Últimos 30 dias'],autom:['Automações','4 fluxos ativos','+ Novo fluxo'],kanban:['Pipeline comercial','12 negócios em andamento','Este mês'],reports:['Relatórios','Gerados automaticamente','Exportar']};
+  const hd=H4[views[vi]];
+  s.txt(hd[0],mx,my+u(3.6),{s:3.6,w:700,c:P.txt});
+  s.txt(hd[1],mx,my+u(7.4),{s:2.3,c:P.dim});
+  s.chip(hd[2],mx+mw-u(9.5),my+u(3.6),{align:'right',s:2,bg:P.surf,c:P.dim,h:5.2,padX:2});
+  s.round(mx+mw-u(5),my+u(1),u(5),u(5),u(1.4)); s.fill(P.acc); s.txt('DB',mx+mw-u(2.5),my+u(4.4),{align:'center',s:1.9,c:'#fff',w:700});
+  const cy0=my+u(11);
+  [ovw,aut,kan,rep][vi](mx,cy0,mw,mh-u(11),lt);
+  ctx.restore();
+
+  const prevVi=(vi+3)%4, mv=clamp(lt/0.5), yy=lerp(iy0+prevVi*u(9.2),iy0+vi*u(9.2),E.io(mv));
+  const press=(lt>0.4&&lt<0.58)?(1-(lt-0.4)/0.18):0;
+  s.cursor(sbW/2+u(1.6),yy+u(1.6),press);
+
+  function navIcon(i,cx,cy,col){ ctx.save(); ctx.fillStyle=col;
+    if(i===0){ const d=u(1.6); [[-1,-1],[0,-1],[-1,0],[0,0]].forEach(a=>{ s.round(cx+a[0]*d-u(.1),cy+a[1]*d-u(.1),u(1.5),u(1.5),u(.4)); ctx.fill(); }); }
+    else if(i===1){ ctx.beginPath(); ctx.moveTo(cx+u(.6),cy-u(2.6)); ctx.lineTo(cx-u(2),cy+u(.3)); ctx.lineTo(cx-u(.2),cy+u(.3)); ctx.lineTo(cx-u(.6),cy+u(2.6)); ctx.lineTo(cx+u(2),cy-u(.3)); ctx.lineTo(cx+u(.2),cy-u(.3)); ctx.closePath(); ctx.fill(); }
+    else if(i===2){ [[-2.2,3.4],[0,2.2],[2.2,2.8]].forEach(a=>{ s.round(cx+a[0]*u(1)-u(.6),cy-u(a[1]/2),u(1.3),u(a[1]),u(.5)); ctx.fill(); }); }
+    else { [[-2.2,1.6],[0,2.8],[2.2,3.9]].forEach(a=>{ s.round(cx+a[0]*u(1)-u(.6),cy+u(2)-u(a[1]),u(1.3),u(a[1]),u(.4)); ctx.fill(); }); }
+    ctx.restore(); }
+
+  function miniK(x,y,w,h,label,valStr,delta,down,pts,prog){
+    s.panel(x,y,w,h,u(1.6),{shadow:false});
+    s.txt(label,x+u(2.4),y+u(4),{s:1.9,c:P.dim,w:600});
+    s.txt(valStr,x+u(2.4),y+u(9.4),{s:3.3,w:800,c:P.txt});
+    s.chip(delta,x+w-u(2),y+u(3.6),{align:'right',s:1.6,bg:down?'rgba(248,113,113,.14)':'rgba(52,211,153,.14)',c:down?'#f87171':P.good,h:3.6,padX:1.3});
+    const sx=x+u(2.4), sw=w-u(4.8), sb=y+h-u(2.6), sh=u(3.4), n=pts.length;
+    ctx.save(); ctx.globalAlpha*=prog; ctx.beginPath();
+    for(let i=0;i<n;i++){ const px=sx+sw*i/(n-1), py=sb-sh*(pts[i]/11); i?ctx.lineTo(px,py):ctx.moveTo(px,py); }
+    ctx.strokeStyle=down?'#f87171':P.acc2; ctx.lineWidth=u(.5); ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+  }
+  function ovw(x,y,w,h,lt){
+    const kw=(w-u(2.4)*3)/4, kh=u(16), p=clamp((lt-0.3)/1.3);
+    const K=[['Receita','R$ '+Math.round(128*E.out(p))+'k','+12%',0,[1,3,2,6,4,8,7,10]],
+             ['Pedidos',fmt(Math.round(2401*E.out(p))),'+8%',0,[2,1,4,3,6,5,8,9]],
+             ['Conversão',(4.8*E.out(p)).toFixed(1).replace('.',',')+'%','+0,6',0,[0,2,1,4,3,7,6,9]],
+             ['Tickets',''+Math.round(32*E.out(p)),'-18%',1,[9,7,8,5,6,3,4,1]]];
+    K.forEach((k,i)=>miniK(x+i*(kw+u(2.4)),y,kw,kh,k[0],k[1],k[2],k[3],k[4],p));
+    const gy=y+kh+u(3), gh=h-kh-u(3), cw=w*.57;
+    s.panel(x,gy,cw,gh,u(1.8));
+    s.txt('Faturamento',x+u(3),gy+u(4.4),{s:2.1,c:P.dim,w:600});
+    s.txt('↑ 23% vs. mês anterior',x+cw-u(3),gy+u(4.4),{align:'right',s:1.9,c:P.good});
+    s.lineChart(x+u(3),gy+u(6.5),cw-u(6),gh-u(9.5),[20,25,19,29,25,40,34,50,44,58,52,66],clamp((lt-0.7)/2.2));
+    const rx=x+cw+u(3), rw=w-cw-u(3);
+    s.panel(rx,gy,rw,u(12),u(1.8));
+    const dp=clamp((lt-0.5)/1.5);
+    s.ringGauge(rx+u(6),gy+u(6),u(4),dp*.76,{c:P.acc,w:1.3});
+    s.txt(Math.round(76*E.out(dp))+'%',rx+u(6),gy+u(6.9),{align:'center',s:2.3,w:800});
+    s.txt('da meta',rx+u(11),gy+u(5.2),{s:1.9,c:P.dim}); s.txt('do mês',rx+u(11),gy+u(7.8),{s:1.9,c:P.dim});
+    const fy=gy+u(14.5), feed=[['Novo pedido recebido','há 2 min',0],['Pagamento aprovado','há 8 min',1],['Relatório semanal pronto','há 41 min',0]];
+    feed.forEach((f,i)=>{ const yy=fy+i*u(5.4), a=clamp((lt-1-i*0.25)/0.5); ctx.save(); ctx.globalAlpha*=a;
+      ctx.beginPath(); ctx.arc(rx+u(3),yy+u(1.6),u(1.6),0,TAU); ctx.fillStyle=f[2]?P.good:P.accSoft; ctx.fill();
+      if(f[2]){ ctx.strokeStyle='#06210f'; ctx.lineWidth=u(.5); ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(rx+u(2.3),yy+u(1.6)); ctx.lineTo(rx+u(2.8),yy+u(2.2)); ctx.lineTo(rx+u(3.8),yy+u(1)); ctx.stroke(); }
+      s.txt(f[0],rx+u(6),yy+u(1.4),{s:1.95,c:P.txt,w:600}); s.txt(f[1],rx+u(6),yy+u(3.9),{s:1.7,c:P.faint}); ctx.restore(); });
+  }
+  function aut(x,y,w,h,lt){
+    const rows=[['Boas-vindas no WhatsApp','Disparado 218× hoje'],['Qualificação de leads','84 leads qualificados'],['Carrinho abandonado','Recuperou R$ 8,4k este mês'],['NPS pós-venda','Ativando agora…']];
+    rows.forEach((r,i)=>{ const yy=y+i*u(8.6), a=clamp((lt-0.3-i*0.2)/0.5); ctx.save(); ctx.globalAlpha*=a;
+      s.panel(x,yy,w,u(7.4),u(1.6),{shadow:false});
+      ctx.beginPath(); ctx.arc(x+u(4.6),yy+u(3.7),u(2.4),0,TAU); ctx.fillStyle=P.accSoft; ctx.fill();
+      s.txt(r[0],x+u(8.6),yy+u(3),{s:2.2,w:600,c:P.txt}); s.txt(r[1],x+u(8.6),yy+u(5.6),{s:1.8,c:P.dim});
+      const kpos=i===3?(0.5+0.5*Math.sin(lt*5)):clamp((lt-0.6-i*0.2)/0.4), tw=u(6.6), tx=x+w-u(9), ty=yy+u(3.7);
+      s.round(tx,ty-u(1.7),tw,u(3.4),u(1.7)); s.fill(P.stroke);
+      ctx.save(); ctx.globalAlpha*=kpos; s.round(tx,ty-u(1.7),tw,u(3.4),u(1.7)); s.fill(P.acc); ctx.restore();
+      ctx.beginPath(); ctx.arc(tx+u(1.7)+(tw-u(3.4))*kpos,ty,u(1.3),0,TAU); ctx.fillStyle='#fff'; ctx.fill(); ctx.restore(); });
+    const ky=y+u(35.5), kw=(w-u(3))/2, K=[['Mensagens hoje','1.284','+31%'],['Taxa de resposta','98%','+2%']];
+    K.forEach((k,i)=>{ const kx=x+i*(kw+u(3)); s.panel(kx,ky,kw,u(11),u(1.8));
+      s.txt(k[0],kx+u(3),ky+u(4.2),{s:2,c:P.dim,w:600}); s.txt(k[1],kx+u(3),ky+u(8.8),{s:3.6,w:800,c:P.txt});
+      s.chip(k[2],kx+kw-u(2.6),ky+u(3.8),{align:'right',s:1.8,bg:'rgba(52,211,153,.14)',c:P.good,h:4,padX:1.5}); });
+  }
+  function kan(x,y,w,h,lt){
+    const cols=[['Novo','4',[['R$ 6k',0],['R$ 3k',0]]],['Em conversa','5',[['R$ 18k',1],['R$ 9k',0]]],['Proposta','2',[['R$ 24k',0]]],['Fechado','7',[['R$ 12k',0],['R$ 31k',0]]]];
+    const cw=(w-u(2.4)*3)/4;
+    cols.forEach((col,ci)=>{ const cx=x+ci*(cw+u(2.4));
+      s.txt(col[0],cx+u(1),y+u(2.6),{s:1.95,c:ci===3?P.good:P.dim,w:700});
+      s.txt(col[1],cx+cw-u(2),y+u(2.6),{align:'right',s:1.95,c:P.faint,w:700});
+      col[2].forEach((cd,j)=>{ const yy=y+u(5)+j*u(10), a=clamp((lt-0.3-(ci*0.15+j*0.2))/0.5); ctx.save(); ctx.globalAlpha*=a;
+        s.panel(cx,yy,cw,u(8.6),u(1.4),{shadow:false,bg:cd[1]?P.accSoft:P.surf});
+        s.round(cx+u(2),yy+u(2.2),cw*.62,u(1.4),u(.7)); s.fill(cd[1]?P.acc:P.stroke);
+        s.round(cx+u(2),yy+u(4.3),cw*.4,u(1.2),u(.6)); s.fill(P.strokeS);
+        ctx.beginPath(); ctx.arc(cx+u(3),yy+u(6.8),u(1.3),0,TAU); ctx.fillStyle=P.acc2; ctx.fill();
+        s.txt(cd[0],cx+cw-u(2),yy+u(7.4),{align:'right',s:1.95,c:ci===3?P.good:P.txt,w:700}); ctx.restore(); });
+    });
+    const mp=clamp((lt-2.3)/1.4); if(mp>0&&mp<1){ const fromx=x+2*(cw+u(2.4)), tox=x+3*(cw+u(2.4)), cx=lerp(fromx,tox,E.io(mp)), yy=y+u(5)+u(10);
+      ctx.save(); ctx.shadowColor=P.shadow; ctx.shadowBlur=u(2.5); ctx.shadowOffsetY=u(1); s.round(cx,yy,cw,u(8.6),u(1.4)); s.fill(P.acc); ctx.shadowColor='transparent';
+      s.round(cx+u(2),yy+u(2.2),cw*.62,u(1.4),u(.7)); s.fill('rgba(255,255,255,.85)'); s.txt('R$ 24k',cx+cw-u(2),yy+u(7.4),{align:'right',s:1.95,c:'#fff',w:700}); ctx.restore(); }
+  }
+  function rep(x,y,w,h,lt){
+    const cw=w*.44;
+    s.panel(x,y,cw,h-u(1),u(1.8));
+    s.txt('Desempenho',x+u(3),y+u(4.4),{s:2.1,c:P.dim,w:600});
+    s.bars(x+u(3),y+u(7),cw-u(6),h-u(12),[38,62,46,78,55,88,66,94],clamp((lt-0.5)/1.8),{hi:[5,7]});
+    const rx=x+cw+u(3), rw=w-cw-u(3), list=[['Vendas · Junho','gerado há 2 dias','PDF'],['Funil de conversão','gerado há 5 dias','XLSX'],['Receita recorrente','gerado há 7 dias','PDF']];
+    list.forEach((r,i)=>{ const yy=y+i*u(8.8), a=clamp((lt-0.5-i*0.25)/0.5); ctx.save(); ctx.globalAlpha*=a;
+      s.panel(rx,yy,rw,u(7.4),u(1.4),{shadow:false});
+      s.round(rx+u(2.6),yy+u(2),u(3),u(3.4),u(.6)); s.stroke(P.acc2,u(.5));
+      s.txt(r[0],rx+u(7.2),yy+u(3.1),{s:2,w:600,c:P.txt}); s.txt(r[1],rx+u(7.2),yy+u(5.6),{s:1.7,c:P.faint});
+      s.chip(r[2],rx+rw-u(2.4),yy+u(3.7),{align:'right',s:1.6,bg:P.accSoft,c:P.acc2,h:3.8,padX:1.5}); ctx.restore(); });
+  }
+}});
+
+/* ===== MVP: do rascunho ao produto no ar ===== */
+scene('mvp_build', { light:false, dur:12, draw:s=>{
+  const u=s.u, P=s.P, ctx=s.ctx, W=s.W, H=s.H, t=s.t;
+  const fw=Math.min(u(92),W-u(14)), fh=Math.min(u(50),H-u(26)), fx=(W-fw)/2, fy=u(7);
+  const bx=fx+u(5), by=fy+u(10), bw=fw-u(10), bh=fh-u(14);
+  const cf=clamp(t/0.6)*clamp((12-t)/0.6);
+
+  ctx.save(); ctx.shadowColor='rgba(0,0,0,.4)'; ctx.shadowBlur=u(4); ctx.shadowOffsetY=u(2);
+  s.round(fx,fy,fw,fh,u(3)); ctx.fillStyle='#0d0918'; ctx.fill(); ctx.restore();
+  ctx.save(); s.round(fx,fy,fw,fh,u(3)); ctx.clip();
+  ctx.fillStyle='rgba(255,255,255,.04)'; ctx.fillRect(fx,fy,fw,u(6.4));
+  for(let i=0;i<3;i++){ ctx.beginPath(); ctx.arc(fx+u(3)+i*u(2.4),fy+u(3.2),u(.7),0,TAU); ctx.fillStyle='rgba(255,255,255,.18)'; ctx.fill(); }
+  s.txt('app.databravo.com.br',fx+fw/2,fy+u(4.2),{align:'center',s:2,c:P.faint,mono:true});
+
+  const els=[['header',0,0,1,.22],['line',0,.3,.6,.07],['line',0,.42,.42,.07],['chart',0,.57,.46,.43],['stat',.54,.57,.46,.18],['button',.54,.81,.46,.19]];
+  ctx.save(); ctx.globalAlpha=cf;
+  els.forEach((e,i)=>{
+    const ex=bx+e[1]*bw, ey=by+e[2]*bh, ew=e[3]*bw, eh=e[4]*bh;
+    const aSketch=clamp((t-0.9-i*0.22)/0.6)*clamp((4.4-t)/0.4);
+    const aStruct=clamp((t-4)/0.4)*clamp((7.9-t)/0.4);
+    const aProd=clamp((t-7.6-i*0.12)/0.5);
+    if(aSketch>0) sketch(e[0],ex,ey,ew,eh,aSketch);
+    if(aStruct>0) struct(e[0],ex,ey,ew,eh,aStruct);
+    if(aProd>0) prod(e[0],ex,ey,ew,eh,aProd);
+  });
+  // badge "No ar"
+  const nb=clamp((t-9.4)/0.5)*clamp((12-t)/0.5);
+  if(nb>0){ ctx.save(); ctx.globalAlpha*=nb; const bxx=bx+bw-u(2), byy=by+u(1);
+    s.chip('No ar',bxx,byy+u(2.4),{align:'right',dot:true,dotC:P.good,s:2,bg:'rgba(52,211,153,.16)',c:P.good,h:5.6,padX:2.2}); ctx.restore(); }
+  ctx.restore();
+
+  // cursor desenhando (fase rascunho)
+  if(t>0.9&&t<4.2){ let ci=Math.min(5,Math.floor((t-0.9)/0.55)); const e=els[ci]; const ex=bx+e[1]*bw, ey=by+e[2]*bh, ew=e[3]*bw, eh=e[4]*bh;
+    const ph=(t-0.9-ci*0.55)/0.55; s.cursor(ex+ew*clamp(ph),ey+eh*0.5,0); }
+  ctx.restore();
+
+  // trilho de etapas
+  const steps=['Ideia','Arquitetura','Produto'], ry=fy+fh+u(8), rw=fw*.82, rx0=(W-rw)/2;
+  const prog=clamp((t-0.5)/10.5);
+  s.round(rx0,ry,rw,u(1.1),u(.55)); s.fill(P.strokeS);
+  s.round(rx0,ry,rw*prog,u(1.1),u(.55)); s.fill(P.acc);
+  steps.forEach((st,i)=>{ const sxp=rx0+rw*(i/2), on=prog>=i/2-0.02, cur=(t<4&&i===0)||(t>=4&&t<7.6&&i===1)||(t>=7.6&&i===2);
+    ctx.beginPath(); ctx.arc(sxp,ry+u(.55),u(1.4),0,TAU); ctx.fillStyle=on?P.acc:P.surf; ctx.fill();
+    if(on){ ctx.strokeStyle='#fff'; ctx.lineWidth=u(.5); ctx.lineCap='round'; ctx.beginPath(); ctx.moveTo(sxp-u(.7),ry+u(.55)); ctx.lineTo(sxp-u(.2),ry+u(1.05)); ctx.lineTo(sxp+u(.8),ry-u(.05)); ctx.stroke(); }
+    s.txt(st,sxp,ry+u(5.4),{align:'center',s:2.2,c:cur?P.acc2:P.dim,w:cur?700:600}); });
+
+  function sketch(kind,x,y,w,h,a){ ctx.save(); ctx.globalAlpha*=a*0.9; ctx.strokeStyle=P.acc2; ctx.lineWidth=u(.5); ctx.lineCap='round'; ctx.lineJoin='round';
+    const j=(n)=>Math.sin(n*12.9)*u(.5);
+    ctx.beginPath(); ctx.moveTo(x+j(1),y+j(2)); ctx.lineTo(x+w+j(3),y+j(4)); ctx.lineTo(x+w+j(5),y+h+j(6)); ctx.lineTo(x+j(7),y+h+j(8)); ctx.closePath(); ctx.stroke();
+    if(kind==='header'||kind==='button'){ ctx.beginPath(); ctx.moveTo(x+w*.1,y+h*.5+j(9)); ctx.lineTo(x+w*.6,y+h*.5+j(11)); ctx.stroke(); }
+    if(kind==='chart'){ ctx.beginPath(); ctx.moveTo(x+u(1),y+h-u(1)); ctx.lineTo(x+w*.3,y+h*.5); ctx.lineTo(x+w*.6,y+h*.65); ctx.lineTo(x+w-u(1),y+h*.25); ctx.stroke(); }
+    ctx.restore(); }
+  function struct(kind,x,y,w,h,a){ ctx.save(); ctx.globalAlpha*=a; s.round(x,y,w,h,u(1.4)); ctx.fillStyle=P.surf; ctx.fill(); s.round(x,y,w,h,u(1.4)); ctx.strokeStyle=P.stroke; ctx.lineWidth=1; ctx.stroke();
+    if(kind==='line'){ s.round(x+u(1.5),y+h/2-u(.7),w*.6,u(1.4),u(.7)); ctx.fillStyle=P.strokeS; ctx.fill(); }
+    ctx.restore(); }
+  function prod(kind,x,y,w,h,a){ ctx.save(); ctx.globalAlpha*=a;
+    if(kind==='header'){ const g=ctx.createLinearGradient(x,y,x+w,y+h); g.addColorStop(0,P.acc); g.addColorStop(1,P.acc2); s.round(x,y,w,h,u(1.6)); ctx.fillStyle=g; ctx.fill();
+      s.round(x+u(3),y+h/2-u(1.2),w*.42,u(2.4),u(1.2)); ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x+w-u(4),y+h/2,u(2),0,TAU); ctx.fillStyle='rgba(255,255,255,.85)'; ctx.fill(); }
+    else if(kind==='line'){ s.round(x,y,w,h,u(.8)); ctx.fillStyle=P.stroke; ctx.fill(); }
+    else if(kind==='chart'){ s.round(x,y,w,h,u(1.4)); ctx.fillStyle=P.surf; ctx.fill(); s.round(x,y,w,h,u(1.4)); ctx.strokeStyle=P.stroke; ctx.lineWidth=1; ctx.stroke();
+      const vals=[20,34,28,46,40,58,52,66]; const n=vals.length, mxp=Math.max.apply(null,vals), gx=x+u(2), gw=w-u(4), gyb=y+h-u(2), gh2=h-u(4), dp=clamp((t-8)/1.6);
+      ctx.save(); ctx.beginPath(); ctx.moveTo(gx,gyb);
+      for(let i=0;i<n;i++){ const px=gx+gw*i/(n-1), py=gyb-gh2*(vals[i]/mxp)*clamp(dp*n-i); if(i/(n-1)<=dp) ctx.lineTo(px,py); }
+      const lastI=Math.min(n-1,Math.floor(dp*(n-1))); ctx.lineTo(gx+gw*lastI/(n-1),gyb); ctx.closePath(); ctx.fillStyle=P.accSoft; ctx.fill(); ctx.restore();
+      ctx.beginPath(); for(let i=0;i<n;i++){ const px=gx+gw*i/(n-1), py=gyb-gh2*(vals[i]/mxp)*clamp(dp*n-i); if(i/(n-1)<=dp){ i?ctx.lineTo(px,py):ctx.moveTo(px,py);} }
+      ctx.strokeStyle=P.acc2; ctx.lineWidth=u(.7); ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke(); }
+    else if(kind==='stat'){ s.round(x,y,w,h,u(1.4)); ctx.fillStyle=P.surf; ctx.fill();
+      s.txt('MRR',x+u(2.4),y+u(4),{s:1.9,c:P.dim,w:600}); s.txt('R$ 48k',x+u(2.4),y+h-u(2.4),{s:3.2,w:800,c:P.txt}); }
+    else if(kind==='button'){ s.round(x,y,w,h,u(1.4)); ctx.fillStyle=P.acc; ctx.fill(); s.txt('Publicar',x+w/2,y+h/2+u(.9),{align:'center',s:2.1,c:'#fff',w:700}); }
+    ctx.restore(); }
+}});
+
+
 /* ===================== DADOS + CARROSSEL 3D (site) ===================== */
 const FRENTES = [
   ['landing','Landing Pages & Sites','Performance, SEO técnico e arquitetura pensada pra converter.','databravo.com.br'],
@@ -2871,6 +2806,15 @@ function initCoverflow(root, list, startLight, autoplay){
 (function(){
   const f = document.getElementById('dbCfFrentes'); if(f) initCoverflow(f, FRENTES, true, false);
   const c = document.getElementById('dbCfCases'); if(c) initCoverflow(c, CASES, false, true);
+
+  (function(){
+    function mount(sel){ var cv=document.querySelector(sel); if(!cv||!SCENES[cv.dataset.scene]) return;
+      var r=reg(cv, SCENES[cv.dataset.scene]);
+      if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ es.forEach(function(e){ r.rec.on=e.isIntersecting; }); },{threshold:.05}).observe(cv); }
+      else r.rec.on=true;
+    }
+    mount('canvas[data-scene="hero_dash"]'); mount('canvas[data-scene="mvp_build"]');
+  })();
 })();
 
 })();
